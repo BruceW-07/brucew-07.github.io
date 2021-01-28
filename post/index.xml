@@ -13,7 +13,12 @@
       <pubDate>Thu, 28 Jan 2021 21:49:15 +0800</pubDate>
       
       <guid>http://brucew-07.github.io/post/first/</guid>
-      <description></description>
+      <description>Markdown check
+[ e^x ]
+$\Latex$
+$$ \Latex $$
+$e^x$
+$$ e^x $$</description>
     </item>
     
   </channel>
