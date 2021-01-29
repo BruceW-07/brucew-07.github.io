@@ -6,7 +6,25 @@
     <description>Recent content in Posts on BruceW&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 Jan 2021 18:52:24 +0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Jan 2021 22:00:55 +0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git 学习笔记（简略版）</title>
+      <link>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/</link>
+      <pubDate>Fri, 29 Jan 2021 22:00:55 +0800</pubDate>
+      
+      <guid>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/</guid>
+      <description>配置 用户信息 ~$ git config --global user.name Example ~$ git config --global user.email Example@Example.com ### 编辑器 ```bash ~$ git config --global core.editor emacs 基础操作 新建仓库 ~/xxx$ git init 拷贝仓库 ~$ git clone https://github.com/BruceW-07/brucew-07.github.io.git 跟踪文件 git status git status 命令来查看当前仓库文件的状态</description>
+    </item>
+    
+    <item>
+      <title>Git 学习笔记（详细版）</title>
+      <link>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Fri, 29 Jan 2021 20:30:49 +0800</pubDate>
+      
+      <guid>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>原因 最近又开始尝试搭建自己的博客了，还是 github 托管的方案，不过从 Hexo 换成了 Hugo。 上次尝试失败的原因貌似是不知道怎么将博客迁移到其他电脑上（毕竟</description>
+    </item>
+    
     <item>
       <title>Test</title>
       <link>https://brucew-07.github.io/posts/test/</link>

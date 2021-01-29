@@ -3,12 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://brucew-07.github.io/tags/blog/</loc>
-    <lastmod>2021-01-29T18:52:24+08:00</lastmod>
+    <loc>https://brucew-07.github.io/</loc>
+    <lastmod>2021-01-29T22:00:55+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://brucew-07.github.io/</loc>
+    <loc>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/</loc>
+    <lastmod>2021-01-29T22:00:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brucew-07.github.io/posts/</loc>
+    <lastmod>2021-01-29T22:00:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-01-29T20:30:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://brucew-07.github.io/tags/blog/</loc>
     <lastmod>2021-01-29T18:52:24+08:00</lastmod>
   </url>
   
@@ -19,11 +34,6 @@
   
   <url>
     <loc>https://brucew-07.github.io/tags/hugo/</loc>
-    <lastmod>2021-01-29T18:52:24+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://brucew-07.github.io/posts/</loc>
     <lastmod>2021-01-29T18:52:24+08:00</lastmod>
   </url>
   
