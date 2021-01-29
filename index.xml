@@ -1,16 +1,20 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>我的全新 Hugo 网站</title>
-        <link>https://brucew-07.github.io/</link>
-        <description>我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 29 Jan 2021 18:52:24 &#43;0800</lastBuildDate>
-            <atom:link href="https://brucew-07.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>Test</title>
-    <link>https://brucew-07.github.io/posts/test/</link>
-    <pubDate>Fri, 29 Jan 2021 18:52:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/posts/test/</guid>
-    <description><![CDATA[Test Test 测试 Hugo 的自动刷新功能 主题: LoveIt #include &lt;iostream&gt; using namespace std; int main() { cout &lt;&lt; &#34;Hello World!&#34; &lt;&lt; endl; } A wise man once said nothing at all &mdash; Drake $latex$ $$ c = \pm\sqrt{a^2 + b^2} $$]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BruceW&#39;s Blog</title>
+    <link>https://brucew-07.github.io/</link>
+    <description>Recent content on BruceW&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 29 Jan 2021 18:52:24 +0800</lastBuildDate><atom:link href="https://brucew-07.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://brucew-07.github.io/posts/test/</link>
+      <pubDate>Fri, 29 Jan 2021 18:52:24 +0800</pubDate>
+      
+      <guid>https://brucew-07.github.io/posts/test/</guid>
+      <description>Test Test 测试 Hugo 的自动刷新功能 主题: LoveIt #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello World!&amp;#34; &amp;lt;&amp;lt; endl; } A wise man once said nothing at all &amp;mdash; Drake $latex$ $$ c = \pm\sqrt{a^2 + b^2} $$ Second</description>
+    </item>
+    
+  </channel>
 </rss>
