@@ -9,6 +9,6 @@
     <pubDate>Fri, 29 Jan 2021 18:52:24 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://brucew-07.github.io/posts/test/</guid>
-    <description><![CDATA[Test Test ]]></description>
+    <description><![CDATA[Test Test 测试 Hugo 的自动刷新功能 主题: LoveIt #include &lt;iostream&gt; using namespace std; int main() { cout &lt;&lt; &#34;Hello World!&#34; &lt;&lt; endl; } A wise man once said nothing at all &mdash; Drake $latex$ $$ c = \pm\sqrt{a^2 + b^2} $$]]></description>
 </item></channel>
 </rss>
