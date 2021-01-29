@@ -13,7 +13,7 @@
       <pubDate>Fri, 29 Jan 2021 22:00:55 +0800</pubDate>
       
       <guid>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/</guid>
-      <description>配置 用户信息 ~$ git config --global user.name Example ~$ git config --global user.email Example@Example.com ### 编辑器 ```bash ~$ git config --global core.editor emacs 基础操作 新建仓库 ~/xxx$ git init 拷贝仓库 ~$ git clone https://github.com/BruceW-07/brucew-07.github.io.git 跟踪文件 git status git status 命令来查看当前仓库文件的状态</description>
+      <description>配置 用户信息 ~$ git config --global user.name Example ~$ git config --global user.email Example@Example.com ### 编辑器 ```bash ~$ git config --global core.editor emacs 基础操作 新建仓库 ~/xxx$ git init 拷贝仓库 ~$ git clone https://github.com/BruceW-07/brucew-07.github.io.git 跟踪文件 查看仓库状态 ~/xxx$ git status 将文件放入暂存区 ~/xxx$</description>
     </item>
     
     <item>
