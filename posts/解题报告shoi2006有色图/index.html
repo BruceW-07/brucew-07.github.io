@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[解题报告][SHOI2006]有色图 // BruceW&#39;s Blog</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="[解题报告][SHOI2006]有色图" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh-cn" />
+    <meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">[解题报告][SHOI2006]有色图</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/" class="article-date">
+                <time datetime='2021-02-07T14:57:53.000&#43;08:00' itemprop="datePublished">2021-02-07</time>
+            </a>
+            
+            
+            <div class="post-categories">
+                <div class="article-category">
+                    
+                    
+                    <a class="article-category-link" href="https://brucew-07.github.io//categories/oi">OI</a>
+                    
+                    
+                    <span>&gt;</span>
+                    
+                    <a class="article-category-link" href="https://brucew-07.github.io//categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A">解题报告</a>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Statement
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p><a href="https://www.luogu.com.cn/problem/P4128">传送门</a></p>
+<p>
+一张 \(n\) 个点的无向完全图, 每条边可以染上 \(m\) 种颜色之一, 求 \(n!\) 种点置换下本质不同的染色方案.</p>
+<p>
+\(n \le 53 \).</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Solution
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>看到置换 + 染色, 先考虑一波 Burnside 引理. (实际上这里用的是 Pólya 计数定理.)</p>
+<p>
+需要注意的是这里是对 <strong>边</strong> 染色, 对 <strong>点</strong> 置换, 所以我们要先把 <strong>点置换</strong> 转成 <strong>边置换</strong> 后才能用 Burnside 引理做.</p>
+<p>
+我们把一个点置换用循环的形式表示, 即 \( q_1q_2q_3 \cdots q_k \), 其中 \( q_i \) 表示该置换的第 \( i \) 个循环的大小. </p>
+<p>
+我们这里把 \(q_i\) 排序后的结果称为该点置换的 <strong>循环表示</strong>, 那么可以推导出符合一个循环表示的点置换的数量为</p>
+<p>
+\[
+\mathrm{tms} = n! \prod_{i = 1}^k \frac{1}{q_i} \prod_{i = 1}^n \frac{1}{\#_i}
+\]</p>
+<p>
+其中 \(n!\) 是为了 \(n\) 个点分配到每个循环; </p>
+<p>
+\(\prod_{i = 1}^k \frac{1}{q_i}\) 是因为循环是个圆排列, 所以要除以 \(q_i\); </p>
+<p>
+\(\#_i\) 表示该置换中大小为 \(i\) 的循环的数量, 因为相同的循环之间应该是无序的, 否则会算重.</p>
+<p>
+接下来考虑怎么算边置换.</p>
+<p>
+首先有一个显然的结论, 「循环表示相同的点置换所对应的边置换相同」. 那么我们只需要考虑对于一个循环表示, 它对应的点置换所对应的边置换有多少个循环. (有点绕.)</p>
+<p>
+首先考虑端点在同一个点循环内的边. 容易发现, 在同一个点循环内, 端点距离相同的边构成了一个边循环, 而一个大小为 \(q_i\) 的点循环内有 \( \lfloor \frac{q_i}{2} \rfloor \) 种端点距离. 所以一个大小为 \(q_i\) 点循环可以贡献 \( \lfloor \frac{q_i}{2} \rfloor \) 个边循环.</p>
+<p>
+再考虑端点在两个不同点循环内的边. 两个大小分别为 \(q_1, q_2\) 的点循环之间有 \(q_1q_2\) 条边, 而一个边循环的长度为 \( lcm(q_1, q_2) = \frac{q_1q_2}{\gcd(q_1, q_2)} \) (画张图可以便于理解), 所以这两个点循环可以贡献 \( \gcd(q_1, q_2) \) 个边循环.</p>
+<p>
+所以一个循环表示为 \(q_1q_2 \cdots q_k\) 的点循环所对应的边置换的循环数量为</p>
+<p>
+\[
+\mathrm{num} = \sum_{i = 1}^k \lfloor \frac{q_i}{2} \rfloor + \sum_{i = 1}^k \sum_{j = i + 1}^k \gcd(q_i, q_j)
+\]</p>
+<p>
+所以一个循环表示所对应的不动点数量就是</p>
+<p>
+\[
+\mathrm{tms} \cdot m^{\mathrm{num}}
+\]</p>
+<p>
+所以只要枚举序列 \( \{ q \} \) 然后统计它的 \(\mathrm{tms}\) 和 \(\mathrm{num}\) 即可.</p>
+<p>
+设 \(Q(n)\) 为点数为 \(n\) 的循环表示数量, 即为 \(n\) 的划分数. 暴搜一下, 发现 \(Q(53) = 329931\).</p>
+<p>
+所以时间复杂度为 \( O(Q(n)n^2) \), 然而跑不满 (因为枚举两个点循环那地方不一定是 \(n^2\)). <del>所以是 O(能过).</del></p>
+</div>
+</div>
+
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3></h3>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">Statement</a>
+</li>
+<li><a href="#headline-2">Solution</a>
+</li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+        <footer class="article-footer">
+            <ul class="article-tag-list">
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A">解题报告
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E7%9C%81%E9%80%89">省选
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/shoi">SHOI
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/shoi2006">SHOI2006
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/burnside%E5%BC%95%E7%90%86">Burnside引理
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/p%C3%B3lya%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86">Pólya计数定理
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E6%95%B0%E5%AD%A6">数学
+                    </a>
+                </li>
+                
+                <li class="article-tag-list-item">
+                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E8%AE%A1%E6%95%B0">计数
+                    </a>
+                </li>
+                
+            </ul>
+        </footer>
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">[解题报告][luogu5564][Celeste B]Say Goodbye&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2021 BruceW&#39;s Blog
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

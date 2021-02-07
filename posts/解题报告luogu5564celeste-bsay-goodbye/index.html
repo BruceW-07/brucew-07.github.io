@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[解题报告][luogu5564][Celeste B]Say Goodbye // BruceW&#39;s Blog</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="[解题报告][luogu5564][Celeste B]Say Goodbye" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh-cn" />
+    <meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">[解题报告][luogu5564][Celeste B]Say Goodbye</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" class="article-date">
+                <time datetime='2021-02-07T11:00:55.000&#43;08:00' itemprop="datePublished">2021-02-07</time>
+            </a>
+            
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="statement">Statement</h2>
+<p><a href="https://www.luogu.com.cn/problem/P5564">传送:door:</a></p>
+<p>\( n \) 个点, $m$ 种颜色, 颜色为 $i$ 的点有 $a_i$ 个.</p>
+<p>求这 $n$ 个点构成的本质不同无标号有序基环树个数. (有序: 子树有序)</p>
+<p>两棵基环树本质相同当且仅当通过旋转基环可以使它们相同.</p>
+<p>$n \le 2 \times 10^5$.</p>
+<h2 id="solution">Solution</h2>
+<p>旋转基环就是个环同构问题, 那么直接考虑 Burnside 引理.</p>
+<p>那么根据一般套路, 可以列出式子</p>
+<p>\[
+\begin{aligned}
+\mathrm{ans}
+&amp;= \sum_{k = 2}^n \frac{1}{k} \sum_{d |k} [\frac{k}{d} | \gcd_{i = 1}^m a_i \wedge \frac{k}{d} | n]g_{\frac{n}{k / d}}(d) \varphi(\frac{k}{d})	\<br>
+\end{aligned}
+\]</p>
+<p>其中 $g_{n}(m)$ 为: 环长为 $m$ , 点数为 $n$ 的无标号有序基环树个数.</p>
+<p>接下来考虑如何算 $g_n(m)$.</p>
+<!-- raw HTML omitted -->
+<p>首先考虑节点数为 $n$ 的有根无标号有序树个数怎么算. (不考虑颜色.)</p>
+<p>把树的欧拉序看做括号序列, 那么一棵树就唯一地对应一个最外层括号数为 $1$ 的括号序列. (因为要考虑根节点.)</p>
+<p>那么方案数也就是第 $n - 1$ 个卡特兰数.</p>
+<p>我们设 $f_n$ 为所求方案数, $F(x)$ 为 $f_i$ 的 $\rm{OGF}$. 假设 $C(x)$ 为卡特兰数的 $\rm{OGF}$, 则有 $F = xC$.</p>
+<p>再考虑对节点染色. 可以发现染色方案和树的结构是独立的, 所以直接乘上一个染色方案 $\binom{n}{a_1, a_2, \cdots, a_m}$ 即可.</p>
+<p>那么可以得到
+$$
+g_n(k) = [x^n]F^k \binom{n}{a_1, a_2, \cdots, a_m}
+$$
+<!-- raw HTML omitted --></p>
+<p>为了描述更加简洁, 我们默认 $\frac{k}{d} | n$, 并交换 $\frac{k}{d}$ 和 $d$.
+$$
+\begin{aligned}
+\mathrm{ans}
+&amp;= \sum_{k = 2}^n \frac{1}{k} \sum_{d |k} [d | \gcd_{i = 1}^m a_i]g_{\frac{n}{d}}(\frac{k}{d}) \varphi(d)	\<br>
+&amp;= \sum_{k = 2}^n \frac{1}{k} \sum_{d |k} [d | \gcd_{i = 1}^m a_i][x^{n/d}]F^{k/d}\binom{n/d}{a_{1 \cdots m} /d} \varphi(d)	\<br>
+&amp;= -f_n \binom{n}{a_{1 \cdots m}} + \sum_{d | \gcd_{i = 1}^m a_i} \varphi(d) \binom{n/d}{a_{1 \cdots m} /d} [x^{n / d}]\sum_{t = 1}^{n / d}\frac{F^{t}}{td}	\<br>
+&amp;= -f_n \binom{n}{a_{1 \cdots m}} + \sum_{d | \gcd_{i = 1}^m a_i} \frac{\varphi(d)}{d} \binom{n/d}{a_{1 \cdots m} /d} [x^{n / d}]\sum_{t = 1}^{+\infty}\frac{F^{t}}{t}	\<br>
+\end{aligned}
+$$
+第二行到第三行是交换枚举顺序, 并用 $t$ 代替 $\frac{k}{d}$.</p>
+<p>接下来有两种推法.</p>
+<h3 id="一">一</h3>
+<p>我们有结论 $\sum_{i = 1}^{+ \infty} \frac{x^i}{i} = \ln(1 - x)$, 所以原式化为
+$$
+\mathrm{ans} = -f_n \binom{n}{a_{1 \cdots m}} + \sum_{d | \gcd_{i = 1}^m a_i} \frac{\varphi(d)}{d} \binom{n/d}{a_{1 \cdots m} /d} [x^{n / d}]\sum_{t = 1}^{+\infty}\ln(1 - F)
+$$
+多项式 $\ln$ 求一下即可. 时间复杂度为 $O(n \log n + \sigma(n))$. ($\sigma(n)$ 表示 $n$ 的约数和, 大概是 $O(n)$ 级别的.)</p>
+<h3 id="二">二</h3>
+<p>卡特兰数生成函数的幂有个性质
+$$
+[x^n] C^m = \binom{2n - m - 1}{n - m} - \binom{2n - m - 1}{n - m - 1}
+$$
+然后把这个带进 $F^t$ 即可得到
+$$
+\mathrm{ans} = -f_n \binom{n}{a_{1 \cdots m}} + \sum_{d | \gcd_{i = 1}^m a_i} \frac{\varphi(d)}{d} \binom{n/d}{a_{1 \cdots m} /d} \sum_{t = 1}^{n / d} \frac{1}{t} \binom{2n / d - k - 1}{n / d - k} \binom{2n / d - k - 1}{n / d - k - 1}
+$$
+时间复杂度为 $O(\sigma(n))$.</p>
+<h2 id="code">Code</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cassert&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> <span style="color:#ae81ff">4e5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>;
+
+<span style="color:#66d9ef">int</span> n, m, a[_], gcda;
+<span style="color:#66d9ef">int</span> pri[_], v[_], phi[_], cnt;
+<span style="color:#66d9ef">int</span> fac[_], ifac[_], inv[_];
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Gcd</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) { <span style="color:#66d9ef">return</span> b <span style="color:#f92672">?</span> Gcd(b, a <span style="color:#f92672">%</span> b) <span style="color:#f92672">:</span> a; }
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Init</span>() {
+  cin <span style="color:#f92672">&gt;&gt;</span> n <span style="color:#f92672">&gt;&gt;</span> m; gcda <span style="color:#f92672">=</span> n;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i) {
+    scanf(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">&amp;</span>a[i]);
+    gcda <span style="color:#f92672">=</span> Gcd(gcda, a[i]);
+  }
+
+  phi[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>v[i]) pri[<span style="color:#f92672">++</span>cnt] <span style="color:#f92672">=</span> i, v[i] <span style="color:#f92672">=</span> i, phi[i] <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> cnt and pri[j] <span style="color:#f92672">&lt;=</span> v[i] and i <span style="color:#f92672">*</span> pri[j] <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>j) {
+      v[i <span style="color:#f92672">*</span> pri[j]] <span style="color:#f92672">=</span> pri[j];
+      phi[i <span style="color:#f92672">*</span> pri[j]] <span style="color:#f92672">=</span> (i <span style="color:#f92672">%</span> pri[j]) <span style="color:#f92672">?</span> phi[i] <span style="color:#f92672">*</span> phi[pri[j]] <span style="color:#f92672">:</span> phi[i] <span style="color:#f92672">*</span> pri[j];
+    }
+  }
+
+  fac[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ifac[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> inv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n; <span style="color:#f92672">++</span>i) {
+    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) inv[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv[mod <span style="color:#f92672">%</span> i] <span style="color:#f92672">*</span> (mod <span style="color:#f92672">-</span> mod <span style="color:#f92672">/</span> i ) <span style="color:#f92672">%</span> mod;
+    fac[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> fac[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> i <span style="color:#f92672">%</span> mod;
+    ifac[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> ifac[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> inv[i] <span style="color:#f92672">%</span> mod;
+  }
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Ch</span>(<span style="color:#66d9ef">int</span> d) {
+  <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> fac[n <span style="color:#f92672">/</span> d]; assert(<span style="color:#f92672">!</span>(n <span style="color:#f92672">%</span> d));
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; <span style="color:#f92672">++</span>i) res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> res <span style="color:#f92672">*</span> ifac[a[i] <span style="color:#f92672">/</span> d] <span style="color:#f92672">%</span> mod, assert(<span style="color:#f92672">!</span>(a[i] <span style="color:#f92672">%</span> d));
+  <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">C</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> m) { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> fac[n] <span style="color:#f92672">*</span> ifac[m] <span style="color:#f92672">%</span> mod <span style="color:#f92672">*</span> ifac[n <span style="color:#f92672">-</span> m] <span style="color:#f92672">%</span> mod; }
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  Init();
+
+  <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> (mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> (C(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> C(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> mod) <span style="color:#f92672">*</span> Ch(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; d <span style="color:#f92672">&lt;=</span> gcda; <span style="color:#f92672">++</span>d)
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(gcda <span style="color:#f92672">%</span> d)) {
+      <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; k <span style="color:#f92672">&lt;=</span> n <span style="color:#f92672">/</span> d; <span style="color:#f92672">++</span>k) res <span style="color:#f92672">=</span> (res <span style="color:#f92672">+</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> (C(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n <span style="color:#f92672">/</span> d <span style="color:#f92672">-</span> k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, n <span style="color:#f92672">/</span> d <span style="color:#f92672">-</span> k) <span style="color:#f92672">-</span> C(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n <span style="color:#f92672">/</span> d <span style="color:#f92672">-</span> k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, n <span style="color:#f92672">/</span> d <span style="color:#f92672">-</span> k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> mod) <span style="color:#f92672">*</span> inv[k] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+      ans <span style="color:#f92672">=</span> (ans <span style="color:#f92672">+</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> Ch(d) <span style="color:#f92672">*</span> phi[d] <span style="color:#f92672">%</span> mod <span style="color:#f92672">*</span> inv[d] <span style="color:#f92672">%</span> mod <span style="color:#f92672">*</span> res <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+    }
+
+  cout <span style="color:#f92672">&lt;&lt;</span> ans <span style="color:#f92672">&lt;&lt;</span> endl;
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="reference">Reference</h3>
+<p><a href="https://www.cnblogs.com/PinkRabbit/p/11525881.html">题解  by PinkRabbit</a></p>
+
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3></h3>
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#statement">Statement</a></li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#一">一</a></li>
+        <li><a href="#二">二</a></li>
+      </ul>
+    </li>
+    <li><a href="#code">Code</a>
+      <ul>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            [解题报告][SHOI2006]有色图
+        </div>
+    </a>
+    
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">[解题报告] [NOI2016]优秀的拆分&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2021 BruceW&#39;s Blog
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>
