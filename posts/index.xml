@@ -35,17 +35,6 @@
     </item>
     
     <item>
-      <title>Org Mode</title>
-      <link>https://brucew-07.github.io/posts/org-mode/</link>
-      <pubDate>Sun, 31 Jan 2021 22:17:16 +0800</pubDate>
-      
-      <guid>https://brucew-07.github.io/posts/org-mode/</guid>
-      <description> org-mode  check   check
-    TODO check      This is org-mode there you found
-  code block  #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello Hugo&amp;#34; &amp;lt;&amp;lt; endl; return 0; }   def hello(): return &amp;#34;hello world&amp;#34; return hello()     </description>
-    </item>
-    
-    <item>
       <title>Git 学习笔记（简略版）</title>
       <link>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/</link>
       <pubDate>Fri, 29 Jan 2021 22:00:55 +0800</pubDate>
@@ -61,15 +50,6 @@
       
       <guid>https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description>原因 最近又开始尝试搭建自己的博客了，还是 github 托管的方案，不过从 Hexo 换成了 Hugo。 上次尝试失败的原因貌似是不知道怎么将博客迁移到其他电脑上（毕竟</description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://brucew-07.github.io/posts/test/</link>
-      <pubDate>Fri, 29 Jan 2021 18:52:24 +0800</pubDate>
-      
-      <guid>https://brucew-07.github.io/posts/test/</guid>
-      <description>Test Test 测试 Hugo 的自动刷新功能 主题: LoveIt #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello World!&amp;#34; &amp;lt;&amp;lt; endl; } A wise man once said nothing at all &amp;mdash; Drake $latex$ $$ c = \pm\sqrt{a^2 + b^2} $$ Second</description>
     </item>
     
   </channel>
