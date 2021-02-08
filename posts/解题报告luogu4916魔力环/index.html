@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[解题报告][luogu4916]魔力环 // BruceW&#39;s Blog</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="[解题报告][luogu4916]魔力环" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh-cn" />
+    <meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">[解题报告][luogu4916]魔力环</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" class="article-date">
+                <time datetime='2021-02-08T15:06:18.000&#43;08:00' itemprop="datePublished">2021-02-08</time>
+            </a>
+            
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Statement
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p><a href="https://www.luogu.com.cn/problem/P4916">传送门</a></p>
+<p>
+一个点数为 \(n\) 的环 (项链), 每个点可以被染成黑色或白色.</p>
+<p>
+染色要求为: 恰好有 \(m\) 个点被染为黑色, 且不存在长度 \(&gt;k\) 的黑色连续串.</p>
+<p>
+考虑旋转同构, 求本质不同的的染色方案数.</p>
+<p>
+\( m \le n \le 10^5, k \le 10^5\).</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Solution
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>这里旋转就相当于置换, 本质不同的的染色方案就相当于轨道数. 那么使用 Burnside 引理, 把轨道数转化为置换的不动点数量.</p>
+<p>
+这里总共有 \(n\) 个置换, 每个置换都形如</p>
+<p>
+\[
+\begin{Bmatrix}
+1 &amp; 2     &amp; 3     &amp; \cdots &amp; n - i + 1 &amp; n - i &amp; \cdots &amp; n - 1 &amp; n     \\
+i &amp; i + 1 &amp; i + 2 &amp; \cdots &amp; n         &amp; 1     &amp; \cdots &amp; i - 2 &amp; i - 1 
+\end{Bmatrix}
+\]</p>
+<p>
+那么第 \(i\) 个置换的每个循环的长度为 \( \mathrm{lgt} = \frac{lcm(i, n)}{i} = \frac{n}{\gcd(i, n)} \), 循环的数量为 \( \mathrm{num} = \gcd(i, n) \).</p>
+<p>
+所以 \(n\) 就会被分成 \(\mathrm{lgt}\) 段由 \(\mathrm{num}\) 个属于不同循环的点组成的区间 (是的这里没打错).</p>
+<p>
+那么对这个 \(n\) 元环的染色就相当于对这个 \(\mathrm{num}\) 元环的染色. (因为每个循环中的颜色都必须相同.)</p>
+<p>
+那么我们设 \( g(i, j) \) 为给 \(i\) 元环染上 \(m\) 个黑点的合法方案数 (不考虑循环同构). </p>
+<p>
+那么我们要求的就是 (这里我们默认 \( \frac{n}{\gcd(i, n)} \mid m \).)</p>
+<p>
+\[
+\frac{1}{n} \sum_{i = 1}^n g(\gcd(i, n), \frac{m}{n / \gcd(i, n)})
+\]</p>
+<p>
+改为枚举 \(\gcd\) (默认 \( d \mid n \))</p>
+<p>
+\[
+\begin{aligned}
+\frac{1}{n} \sum_{i = 1}^n g(\gcd(i, n), \frac{m}{n / \gcd(i, n)})
+&amp;= \frac{1}{n} \sum_{d = 1}^n g(d, \frac{m}{n / d}) \sum_{i = 1}^{\frac{n}{d}} [\gcd(\frac{n}{d}, i) = 1] \\
+&amp;= \frac{1}{n} \sum_{d = 1}^n g(d, \frac{m}{n / d}) \varphi(\frac{n}{d})
+\end{aligned}
+\]</p>
+<p>
+那么现在考虑怎么求 \(g(d, \frac{m}{n / d})\).</p>
+<p>
+环不好弄, 那么我们枚举最后一段黑色连续段和第一段黑色连续段的长度之和, 断环为链. 然后因为黑点和白点的数量是固定的, 所以我们可以把黑色连续段看做把若干个黑点放在白点之间. 然后每段黑色连续段长度不超过 \(k\) 的方案可以用容斥算出来.</p>
+<p>
+形式化地说, 设 \( h(n, c) \) 为将 \(c\) 个黑点放进 \(n\) 个空位中的方案. 则有</p>
+<p>
+\[
+g(d, \frac{m}{n / d}) = \sum_{i = 0}^k (i + 1) h(d - \frac{m}{n / d} - 1, \frac{m}{n / d} - i)
+\]</p>
+<p>
+(乘上 \((i + 1)\) 是因为要算最后一段和第一段分别放了多少个黑点.)</p>
+<p>
+\[
+h(n, c) = \sum_{i = 0}^{\lfloor\frac{c}{k + 1}\rfloor} (-1)^i \binom{n}{i} \binom{c - i(k + 1) + n - 1}{n - 1}
+\]</p>
+<p>
+(最后一个组合数是用 插板法 + 可重组合 计算把 \(c - i(k + 1)\) 个黑点放进 \(n\) 个空位的方案.)</p>
+<p>
+这样每次计算 \(g(d, \frac{m}{n / d})\) 的时间复杂度为 \( O(k \lfloor\frac{\frac{m}{n / d}}{k + 1}\rfloor) = O(d)\), 所以总时间复杂度为 \( O(\sigma(n)) \).</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">
+Code
+</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
+<div class="src src-c++">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>;
+
+<span style="color:#66d9ef">int</span> n, m, K, pri[_], phi[_], v[_], cnt, fac[_], ifac[_], inv[_];
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Init</span>() {
+  cin <span style="color:#f92672">&gt;&gt;</span> n <span style="color:#f92672">&gt;&gt;</span> m <span style="color:#f92672">&gt;&gt;</span> K;
+  <span style="color:#66d9ef">if</span> (m <span style="color:#f92672">==</span> n) { puts(<span style="color:#e6db74">&#34;0&#34;</span>); exit(<span style="color:#ae81ff">0</span>); }
+  phi[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>v[i]) pri[<span style="color:#f92672">++</span>cnt] <span style="color:#f92672">=</span> i, v[i] <span style="color:#f92672">=</span> i, phi[i] <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> cnt and pri[j] <span style="color:#f92672">&lt;=</span> v[i] and i <span style="color:#f92672">*</span> pri[j] <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>j) {
+      v[i <span style="color:#f92672">*</span> pri[j]] <span style="color:#f92672">=</span> pri[j];
+      phi[i <span style="color:#f92672">*</span> pri[j]] <span style="color:#f92672">=</span> i <span style="color:#f92672">%</span> pri[j] <span style="color:#f92672">?</span> phi[i] <span style="color:#f92672">*</span> phi[pri[j]] <span style="color:#f92672">:</span> phi[i] <span style="color:#f92672">*</span> pri[j];
+    }
+  }
+
+  fac[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> ifac[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> inv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n; <span style="color:#f92672">++</span>i) {
+    fac[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> fac[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> i <span style="color:#f92672">%</span> mod;
+    <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) inv[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv[mod <span style="color:#f92672">%</span> i] <span style="color:#f92672">*</span> (mod <span style="color:#f92672">-</span> mod <span style="color:#f92672">/</span> i) <span style="color:#f92672">%</span> mod;
+    ifac[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> ifac[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> inv[i] <span style="color:#f92672">%</span> mod;
+  }
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">C</span>(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> m) { <span style="color:#66d9ef">return</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> or m <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> fac[n] <span style="color:#f92672">*</span> ifac[m] <span style="color:#f92672">%</span> mod <span style="color:#f92672">*</span> ifac[n <span style="color:#f92672">-</span> m] <span style="color:#f92672">%</span> mod; }
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">F</span>(<span style="color:#66d9ef">int</span> sum, <span style="color:#66d9ef">int</span> num) {
+  <span style="color:#66d9ef">if</span> (num <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> sum <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> min(sum <span style="color:#f92672">/</span> (K <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>), num); <span style="color:#f92672">++</span>i) {
+    <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> C(num, i) <span style="color:#f92672">*</span> C(sum <span style="color:#f92672">-</span> (K <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> i <span style="color:#f92672">+</span> num <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, num <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod;
+    res <span style="color:#f92672">=</span> (res <span style="color:#f92672">+</span> ((i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> mod <span style="color:#f92672">-</span> tmp : tmp)) <span style="color:#f92672">%</span> mod;
+  }
+  <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  Init();
+
+  <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; d <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>d)
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(n <span style="color:#f92672">%</span> d) and <span style="color:#f92672">!</span>(m <span style="color:#f92672">%</span> (n <span style="color:#f92672">/</span> d))) {
+      <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> m <span style="color:#f92672">/</span> (n <span style="color:#f92672">/</span> d), res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> min(t, K); <span style="color:#f92672">++</span>i) res <span style="color:#f92672">=</span> (res <span style="color:#f92672">+</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> (i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> F(t <span style="color:#f92672">-</span> i, d <span style="color:#f92672">-</span> t <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+      ans <span style="color:#f92672">=</span> (ans <span style="color:#f92672">+</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> res <span style="color:#f92672">*</span> phi[n <span style="color:#f92672">/</span> d] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+    }
+
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> ans <span style="color:#f92672">*</span> inv[n] <span style="color:#f92672">%</span> mod <span style="color:#f92672">&lt;&lt;</span> endl;
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Reference
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<p>
+<a href="https://www.luogu.com.cn/blog/cjyyb/solution-p4916">题解 by yybyyb</a></p>
+</div>
+</div>
+
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3></h3>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">Statement</a>
+</li>
+<li><a href="#headline-2">Solution</a>
+</li>
+<li><a href="#headline-3">Code</a>
+</li>
+<li><a href="#headline-4">Reference</a>
+</li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">[解题报告][SHOI2006]有色图&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2021 BruceW&#39;s Blog
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>
