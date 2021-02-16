@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数 // BruceW&#39;s Blog</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh-cn" />
+    <meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/posts/">Posts</a>
+                
+                <a class="main-nav-link" href="/tags/">Tags</a>
+                
+                <a class="main-nav-link" href="/categories/">Categories</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" class="article-date">
+                <time datetime='2021-02-16T21:36:14.000&#43;08:00' itemprop="datePublished">2021-02-16</time>
+            </a>
+            
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Foreword
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>昨天晚上讲题的时候看到 \(\mathrm{\color{red}{M}\_sea}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了.</p>
+<p>
+由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前<a href="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/">有色图</a>那个做法上套, 结果想了一个多小时一点思路都没有. (不过话说从这个数据范围应该就看得出做法明显不一样吧…)</p>
+<p>
+后来 \(\mathrm{\color{red}{M}\_sea}\) 给我指了条明路, 让我先去做「烷基计数」. 一语点醒梦中人, 于是就有了这篇解题报告.</p>
+<p>
+<del>(三倍经验警告)</del></p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+烷基计数
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Statement
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p><a href="https://loj.ac/p/6538">[loj6538]烷基计数 加强版 加强版</a></p>
+<p>
+求碳原子个数为 \(n\) 的烷基的同分异构体的数量.</p>
+<p>
+\(n \le 10^5\).</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Solution
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>「烷基计数」比「烷烃计数」简单的地方在于, 「烷基计数」是有根的, 那么我们就可以考虑从根开始往下递归.</p>
+<p>
+首先, 考虑怎么处理根的儿子的同构情况. 这里我们直接使用 Burnside 引理, 便把无标号的子节点变成有标号了, 然后再对每个置换算出它所对应的染色方案数量即可 (即不动点方案). 因为这里根只有 \(3\) 个子节点 (子节点为空的话就看做该子树的大小为 \(0\)), 所以总共只有 \(3! = 6\) 中置换, 手动把每种置换的不动点数量算出来即可.</p>
+<p>
+具体来说, 设 \(f_i\) 表示大小为 \(i\) 的烷基的同分异构体的数量, 则有</p>
+<p>
+\[
+f_i = \frac{1}{6} (2[3 \mid (i - 1)]f_{\frac{i - 1}{3}} + 3\sum_{j = 0}^{\lfloor \frac{i - 1}{2} \rfloor} f_jf_{i - 1 - 2j} + \sum_{j = 0}^{i - 1} \sum_{k = 0}^{i - 1 - j} f_jf_kf_{i - 1 - j - k})
+\]</p>
+<p>
+这样的话就可以得到一个 \(O(n^3)\) 的暴力.</p>
+<p>
+下面考虑使用生成函数优化.</p>
+<p>
+(由于本人才疏学浅并且对生成函数的应用极其不熟练, 所以以下内容借鉴于<a href="https://cn.bing.com/search?form=MOZLBR&amp;pc=MOZI&amp;q=%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0">这篇博客</a>).
+<del>(怎么想都想不到可以把指数放在 x 上)</del></p>
+<p>
+设 \(F(x) = \sum_{i \ge 0} f_ix^i\). 那么上面的式子可以写成</p>
+<p>
+\[
+F(x) = 1 + \frac{1}{6}x[2F(x^3) + 3F(x^2)F(x) + F(x)^3]
+\]</p>
+<p>
+(这里不要像我一样看到 \(F(x^3)\) 和 \(F(x^2)\) 这两个东西懵逼了, 实际上把它们看做两个另外的函数就可以了.)</p>
+<p>
+这个式子可以分治FFT, 也可以牛顿迭代. 分治 FFT 的做法比较显然, 下面大致描述一下牛顿迭代的做法.</p>
+<p>
+首先设 \(G(F(x)) = 1 + \frac{1}{6}x[2F(x^3) + 3F(x^2)F(x) + F(x)^3] - F(x)\). </p>
+<p>
+然后按照牛顿迭代的套路, 假设已经求出了 \(F_0(x)\) 满足 \(G(F_0(X)) \equiv 0 \pmod{x^{\frac{n}{2}}}\), 现在要求 \(F(x)\) 满足 \(G(F(x)) \equiv 0 \pmod{x^n}\)</p>
+<p>
+\[
+F(x) = F_0(x) - \frac{G(F_0(x))}{G&#39;(F_0(x))}
+\]</p>
+<p>
+手动把 \(G&#39;(F_0(x))\) 化一下即可. 实现的时候可以分子分母同乘一个常数, 就可以不用乘那么多逆元了.</p>
+<p>
+时间复杂度为 \(O(n\log n)\).</p>
+<p>
+实现的时候注意清空会导致循环卷积的位置.</p>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+Code
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<div class="src src-c++">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">20</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pw</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> p) {
+  <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">while</span> (p) {
+    <span style="color:#66d9ef">if</span> (p <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> res <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    p <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+  }
+  <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">namespace</span> Poly {
+  <span style="color:#66d9ef">int</span> tot, num[_], pwrt[_], inv[_], a[_], b[_];
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> q[_];
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Init</span>(<span style="color:#66d9ef">int</span> n) {
+    tot <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">while</span> (tot <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">+</span> n) tot <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
+    inv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) inv[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv[mod <span style="color:#f92672">%</span> i] <span style="color:#f92672">*</span> (mod <span style="color:#f92672">-</span> mod <span style="color:#f92672">/</span> i) <span style="color:#f92672">%</span> mod;
+    pwrt[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Pw(<span style="color:#ae81ff">3</span>, (mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> tot);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) pwrt[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> pwrt[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">NTT</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">bool</span> ty, <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> tot) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) {
+      num[i] <span style="color:#f92672">=</span> (num[i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> ((i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> t <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>);
+      q[i] <span style="color:#f92672">=</span> f[num[i]];
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; len <span style="color:#f92672">&lt;=</span> t; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      <span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> len <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>, d <span style="color:#f92672">=</span> tot <span style="color:#f92672">/</span> len;
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; i <span style="color:#f92672">+=</span> len)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> gap; <span style="color:#f92672">++</span>j) {
+          <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">*</span> pwrt[ty <span style="color:#f92672">?</span> tot <span style="color:#f92672">-</span> j <span style="color:#f92672">*</span> d : j <span style="color:#f92672">*</span> d] <span style="color:#f92672">%</span> mod;
+          q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">-</span> tmp <span style="color:#f92672">+</span> mod;
+          q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">+</span> tmp;
+        }
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) f[i] <span style="color:#f92672">=</span> q[i] <span style="color:#f92672">*</span> (ty <span style="color:#f92672">?</span> inv[t] <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Mul</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>g, <span style="color:#66d9ef">int</span> t) {
+    memcpy(a, f, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memcpy(b, g, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h, <span style="color:#ae81ff">0</span>, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(b, <span style="color:#ae81ff">0</span>, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">*</span> b[i] <span style="color:#f92672">%</span> mod;
+    NTT(h, <span style="color:#ae81ff">1</span>, t);
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Inv</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> Len) {
+    memset(a, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>), memset(b, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    memcpy(b, f, <span style="color:#66d9ef">sizeof</span> b); memset(h, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    h[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> Pw(b[<span style="color:#ae81ff">0</span>], mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>), a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">1</span>];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> Len; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(h, <span style="color:#ae81ff">0</span>, t);
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+      NTT(h, <span style="color:#ae81ff">1</span>, t);
+      memcpy(a, b, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    }
+  }
+}
+
+<span style="color:#66d9ef">int</span> n, F[_], H[_], A[_], B[_], T0[_], T1[_], T2[_];
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  cin <span style="color:#f92672">&gt;&gt;</span> n; Poly<span style="color:#f92672">::</span>Init(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>));
+  H[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> A[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> B[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+    memset(T0 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2ll</span> <span style="color:#f92672">*</span> A[i] <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T1, B, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T2, H, H, t), Poly<span style="color:#f92672">::</span>Mul(T1, T2, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T1[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T0[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">6ll</span> <span style="color:#f92672">*</span> H[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T1[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> (B[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T2[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T1[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">6</span>;
+    Poly<span style="color:#f92672">::</span>Inv(T1, T1, len);
+    memset(T1 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    Poly<span style="color:#f92672">::</span>Mul(T0, T0, T1, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) H[i] <span style="color:#f92672">=</span> (H[i] <span style="color:#f92672">-</span> T0[i] <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod, A[i] <span style="color:#f92672">=</span> B[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>; <span style="color:#f92672">++</span>i) A[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> H[i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) B[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> H[i];
+  }
+  cout <span style="color:#f92672">&lt;&lt;</span> H[n] <span style="color:#f92672">&lt;&lt;</span> endl;
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-2">
+<h2 id="headline-6">
+烯烃计数
+</h2>
+<div id="outline-text-headline-6" class="outline-text-2">
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+statement
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p><a href="https://www.luogu.com.cn/problem/P6597">[luoguP6597]烯烃计数</a></p>
+<p>
+求出碳原子数量为 \(2 \sim n\) 的 <strong>单烯烃</strong> 的同分异构体数量.</p>
+<p>
+\( n \le 10^5 \).</p>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-3">
+<h3 id="headline-8">
+Solution
+</h3>
+<div id="outline-text-headline-8" class="outline-text-3">
+<p>
+容易想到把碳碳双键看做根, 而碳碳双键两边的碳原子所连出去的东西其实就是若干个烷基, 所以先按照上面的方法算出烷基个数.</p>
+<p>
+然后碳碳双键两边的碳原子只有两个儿子, 那么也与上面类似, 对大小为 \(2\) 的置换讨论一下, 列出式子, 然后生成函数乘一下即可. (需要注意这里 \(x^0\) 的系数要为 \(0\), 因为碳碳双键两边必须要接碳原子.)</p>
+<p>
+然后对于这个碳碳双键, 可以把它看做一个点, 然后也是用 Burnside 引理按照上面的做法弄一下就好了.</p>
+<p>
+时间复杂度为 \(O(n \log n)\).</p>
+<p>
+<del>(其实和烷基计数没什么区别, 不过可以用来水水题量.)</del></p>
+</div>
+</div>
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+Code
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<div class="src src-c++">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">20</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pw</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> p) {
+  <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">while</span> (p) {
+    <span style="color:#66d9ef">if</span> (p <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> res <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    p <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+  }
+  <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">namespace</span> Poly {
+  <span style="color:#66d9ef">int</span> tot, num[_], pwrt[_], inv[_], a[_], b[_];
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> q[_];
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Init</span>(<span style="color:#66d9ef">int</span> n) {
+    tot <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">while</span> (tot <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">+</span> n) tot <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
+    inv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) inv[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv[mod <span style="color:#f92672">%</span> i] <span style="color:#f92672">*</span> (mod <span style="color:#f92672">-</span> mod <span style="color:#f92672">/</span> i) <span style="color:#f92672">%</span> mod;
+    pwrt[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Pw(<span style="color:#ae81ff">3</span>, (mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> tot);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) pwrt[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> pwrt[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">NTT</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">bool</span> ty, <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> tot) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) {
+      num[i] <span style="color:#f92672">=</span> (num[i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> ((i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> t <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>);
+      q[i] <span style="color:#f92672">=</span> f[num[i]];
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; len <span style="color:#f92672">&lt;=</span> t; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      <span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> len <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>, d <span style="color:#f92672">=</span> tot <span style="color:#f92672">/</span> len;
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; i <span style="color:#f92672">+=</span> len)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> gap; <span style="color:#f92672">++</span>j) {
+          <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">*</span> pwrt[ty <span style="color:#f92672">?</span> tot <span style="color:#f92672">-</span> j <span style="color:#f92672">*</span> d : j <span style="color:#f92672">*</span> d] <span style="color:#f92672">%</span> mod;
+          q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">-</span> tmp <span style="color:#f92672">+</span> mod;
+          q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">+</span> tmp;
+        }
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) f[i] <span style="color:#f92672">=</span> q[i] <span style="color:#f92672">*</span> (ty <span style="color:#f92672">?</span> inv[t] <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Mul</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>g, <span style="color:#66d9ef">int</span> t) {
+    memcpy(a, f, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memcpy(b, g, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h, <span style="color:#ae81ff">0</span>, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(b, <span style="color:#ae81ff">0</span>, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">*</span> b[i] <span style="color:#f92672">%</span> mod;
+    NTT(h, <span style="color:#ae81ff">1</span>, t);
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Inv</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> Len) {
+    memset(a, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>), memset(b, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    memcpy(b, f, <span style="color:#66d9ef">sizeof</span> b); memset(h, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    h[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> Pw(b[<span style="color:#ae81ff">0</span>], mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>), a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">1</span>];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> Len; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(h, <span style="color:#ae81ff">0</span>, t);
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+      NTT(h, <span style="color:#ae81ff">1</span>, t);
+      memcpy(a, b, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    }
+  }
+}
+
+<span style="color:#66d9ef">int</span> n, F[_], G[_], H[_], A[_], B[_], T0[_], T1[_], T2[_], inv2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">499122177</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  cin <span style="color:#f92672">&gt;&gt;</span> n; Poly<span style="color:#f92672">::</span>Init(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>));
+  H[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> A[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> B[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">int</span> len, t;
+  <span style="color:#66d9ef">for</span> (len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+    memset(T0 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2ll</span> <span style="color:#f92672">*</span> A[i] <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T1, B, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T2, H, H, t), Poly<span style="color:#f92672">::</span>Mul(T1, T2, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T1[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T0[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">6ll</span> <span style="color:#f92672">*</span> H[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T1[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> (B[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T2[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T1[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">6</span>;
+    Poly<span style="color:#f92672">::</span>Inv(T1, T1, len);
+    memset(T1 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    Poly<span style="color:#f92672">::</span>Mul(T0, T0, T1, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) H[i] <span style="color:#f92672">=</span> (H[i] <span style="color:#f92672">-</span> T0[i] <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod, A[i] <span style="color:#f92672">=</span> B[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>; <span style="color:#f92672">++</span>i) A[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> H[i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) B[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> H[i];
+  }
+
+  len <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+  Poly<span style="color:#f92672">::</span>Mul(G, H, H, t);
+  memset(G <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) G[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv2 <span style="color:#f92672">*</span> (B[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> G[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+  G[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+  memset(B, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) B[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> G[i];
+  Poly<span style="color:#f92672">::</span>Mul(F, G, G, t);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv2 <span style="color:#f92672">*</span> (B[i] <span style="color:#f92672">+</span> F[i]) <span style="color:#f92672">%</span> mod;
+
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, F[i]);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-2">
+<h2 id="headline-10">
+烷烃计数
+</h2>
+<div id="outline-text-headline-10" class="outline-text-2">
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+Statement
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<p><a href="https://www.luogu.com.cn/problem/P6598">luoguP6598]烷烃计数</a></p>
+<p>
+求出碳原子数量为 \(n\) 的烷烃的同分异构体数量.</p>
+<p>
+\(n \le 10^5\).</p>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Solution.
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<p>在经历了「烷基计数」和「烯烃计数」的洗礼后, 我突然领悟了 \(\mathrm{\color{red}{M}\_sea}\) <del>看似漫不经心实际别有深意地</del> 说出的一个词: 「重心」.</p>
+<p>
+现在, 烷烃计数难搞的地方只在于它没有根, 那么我们要是能对一个烷烃找到一个唯一的根, 那么问题就迎刃而解了.</p>
+<p>
+而「重心」就是一个经典的选择.</p>
+<p>
+对于 \(n\) 为奇数的情况, 由于重心只会有一个, 所以直接把重心作为根即可.</p>
+<p>
+具体来说, 就是先求出烷基个数, 在最后合并的时候, 根节点有 \(4\) 个儿子, 并且每一个子树的大小都小于 \(\lceil \frac{n}{2} \rceil \). 那么我们对 \(4! = 24\) 个置换讨论一下即可. 当然可能会有点麻烦.</p>
+<p>
+对于 \(n\) 为偶数的情况, 若重心有一个子树的大小为 \( \frac{n}{2} \), 则这时会有两个重心, 这个烷烃就会被统计两次. (可以画个图理解.)</p>
+<p>
+所以我们限制每个子树大小都小于 \( \frac{n}{2} \), 然后按上面 \(n\) 为奇数的情况统计.</p>
+<p>
+而对于有两个重心的情况, 我们可以把两个重心之间那条边看做一个点, 然后对 \(2! = 2\) 个置换讨论一下即可. (跟上面烯烃计数的情况差不多.)</p>
+<p>
+复杂度为 \(O(n \log n)\).</p>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-3">
+<h3 id="headline-13">
+Code
+</h3>
+<div id="outline-text-headline-13" class="outline-text-3">
+<div class="src src-c++">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">20</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">998244353</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Pw</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> p) {
+  <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">while</span> (p) {
+    <span style="color:#66d9ef">if</span> (p <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> res <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a <span style="color:#f92672">*</span> a <span style="color:#f92672">%</span> mod;
+    p <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+  }
+  <span style="color:#66d9ef">return</span> res;
+}
+
+<span style="color:#66d9ef">namespace</span> Poly {
+  <span style="color:#66d9ef">int</span> tot, num[_], pwrt[_], inv[_], a[_], b[_];
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> q[_];
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Init</span>(<span style="color:#66d9ef">int</span> n) {
+    tot <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">while</span> (tot <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">+</span> n) tot <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>;
+    inv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) inv[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv[mod <span style="color:#f92672">%</span> i] <span style="color:#f92672">*</span> (mod <span style="color:#f92672">-</span> mod <span style="color:#f92672">/</span> i) <span style="color:#f92672">%</span> mod;
+    pwrt[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Pw(<span style="color:#ae81ff">3</span>, (mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> tot);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; i <span style="color:#f92672">&lt;=</span> tot; <span style="color:#f92672">++</span>i) pwrt[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> pwrt[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> pwrt[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">NTT</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">bool</span> ty, <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> tot) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) {
+      num[i] <span style="color:#f92672">=</span> (num[i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> ((i <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> t <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>);
+      q[i] <span style="color:#f92672">=</span> f[num[i]];
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; len <span style="color:#f92672">&lt;=</span> t; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      <span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> len <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>, d <span style="color:#f92672">=</span> tot <span style="color:#f92672">/</span> len;
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; i <span style="color:#f92672">+=</span> len)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> gap; <span style="color:#f92672">++</span>j) {
+          <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">*</span> pwrt[ty <span style="color:#f92672">?</span> tot <span style="color:#f92672">-</span> j <span style="color:#f92672">*</span> d : j <span style="color:#f92672">*</span> d] <span style="color:#f92672">%</span> mod;
+          q[i <span style="color:#f92672">+</span> j <span style="color:#f92672">+</span> gap] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">-</span> tmp <span style="color:#f92672">+</span> mod;
+          q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">=</span> q[i <span style="color:#f92672">+</span> j] <span style="color:#f92672">+</span> tmp;
+        }
+    }
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) f[i] <span style="color:#f92672">=</span> q[i] <span style="color:#f92672">*</span> (ty <span style="color:#f92672">?</span> inv[t] <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> mod;
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Mul</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>g, <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> tot) {
+    memcpy(a, f, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memcpy(b, g, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h, <span style="color:#ae81ff">0</span>, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(b, <span style="color:#ae81ff">0</span>, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">*</span> b[i] <span style="color:#f92672">%</span> mod;
+    NTT(h, <span style="color:#ae81ff">1</span>, t);
+  }
+
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Inv</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>h, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>f, <span style="color:#66d9ef">int</span> Len) {
+    memset(a, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>), memset(b, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    memcpy(b, f, <span style="color:#66d9ef">sizeof</span> b); memset(h, <span style="color:#ae81ff">0</span>, Len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">3</span>);
+    h[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> Pw(b[<span style="color:#ae81ff">0</span>], mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>), a[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">0</span>], a[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> b[<span style="color:#ae81ff">1</span>];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> Len; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+      NTT(a, <span style="color:#ae81ff">0</span>, t), NTT(h, <span style="color:#ae81ff">0</span>, t);
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) h[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> h[i] <span style="color:#f92672">*</span> a[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+      NTT(h, <span style="color:#ae81ff">1</span>, t);
+      memcpy(a, b, t <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(h <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    }
+  }
+}
+
+<span style="color:#66d9ef">int</span> n, m, F[_], G[_], H[_], A[_], B[_], C[_], T0[_], T1[_], T2[_], inv24 <span style="color:#f92672">=</span> <span style="color:#ae81ff">291154603</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  cin <span style="color:#f92672">&gt;&gt;</span> n; m <span style="color:#f92672">=</span> (n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; Poly<span style="color:#f92672">::</span>Init(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>));
+  H[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> A[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> B[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#66d9ef">int</span> len, t;
+  <span style="color:#66d9ef">for</span> (len <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, t <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; len <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (m <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>, t <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
+    memset(T0 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2ll</span> <span style="color:#f92672">*</span> A[i] <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T1, B, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+    Poly<span style="color:#f92672">::</span>Mul(T2, H, H, t), Poly<span style="color:#f92672">::</span>Mul(T1, T2, H, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T1[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T0[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>i) T0[i] <span style="color:#f92672">=</span> (T0[i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">6ll</span> <span style="color:#f92672">*</span> H[i] <span style="color:#f92672">%</span> mod <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) T1[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> (B[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> T2[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) <span style="color:#f92672">%</span> mod;
+    T1[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">6</span>;
+    Poly<span style="color:#f92672">::</span>Inv(T1, T1, len);
+    memset(T1 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+    Poly<span style="color:#f92672">::</span>Mul(T0, T0, T1, t);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) H[i] <span style="color:#f92672">=</span> (H[i] <span style="color:#f92672">-</span> T0[i] <span style="color:#f92672">+</span> mod) <span style="color:#f92672">%</span> mod, A[i] <span style="color:#f92672">=</span> B[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>; <span style="color:#f92672">++</span>i) A[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> H[i];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) B[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> H[i];
+  }
+
+  <span style="color:#66d9ef">if</span> (t <span style="color:#f92672">&gt;</span> Poly<span style="color:#f92672">::</span>tot) t <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>, len <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#ae81ff">1</span>;
+  memset(T0, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span> T0), memset(A, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span> A), memset(B, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span> B), memset(C, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span> C);
+  memcpy(T0, H, m <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>i) A[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> T0[i];
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">3</span>; <span style="color:#f92672">++</span>i) B[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> T0[i];
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) C[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> T0[i];
+  memset(A <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(B <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), memset(C <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>);
+
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">6ll</span> <span style="color:#f92672">*</span> A[i] <span style="color:#f92672">%</span> mod;
+  Poly<span style="color:#f92672">::</span>Mul(T1, B, T0, t);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> (F[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">8ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+  Poly<span style="color:#f92672">::</span>Mul(T1, C, C, t);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> (F[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+  Poly<span style="color:#f92672">::</span>Mul(T1, T0, T0, t), memset(T1 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), Poly<span style="color:#f92672">::</span>Mul(T1, T1, C);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> (F[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">6ll</span> <span style="color:#f92672">*</span> T1[i] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">%</span> mod;
+  Poly<span style="color:#f92672">::</span>Mul(T1, T0, T0, t), memset(T1 <span style="color:#f92672">+</span> len, <span style="color:#ae81ff">0</span>, len <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>), Poly<span style="color:#f92672">::</span>Mul(T1, T1, T1, t);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) F[i] <span style="color:#f92672">=</span> (F[i] <span style="color:#f92672">+</span> T1[i]) <span style="color:#f92672">%</span> mod;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i; <span style="color:#f92672">--</span>i) F[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> inv24 <span style="color:#f92672">*</span> F[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">%</span> mod;
+  F[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+  <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, F[n]);
+  <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> (H[n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> H[n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> H[n <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">%</span> mod) <span style="color:#f92672">*</span> Pw(<span style="color:#ae81ff">2</span>, mod <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">%</span> mod;
+    printf(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (ans <span style="color:#f92672">+</span> F[n]) <span style="color:#f92672">%</span> mod);
+  }
+    
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3></h3>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">Foreword</a>
+</li>
+<li><a href="#headline-2">烷基计数</a>
+<ul>
+<li><a href="#headline-3">Statement</a>
+</li>
+<li><a href="#headline-4">Solution</a>
+</li>
+<li><a href="#headline-5">Code</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-6">烯烃计数</a>
+<ul>
+<li><a href="#headline-7">statement</a>
+</li>
+<li><a href="#headline-8">Solution</a>
+</li>
+<li><a href="#headline-9">Code</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-10">烷烃计数</a>
+<ul>
+<li><a href="#headline-11">Statement</a>
+</li>
+<li><a href="#headline-12">Solution.</a>
+</li>
+<li><a href="#headline-13">Code</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    
+    <a href="/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">[学习笔记]转置原理 (Draft)&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2021 BruceW&#39;s Blog
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>

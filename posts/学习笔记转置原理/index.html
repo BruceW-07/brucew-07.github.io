@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>[学习笔记]转置原理 (Draft) // BruceW&#39;s Blog</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    
+    
+
+        <meta property="og:title" content="[学习笔记]转置原理 (Draft)" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh-cn" />
+    <meta property="og:url" content="https://brucew-07.github.io/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" />
+    
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+</head>
+
+
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
+            <nav id="main-nav">
+                
+                <a class="main-nav-link" href="/posts/">Posts</a>
+                
+                <a class="main-nav-link" href="/tags/">Tags</a>
+                
+                <a class="main-nav-link" href="/categories/">Categories</a>
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">[学习笔记]转置原理 (Draft)</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" class="article-date">
+                <time datetime='2021-02-08T20:33:21.000&#43;08:00' itemprop="datePublished">2021-02-08</time>
+            </a>
+            
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+一些不太清楚的问题
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+一
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<p>在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实际上 \( \Pi_{j} (1 - a_jy) \) 是 \( \frac{tot}{2} \) 级别的，造成了浪费，而且感觉不太优美</p>
+<p>
+答：看了一份题解的代码，貌似也没有对这方面的处理，那也就只能这样写了。</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+二 
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>鸡贼课件里说所谓 “转置原理” 就是  \( 
+f(x) \times g(x) \cdot h(x) \Leftrightarrow g(x) \cdot h(x) \times f(\frac{1}{x}) 
+\) ，但这个下标问题有点迷，还得推一下</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+gzy课件
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+一 
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>关于鸡贼写的那个\( 
+f(x) \times g(x) \cdot h(x) \Leftrightarrow g(x) \cdot h(x) \times f(\frac{1}{x}) 
+\)，如果直接按这种形式写的话貌似会扯到循环卷积，就比较烦。
+目前我只知道如果把 \( f(\frac{1}{x}) \) 直接看做 \(f_r(x)\) （对前 \( 0 \sim n - 1 \) 项翻转）的话，可以把点积转化为卷积的 \( x^{n-1} \) 项系数，不知道其他用法会不会对这个翻转的要求不一样。</p>
+<p>
+<strong>upd:</strong>
+推了一波式子，并实验了一波，得到结论其实是
+\(
+A(x)B(x) \cdot C(x) = Ar(x) \cdot B(x)Cr(x) = Br(x) \cdot A(x)Cr(x) = A(x) \cdot (B(x)Cr(x))r
+\)
+<span style="text-decoration: underline;">注意</span> ： 不是 \(Ar(x) \cdot Br(x)C(x)\)，究其原因在于进行减法卷积时，若将两个多项式互换，最终得到的结果会不一样。</p>
+<p>
+但对于 \(A(x)B(x) \cdot C(x)D(x)\) 这种形式除了先把 \(C,D\) 卷起来之外暂时没想到什么更好的方法，因为要扯到减法卷积。</p>
+<div id="outline-container-headline-6" class="outline-4">
+<h4 id="headline-6">
+挖个坑
+</h4>
+<div id="outline-text-headline-6" class="outline-text-4">
+<p>点积本质上就是减法卷积的0次项系数，所以推一下式子可以得到加法卷积和减法卷积的转换律，不过好像想不到什么应用，感觉有点鸡肋？</p>
+<p>
+减法卷积：设 \(A(x) \circ B(x) = \sum_{i = 0}^{n-1}x^i\sum_{j = i}^{n-1} a_jb_{j-i}\)，则 \(A(x) \circ B(x) = (Ar(x)B(x))r\) （猜的，待验证）</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+二
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>突然感觉鸡贼写的有点nb，居然能把转置抽象成一个纯多项式的东西？
+如果能把多项式操作和矩阵变换联系起来，估计就比较好理解了。
+点积好像还行，但卷积怎么转化为矩阵？</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-2">
+<h2 id="headline-8">
+转置原理的简单介绍 笔记
+</h2>
+<div id="outline-text-headline-8" class="outline-text-2">
+<div id="outline-container-headline-9" class="outline-3">
+<h3 id="headline-9">
+线性算法
+</h3>
+<div id="outline-text-headline-9" class="outline-text-3">
+<p>一个 \( n \times n \) 常数矩阵 \(A\) 左乘一个 \( n \times 1 \) 的变量向量 \( a\)，得到 \( b \) 的算法</p>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-3">
+<h3 id="headline-10">
+转置
+</h3>
+<div id="outline-text-headline-10" class="outline-text-3">
+<p>对于线性算法 \( b = Aa \)，称 \( b&#39; = A^Ta \) 为它的转置算法。（ \(A^T\) 表示矩阵 \(A\) 的转置，就是沿主对角线翻转）</p>
+<p>
+其实我感觉把向量换成矩阵也成立</p>
+<p>
+定理：
+设
+\(
+A = E_1 E_2 E_3 \cdots E_k
+\)
+则
+\(
+A^T = E_k^T E_{k-1}^T E_{k-2}^T \cdots E_1^T
+\)
+其中 \(E\) 为初等矩阵</p>
+<p>
+然后如果你把矩乘换回普通操作（就是普通 C++ 语句），就相当于把所有操作反着做一遍，什么参数传入改为返回，函数调用顺序反过来……
+有种看 信条 的感觉</p>
+<p>
+5-2 复合 简单函数 4 没看懂</p>
+<p>
+一元函数的复合可以用复合的结合律简化运算
+但二元函数怎么办？</p>
+<p>
+二元函数 \( F(x,y) \) 左乘一个向量 \( b(y) \)，\( y^i \) 没有什么实际意义，只是相当于建立了一个对应关系，从而得到每一个 \( x^i \) 的系数。而复合函数 \( q&#39;(sp(y)) \) 也是建立了一个对应关系，如果我们把复合函数的对应关系一层层扒下来，那么就可以简化运算。                                                                                    </p>
+<p>
+设我们现在要求 \( f(p(x)q(y)) \cdot b(y) \)，然后 \( q(y) \) 能写成 \(q&#39;(sp(y))\) 的形式，其中 \( sp(y) \) 是一个简单函数。
+我们考虑把 \(b(y)\) 换个基，变成 \(b&#39;(sp(y))\)，然后就相当于把 \(sp(y)\) 扒出来了。
+考虑如何求 \(b&#39;\)。
+设 \(sp^{-1}(y)\) 为 \(sp(y)\) 的复合逆，设 \(t = sp(y)\)，
+则 \(y = sp^{-1}(sp(y)) = sp^{-1}(t) \)，
+那么把 \(y = sp^{-1}(t)\) 带入 \(b(y)\) 就可以得到 \(b(y) = b(sp^{-1}(t))\)，所以 \(b&#39;(sp(y)) = b&#39;(t) = b(sp^{-1}(t)) \)，也即 \(b&#39; = b \circ sp^{-1}\)。</p>
+<p>
+所以原式就可以变为 \(f(p(x)q&#39;(t)) \cdot b&#39;(t) \)，然后再把 \(q&#39;(t)\) 一层一层按照上面的过程拆下去，直到得到一个 \(q&#39;_{final}(z) = z\)，
+那么原式为 \(f(p(x)q&#39;_{final}(z)) \cdot b&#39;&#39;(z) \)，
+展开后就是 </p>
+<p>
+\(
+\begin{aligned}
+f(p(x)q&#39;_{final}(z)) \cdot b&#39;&#39;(z) 
+&amp;= (\sum_{i} f_i p(x)^i z^i) \cdot (\sum_{i}b&#39;&#39;_{i} z^i) \\
+&amp;= \sum_{i} f_i b&#39;&#39;_{i}p(x)^i z^i \\
+\end{aligned}
+\)
+所以可以先把 \(f\) 和 \(b&#39;&#39;\) 点积起来，设 \(f&#39;(t) = f(t) \cdot b(t) \)，之后的操作就是 \( f&#39; \circ p \)，然后由于 \(p\) 又是由若干个简单函数复合而成，所以可以根据复合的结合律来一层层复合。</p>
+<p>
+回到更普通的形式，即 \(u(x)v(y)f(p(x)q(y)) \cdot b(y) \)，
+对于 \(v(y)\)，我们使用 \(A(x)B(x) \cdot C(x) = A(x) \cdot (B(x)Cr(x))r\) 的技巧，先把 \(v(y)\) 挪到右边，然后就变为了 \(u(x)v(y)f(p(x)q(y)) \cdot b&#39;(y) \)，
+接着再按照上面的步骤，最后得到 \(u(x)(\sum_{i} f_i b&#39;&#39;_{i}p(x)^i z^i)\)，那么就先把后面那项求出来，然后再卷一次就OK了</p>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+DFT的转置
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<p>尝试用转置方法写了发DFT，为啥转置后跑得飞快啊？？？
+UOJ上普通写法总时间2000ms左右，转置写法只要不到700ms。。。
+感觉运算量没差吧？？？？？</p>
+<p>
+但为啥洛谷上又没啥差别。。。。</p>
+<p>
+结果只是刚刚UOJ抽风了。。。。</p>
+<p>
+由于转置方法是分治算完后二进制翻转，而原方法是分治算之前二进制翻转，所以如果你DFT用转置方法，IDFT用原方法，就可以少两个二进制翻转的过程，稍微能快那么一丢丢。</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-2">
+<h2 id="headline-12">
+xgzc的课件
+</h2>
+<div id="outline-text-headline-12" class="outline-text-2">
+<p>那个 “复合矩阵” 看得我一脸懵逼，没太懂 \(COM(F)_{i,j} = [x^j]F(x^i)\) 是啥意思
+然后从 \( A(x,y) = \sum_{i=0}^{n-1}g(x)^i f_i h(y)^i \) 到 \( A = COM^T(g)I(f)COM(h) \) 也没看懂</p>
+<p>
+没事了, 原来是他把 \(F(x)^i\) 写成了 \(F(x^i)\)</p>
+</div>
+</div>
+
+        </div>
+
+        
+        
+        <div class="article-toc" >
+            <h3></h3>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">一些不太清楚的问题</a>
+<ul>
+<li><a href="#headline-2">一</a>
+</li>
+<li><a href="#headline-3">二 </a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-4">gzy课件</a>
+<ul>
+<li><a href="#headline-5">一 </a>
+<ul>
+<li><a href="#headline-6">挖个坑</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-7">二</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-8">转置原理的简单介绍 笔记</a>
+<ul>
+<li><a href="#headline-9">线性算法</a>
+</li>
+<li><a href="#headline-10">转置</a>
+</li>
+<li><a href="#headline-11">DFT的转置</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-12">xgzc的课件</a>
+</li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    
+<nav id="article-nav">
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            [解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数
+        </div>
+    </a>
+    
+    
+    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">[解题报告][luogu4916]魔力环&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+
+</article>
+
+        
+    </section>
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2021 BruceW&#39;s Blog
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
+        <script>renderMathInElement(document.body);</script>
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
+
+</div>
+</body>
+</html>
