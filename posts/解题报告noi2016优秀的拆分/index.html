@@ -1,90 +1,99 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>[解题报告] [NOI2016]优秀的拆分 // BruceW&#39;s Blog</title>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[解题报告] [NOI2016]优秀的拆分 - BruceW&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="[解题报告] [NOI2016]优秀的拆分" />
+<meta property="og:description" content="题意 若一个拆分方式能把一个串表示为 \(AABB\) 的形式, 则称这个拆分为 &#34;优秀的拆分&#34;. 给定一个串 \(S\), 求它所有子串的所有 &#34;优秀的划分" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86/" />
+<meta property="article:published_time" content="2021-01-31T22:25:18+08:00" />
+<meta property="article:modified_time" content="2021-01-31T22:25:18+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[解题报告] [NOI2016]优秀的拆分"/>
+<meta name="twitter:description" content="题意 若一个拆分方式能把一个串表示为 \(AABB\) 的形式, 则称这个拆分为 &#34;优秀的拆分&#34;. 给定一个串 \(S\), 求它所有子串的所有 &#34;优秀的划分"/>
+<meta name="application-name" content="BruceW&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="BruceW&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86/" /><link rel="prev" href="https://brucew-07.github.io/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/" /><link rel="next" href="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[解题报告] [NOI2016]优秀的拆分",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/posts\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86\/"
+        },"genre": "posts","keywords": "解题报告, SA, 字符串, NOI, NOI2016","wordcount":  1083 ,
+        "url": "https:\/\/brucew-07.github.io\/posts\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86\/","datePublished": "2021-01-31T22:25:18+08:00","dateModified": "2021-01-31T22:25:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": "作者"},"author": {
+                "@type": "Person",
+                "name": "作者"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="" header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-    <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    
-    
-    
-
-        <meta property="og:title" content="[解题报告] [NOI2016]优秀的拆分" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="zh-cn" />
-    <meta property="og:url" content="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86/" />
-    
-
-    <link rel="shortcut icon" href="/favicon.ico">
-
-    <link href="https://brucew-07.github.io/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
-    <link href="https://brucew-07.github.io/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="https://brucew-07.github.io/css/style.css">
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-</head>
-
-
-<body>
-<div id="container">
-    <header id="header">
-    <div id="header-outer" class="outer">
-        <div id="header-inner" class="inner">
-            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
-            <a id="logo" class="logo-text" href="https://brucew-07.github.io/">BruceW&#39;s Blog</a>
-            <nav id="main-nav">
-                
-                <a class="main-nav-link" href="/posts/">Posts</a>
-                
-                <a class="main-nav-link" href="/tags/">Tags</a>
-                
-                <a class="main-nav-link" href="/categories/">Categories</a>
-                
-            </nav>
-            <nav id="sub-nav">
-                <div id="search-form-wrap">
-                </div>
-            </nav>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="BruceW&#39;s Blog">BruceW&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
         </div>
     </div>
-</header>
-
-    <section id="main" class="outer">
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        <header class="article-header">
-            <h1 class="article-title" itemprop="name">[解题报告] [NOI2016]优秀的拆分</h1>
-        </header>
-        
-        <div class="article-meta">
-            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anoi2016%E4%BC%98%E7%A7%80%E7%9A%84%E6%8B%86%E5%88%86/" class="article-date">
-                <time datetime='2021-01-31T22:25:18.000&#43;08:00' itemprop="datePublished">2021-01-31</time>
-            </a>
-            
-            
-            <div class="post-categories">
-                <div class="article-category">
-                    
-                    
-                    <a class="article-category-link" href="https://brucew-07.github.io//categories/oi">OI</a>
-                    
-                    
-                    <span>&gt;</span>
-                    
-                    <a class="article-category-link" href="https://brucew-07.github.io//categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A">解题报告</a>
-                    
-                </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="BruceW&#39;s Blog">BruceW&#39;s Blog</a>
             </div>
-            
-            
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="article-entry" itemprop="articleBody">
-            
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[解题报告] [NOI2016]优秀的拆分</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>作者</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-31">2021-01-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1083 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">题意</a>
+</li>
+<li><a href="#headline-2">解法</a>
+</li>
+<li><a href="#headline-3">代码</a>
+</li>
+</ul>
+</nav></div>
+            </div><div class="content" id="content">
 <div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 题意
@@ -123,210 +132,137 @@
 </h3>
 <div id="outline-text-headline-3" class="outline-text-3">
 <div class="src src-c++">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cassert&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstdio&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> ll;
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
 
-<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> _ <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> L <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;
+<span class="k">const</span> <span class="kt">int</span> <span class="n">_</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
 
-<span style="color:#66d9ef">int</span> n, Log[_], f[<span style="color:#ae81ff">2</span>][_][L <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>], num[<span style="color:#ae81ff">2</span>][_];
-<span style="color:#66d9ef">char</span> S[_];
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">Log</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">_</span><span class="p">][</span><span class="n">L</span> <span class="o">+</span> <span class="mi">7</span><span class="p">],</span> <span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">_</span><span class="p">];</span>
+<span class="kt">char</span> <span class="n">S</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
 
-<span style="color:#66d9ef">int</span> rk[<span style="color:#ae81ff">2</span>][_], sa[_], c[_], t[_], trk[_];
+<span class="kt">int</span> <span class="n">rk</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">_</span><span class="p">],</span> <span class="n">sa</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">trk</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
 
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">GetSa</span>(<span style="color:#66d9ef">bool</span> ty) {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> max(n, (<span style="color:#66d9ef">int</span>)<span style="color:#e6db74">&#39;z&#39;</span>); <span style="color:#f92672">++</span>i) c[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n; <span style="color:#f92672">++</span>i) rk[ty][i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// notice that the upper bound here needs to be 2n
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) rk[ty][i] <span style="color:#f92672">=</span> S[i], <span style="color:#f92672">++</span>c[rk[ty][i]];
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;z&#39;</span>; <span style="color:#f92672">++</span>i) c[i] <span style="color:#f92672">+=</span> c[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) sa[c[rk[ty][i]]<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> i;
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; len <span style="color:#f92672">&lt;</span> n; len <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">1</span>) {
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) c[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) <span style="color:#f92672">++</span>c[rk[ty][i]];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) c[i] <span style="color:#f92672">+=</span> c[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n; i <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">--</span>i) <span style="color:#66d9ef">if</span> (sa[i] <span style="color:#f92672">&gt;</span> len) t[c[rk[ty][sa[i] <span style="color:#f92672">-</span> len]]<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> sa[i] <span style="color:#f92672">-</span> len;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) t[c[rk[ty][i]]<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> i;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) sa[i] <span style="color:#f92672">=</span> t[i];
-    <span style="color:#66d9ef">int</span> cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) trk[sa[i]] <span style="color:#f92672">=</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> or rk[ty][sa[i]] <span style="color:#f92672">!=</span> rk[ty][sa[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]] or rk[ty][sa[i] <span style="color:#f92672">+</span> len] <span style="color:#f92672">!=</span> rk[ty][sa[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> len]) <span style="color:#f92672">?</span> <span style="color:#f92672">++</span>cnt : cnt;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) rk[ty][i] <span style="color:#f92672">=</span> trk[i];
-  }
-}
+<span class="kt">void</span> <span class="nf">GetSa</span><span class="p">(</span><span class="kt">bool</span> <span class="n">ty</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">max</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="sc">&#39;z&#39;</span><span class="p">);</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// notice that the upper bound here needs to be 2n
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">++</span><span class="n">c</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">sa</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span><span class="o">--</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">len</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">len</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="o">++</span><span class="n">c</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">len</span><span class="p">)</span> <span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">len</span><span class="p">]]</span><span class="o">--</span><span class="p">]</span> <span class="o">=</span> <span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">len</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">t</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span><span class="o">--</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">trk</span><span class="p">[</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">!=</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="n">or</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">len</span><span class="p">]</span> <span class="o">!=</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">sa</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">len</span><span class="p">])</span> <span class="o">?</span> <span class="o">++</span><span class="nl">cnt</span> <span class="p">:</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">trk</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">int</span> hgt[_];
+<span class="kt">int</span> <span class="n">hgt</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
 
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">GetHgt</span>(<span style="color:#66d9ef">bool</span> ty) {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) hgt[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) {
-    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> sa[rk[ty][i] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-    hgt[rk[ty][i]] <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, hgt[rk[ty][i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
-    <span style="color:#66d9ef">while</span> (max(i, j) <span style="color:#f92672">+</span> hgt[rk[ty][i]] <span style="color:#f92672">&lt;=</span> n and S[i <span style="color:#f92672">+</span> hgt[rk[ty][i]]] <span style="color:#f92672">==</span> S[j <span style="color:#f92672">+</span> hgt[rk[ty][i]]]) <span style="color:#f92672">++</span>hgt[rk[ty][i]];
-  }
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) f[ty][i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> hgt[i];
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; l <span style="color:#f92672">&lt;=</span> L; <span style="color:#f92672">++</span>l)
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)) <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) f[ty][i][l] <span style="color:#f92672">=</span> min(f[ty][i][l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], f[ty][i <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))][l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]);
-}
+<span class="kt">void</span> <span class="nf">GetHgt</span><span class="p">(</span><span class="kt">bool</span> <span class="n">ty</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">hgt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">sa</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="n">and</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]]</span> <span class="o">==</span> <span class="n">S</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]]])</span> <span class="o">++</span><span class="n">hgt</span><span class="p">[</span><span class="n">rk</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">]];</span>
+  <span class="p">}</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">hgt</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">;</span> <span class="o">++</span><span class="n">l</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))][</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Query</span>(<span style="color:#66d9ef">bool</span> ty, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r) {
-  assert(l <span style="color:#f92672">!=</span> r);
-  <span style="color:#66d9ef">if</span> (ty) l <span style="color:#f92672">=</span> rk[<span style="color:#ae81ff">1</span>][n <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>], r <span style="color:#f92672">=</span> rk[<span style="color:#ae81ff">1</span>][n <span style="color:#f92672">-</span> r <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-  <span style="color:#66d9ef">else</span> l <span style="color:#f92672">=</span> rk[<span style="color:#ae81ff">0</span>][l], r <span style="color:#f92672">=</span> rk[<span style="color:#ae81ff">0</span>][r];
-  <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;</span> r) swap(l, r); <span style="color:#f92672">++</span>l;
-  <span style="color:#66d9ef">int</span> s <span style="color:#f92672">=</span> Log[r <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-  <span style="color:#66d9ef">return</span> min(f[ty][l][s], f[ty][r <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> s) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][s]);
-}
+<span class="kt">int</span> <span class="nf">Query</span><span class="p">(</span><span class="kt">bool</span> <span class="n">ty</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">assert</span><span class="p">(</span><span class="n">l</span> <span class="o">!=</span> <span class="n">r</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ty</span><span class="p">)</span> <span class="n">l</span> <span class="o">=</span> <span class="n">rk</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rk</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span> <span class="o">-</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+  <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">rk</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">l</span><span class="p">],</span> <span class="n">r</span> <span class="o">=</span> <span class="n">rk</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">r</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">)</span> <span class="n">swap</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span> <span class="o">++</span><span class="n">l</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Log</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+  <span class="k">return</span> <span class="n">min</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">l</span><span class="p">][</span><span class="n">s</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">ty</span><span class="p">][</span><span class="n">r</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">s</span><span class="p">]);</span>
+<span class="p">}</span>
 
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">30000</span>; <span style="color:#f92672">++</span>i) Log[i] <span style="color:#f92672">=</span> (i <span style="color:#f92672">==</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> (Log[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))) <span style="color:#f92672">?</span> Log[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> Log[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">30000</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">Log</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">Log</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span> <span class="o">?</span> <span class="n">Log</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">Log</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
 
-  <span style="color:#66d9ef">int</span> T; cin <span style="color:#f92672">&gt;&gt;</span> T;
-  <span style="color:#66d9ef">while</span> (T<span style="color:#f92672">--</span>) {
-    scanf(<span style="color:#e6db74">&#34;%s&#34;</span>, S <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>); n <span style="color:#f92672">=</span> strlen(S <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; t <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>t) {
-      GetSa(t), GetHgt(t);
-      reverse(S <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, S <span style="color:#f92672">+</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
-    }
+  <span class="kt">int</span> <span class="n">T</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">T</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">T</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="n">S</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="o">++</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">GetSa</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">GetHgt</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+      <span class="n">reverse</span><span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">S</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; t <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>; <span style="color:#f92672">++</span>t)
-      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) num[t][i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; l <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>l)
-      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> n; i <span style="color:#f92672">+=</span> l) {
-        <span style="color:#66d9ef">int</span> len1 <span style="color:#f92672">=</span> min(l, Query(<span style="color:#ae81ff">1</span>, i <span style="color:#f92672">+</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, i <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)), len2 <span style="color:#f92672">=</span> min(l, Query(<span style="color:#ae81ff">0</span>, i <span style="color:#f92672">+</span> l, i <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> l));
-        <span style="color:#66d9ef">int</span> p1 <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> l <span style="color:#f92672">-</span> len1, p2 <span style="color:#f92672">=</span> min(i <span style="color:#f92672">+</span> l <span style="color:#f92672">+</span> len2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, i <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>);
-        <span style="color:#66d9ef">if</span> (p1 <span style="color:#f92672">&lt;=</span> p2 <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) {
-          <span style="color:#f92672">++</span>num[<span style="color:#ae81ff">1</span>][p1], <span style="color:#f92672">--</span>num[<span style="color:#ae81ff">1</span>][p2 <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>];
-          <span style="color:#f92672">++</span>num[<span style="color:#ae81ff">0</span>][p1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], <span style="color:#f92672">--</span>num[<span style="color:#ae81ff">0</span>][p2 <span style="color:#f92672">+</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-        }
-      }
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="o">++</span><span class="n">t</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">num</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">l</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">Query</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">Query</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span><span class="p">));</span>
+        <span class="kt">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">-</span> <span class="n">len1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">l</span> <span class="o">+</span> <span class="n">len2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="o">++</span><span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">p1</span><span class="p">],</span> <span class="o">--</span><span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">p2</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+          <span class="o">++</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">p1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="o">--</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">p2</span> <span class="o">+</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
 
-    <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) num[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">+=</span> num[<span style="color:#ae81ff">0</span>][i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], num[<span style="color:#ae81ff">1</span>][i] <span style="color:#f92672">+=</span> num[<span style="color:#ae81ff">1</span>][i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
-    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i) ans <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1ll</span> <span style="color:#f92672">*</span> num[<span style="color:#ae81ff">0</span>][i] <span style="color:#f92672">*</span> num[<span style="color:#ae81ff">1</span>][i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
-    cout <span style="color:#f92672">&lt;&lt;</span> ans <span style="color:#f92672">&lt;&lt;</span> endl;
-  }
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">ans</span> <span class="o">+=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-01-31</span>
+            </div>
+            <div class="post-info-license"></div>
         </div>
-
-        
-        
-        <div class="article-toc" >
-            <h3></h3>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">题意</a>
-</li>
-<li><a href="#headline-2">解法</a>
-</li>
-<li><a href="#headline-3">代码</a>
-</li>
-</ul>
-</nav>
-        </div>
-        
-        
-
-        
-
-
-        
-        <footer class="article-footer">
-            <ul class="article-tag-list">
-                
-                <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A">解题报告
-                    </a>
-                </li>
-                
-                <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/sa">SA
-                    </a>
-                </li>
-                
-                <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串
-                    </a>
-                </li>
-                
-                <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/noi">NOI
-                    </a>
-                </li>
-                
-                <li class="article-tag-list-item">
-                    <a class="article-tag-list-link" href="https://brucew-07.github.io//tags/noi2016">NOI2016
-                    </a>
-                </li>
-                
-            </ul>
-        </footer>
-        
-    </div>
-    
-<nav id="article-nav">
-    
-    <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            [解题报告][luogu5564][Celeste B]Say Goodbye
-        </div>
-    </a>
-    
-    
-    <a href="/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">Git 学习笔记（简略版）&nbsp;<span>&gt;</span></div>
-    </a>
-    
-</nav>
-
-
-</article>
-
-        
-    </section>
-    <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2021 BruceW&#39;s Blog
-            <br />
-            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
         </div>
     </div>
-    
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">解题报告</a>,&nbsp;<a href="/tags/sa/">SA</a>,&nbsp;<a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>,&nbsp;<a href="/tags/noi/">NOI</a>,&nbsp;<a href="/tags/noi2016/">NOI2016</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
 
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha256-ExtbCSBuYA7kq1Pz362ibde9nnsHYPt6JxuxYeZbU+c=" crossorigin="anonymous"></script>
-        <script>renderMathInElement(document.body);</script>
-    
-    <script>
-        document.getElementById('main-nav-toggle').addEventListener('click', function () {
-            var header = document.getElementById('header');
-            if (header.classList.contains('mobile-on')) {
-                header.classList.remove('mobile-on');
-            } else {
-                header.classList.add('mobile-on');
-            }
-        });
-    </script>
-</footer>
-
+    <div class="post-nav"><a href="/posts/git-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%AE%80%E7%95%A5%E7%89%88/" class="prev" rel="prev" title="Git 学习笔记（简略版）"><i class="fas fa-angle-left fa-fw"></i>Git 学习笔记（简略版）</a>
+            <a href="/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu5564celeste-bsay-goodbye/" class="next" rel="next" title="[解题报告][luogu5564][Celeste B]Say Goodbye">[解题报告][luogu5564][Celeste B]Say Goodbye<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
-</body>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

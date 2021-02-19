@@ -1,38 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Burnside引理 on BruceW&#39;s Blog</title>
-    <link>https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/</link>
-    <description>Recent content in Burnside引理 on BruceW&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 16 Feb 2021 21:36:14 +0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数</title>
-      <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/</link>
-      <pubDate>Tue, 16 Feb 2021 21:36:14 +0800</pubDate>
-      
-      <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/</guid>
-      <description>Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色</description>
-    </item>
-    
-    <item>
-      <title>[解题报告][luogu4916]魔力环</title>
-      <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/</link>
-      <pubDate>Mon, 08 Feb 2021 15:06:18 +0800</pubDate>
-      
-      <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/</guid>
-      <description>Statement 传送门 一个点数为 \(n\) 的环 (项链), 每个点可以被染成黑色或白色. 染色要求为: 恰好有 \(m\) 个点被染为黑色, 且不存在长度 \(&amp;gt;k\) 的黑色连续串. 考虑旋转同构,</description>
-    </item>
-    
-    <item>
-      <title>[解题报告][SHOI2006]有色图</title>
-      <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</link>
-      <pubDate>Sun, 07 Feb 2021 14:57:53 +0800</pubDate>
-      
-      <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</guid>
-      <description>Statement 传送门 一张 \(n\) 个点的无向完全图, 每条边可以染上 \(m\) 种颜色之一, 求 \(n!\) 种点置换下本质不同的染色方案. \(n \le 53 \). Solution 看到置换 + 染色, 先考虑一波 Burnside 引理. (</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Burnside引理 - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/</link>
+        <description>Burnside引理 - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Feb 2021 21:36:14 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数</title>
+    <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/</link>
+    <pubDate>Tue, 16 Feb 2021 21:36:14 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/</guid>
+    <description><![CDATA[Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色]]></description>
+</item><item>
+    <title>[解题报告][luogu4916]魔力环</title>
+    <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/</link>
+    <pubDate>Mon, 08 Feb 2021 15:06:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/</guid>
+    <description><![CDATA[Statement 传送门 一个点数为 \(n\) 的环 (项链), 每个点可以被染成黑色或白色. 染色要求为: 恰好有 \(m\) 个点被染为黑色, 且不存在长度 \(&gt;k\) 的黑色连续串. 考虑旋转同构,]]></description>
+</item><item>
+    <title>[解题报告][SHOI2006]有色图</title>
+    <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</link>
+    <pubDate>Sun, 07 Feb 2021 14:57:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</guid>
+    <description><![CDATA[Statement 传送门 一张 \(n\) 个点的无向完全图, 每条边可以染上 \(m\) 种颜色之一, 求 \(n!\) 种点置换下本质不同的染色方案. \(n \le 53 \). Solution 看到置换 + 染色, 先考虑一波 Burnside 引理. (]]></description>
+</item></channel>
 </rss>
