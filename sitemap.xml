@@ -2,20 +2,26 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/categories/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/loj/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/categories/oi/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/posts/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/%E5%8D%95%E4%BD%8D%E6%A0%B9%E5%8F%8D%E6%BC%94/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/%E5%AE%B9%E6%96%A5/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/%E6%8E%A8%E5%BC%8F%E5%AD%90/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
+            <loc>https://brucew-07.github.io/tags/%E8%AE%A1%E6%95%B0/</loc><lastmod>2021-02-22T17:10:53&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/300iq/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/categories/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/codeforces/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/oi/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/categories/oi/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/posts/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/tags/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E5%87%B8%E4%BC%98%E5%8C%96/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E5%87%B8%E5%8C%85/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E9%97%B5%E5%8F%AF%E5%A4%AB%E6%96%AF%E5%9F%BA%E5%92%8C/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/</loc><lastmod>2021-02-17T17:25:20&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/bzoj/</loc><lastmod>2021-02-17T17:25:20&#43;08:00</lastmod></url><url>
@@ -25,7 +31,6 @@
             <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E6%95%B0%E5%AD%A6/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/tags/%E8%AE%A1%E6%95%B0/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod></url><url>
@@ -34,7 +39,6 @@
             <loc>https://brucew-07.github.io/tags/%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/</loc><lastmod>2021-02-08T15:06:18&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/luogu/</loc><lastmod>2021-02-08T15:06:18&#43;08:00</lastmod></url><url>
-            <loc>https://brucew-07.github.io/tags/%E5%AE%B9%E6%96%A5/</loc><lastmod>2021-02-08T15:06:18&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</loc><lastmod>2021-02-07T14:57:53&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/p%C3%B3lya%E8%AE%A1%E6%95%B0%E5%AE%9A%E7%90%86/</loc><lastmod>2021-02-07T14:57:53&#43;08:00</lastmod></url><url>
             <loc>https://brucew-07.github.io/tags/shoi/</loc><lastmod>2021-02-07T14:57:53&#43;08:00</lastmod></url><url>
