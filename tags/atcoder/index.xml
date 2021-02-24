@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>AtCoder - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/atcoder/</link>
+        <description>AtCoder - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 24 Feb 2021 16:39:16 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/atcoder/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][AT5742]Cookie Distribution</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aat5742cookie-distribution/</link>
+    <pubDate>Wed, 24 Feb 2021 16:39:16 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aat5742cookie-distribution/</guid>
+    <description><![CDATA[Statement 传送门 有一个长度为 \(n\) 初始元素全为 \(0\) 的序列 \(P\). 进行 \(K\) 操作, 每次选择 \(a_i\) 个不同的元素将其 \(+1\), 两次不同操作所选择的元素可以相同. 求 \(K\) 次操作后 \(P\) 中元素乘]]></description>
+</item></channel>
+</rss>

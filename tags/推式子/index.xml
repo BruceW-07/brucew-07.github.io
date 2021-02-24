@@ -5,10 +5,10 @@
         <description>推式子 - 标签 - BruceW&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 22 Feb 2021 17:10:53 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E6%8E%A8%E5%BC%8F%E5%AD%90/" rel="self" type="application/rss+xml" /><item>
     <title>[解题报告][loj6358]前夕</title>
-    <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</link>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</link>
     <pubDate>Mon, 22 Feb 2021 17:10:53 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</guid>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</guid>
     <description><![CDATA[Statement 传送门 给定集合 \( \{0, 1, 2, \cdots, 2^n - 1\} \), 求满足按位与后二进制中 \(1\) 的个数为 \(4\) 的倍数的子集 \(T\) 的个数. \(n \le 10^7\). 70pts subtask: \(n \le 10^5\). Solution 设 \(f_i\) 表示 \(\{0, 1, \cdots, 2^i - 1\}\) 中满足按位与]]></description>
 </item></channel>
 </rss>

@@ -5,10 +5,10 @@
         <description>学习笔记 - 分类 - BruceW&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 08 Feb 2021 20:33:21 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
     <title>[学习笔记]转置原理 (Draft)</title>
-    <link>https://brucew-07.github.io/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</link>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</link>
     <pubDate>Mon, 08 Feb 2021 20:33:21 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://brucew-07.github.io/posts/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</guid>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</guid>
     <description><![CDATA[一些不太清楚的问题 一 在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实]]></description>
 </item></channel>
 </rss>

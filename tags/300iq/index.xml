@@ -5,10 +5,10 @@
         <description>300iq - 标签 - BruceW&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 19 Feb 2021 17:07:26 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/300iq/" rel="self" type="application/rss+xml" /><item>
     <title>[解题报告][300iq Contest 2 H]Honorable Mention</title>
-    <link>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</link>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</link>
     <pubDate>Fri, 19 Feb 2021 17:07:26 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</guid>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</guid>
     <description><![CDATA[Statement 题面 一个长度为 \(n\) 的序列 \( \{ a \} \), 有 \(Q\) 个形如 \((l, r, )\) 的询问, 每次需要回答在区间 \([l,r]\) 内选择 恰好 \(k\) 个 不相交区间 的元素和最大值. \( n, Q \le 35000, |a_i| \le 35000\). Solution 先考]]></description>
 </item></channel>
 </rss>
