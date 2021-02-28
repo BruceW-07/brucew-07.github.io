@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>清华集训2017 - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017/</link>
+        <description>清华集训2017 - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 27 Feb 2021 20:28:31 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][清华集训2017]无限之环</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</link>
+    <pubDate>Sat, 27 Feb 2021 20:28:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</guid>
+    <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，每个网格中可能有一个以下15类水管中的一个。 可以花费代价 1 ，逆时针或顺时针90°旋转一个格子里的水管。 求最小代价使]]></description>
+</item></channel>
+</rss>

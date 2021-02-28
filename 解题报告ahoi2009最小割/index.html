@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[解题报告][AHOI2009]最小割 - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="[解题报告][AHOI2009]最小割" />
+<meta property="og:description" content="Statement 传送门 给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断 该边是否可能在最小割中 该边是否一定在最小割中 $n \le 4 \times 10^3," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/" />
+<meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
+<meta property="article:published_time" content="2021-02-27T08:35:46+08:00" />
+<meta property="article:modified_time" content="2021-02-27T08:35:46+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
+
+<meta name="twitter:title" content="[解题报告][AHOI2009]最小割"/>
+<meta name="twitter:description" content="Statement 传送门 给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断 该边是否可能在最小割中 该边是否一定在最小割中 $n \le 4 \times 10^3,"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/" /><link rel="prev" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/" /><link rel="next" href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BD%91%E7%BB%9C%E6%B5%81%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[解题报告][AHOI2009]最小割",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2\/"
+        },"genre": "posts","keywords": "OI， 解题报告， 网络流， 最小割， 各省省选， AHOI, AHOI2009","wordcount":  1597 ,
+        "url": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2\/","datePublished": "2021-02-27T08:35:46+08:00","dateModified": "2021-02-27T08:35:46+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "BruceW"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="BruceW&#39;s Blog"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="BruceW&#39;s Blog"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[解题报告][AHOI2009]最小割</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-27">2021-02-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1597 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="statement">Statement</h1>
+<p><a href="https://www.luogu.com.cn/problem/P4126" target="_blank" rel="noopener noreffer">传送门</a></p>
+<p>给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断</p>
+<ol>
+<li>该边是否可能在最小割中</li>
+<li>该边是否一定在最小割中</li>
+</ol>
+<p>$n \le 4 \times 10^3, m \le 6 \times 10^4$.</p>
+<h1 id="solution">Solution</h1>
+<p>首先可以感性理解：原图中的重边可以看做一条边，流量为它们流量的总和。</p>
+<p>但在代码编写中并不需要将这些边合并，这里提到这一点只是为了便于描述以及对便于以下证明的理解。</p>
+<hr>
+<p><strong>一条有向边 $(u,v)$ 可能在最小割中的充要条件</strong>：</p>
+<ol>
+<li>该边满流。</li>
+<li>残量网络上不存在一条从 $u$ 到 $v$ 的路径。即残量网络中 $u$ 和 $v$ 不在同一个 $SCC$ 中。</li>
+</ol>
+<p><strong>简证</strong>：</p>
+<p>首先可以感性理解，不满流的边显然不在最小割中。（因为感觉这部分比较好理解，所以就没有仔细想理性的证明方法，对想知道证明的读者表示歉意。）</p>
+<p>然后「边 $(u,v)$ 可能在最小割中」实际上等价于：把 $(u,v)$ 的原流量 $c$ 减小一个极小值 $\varepsilon$，则新图的最小割 / 最大流会减小。</p>
+<p>那么假设 $(u,v)$ 的原流量减小了 $\varepsilon$，如果新图的最大流也减小了 $\varepsilon$，则必定存在一条从 $S$ 到 $u$ 的路径以及一条从 $v$ 到 $T$ 的路径，否则就说明原来这条流量为 $\varepsilon$ 的路径从另外一个地方增广出去了，那么新图的最大流就没有变化，与假设矛盾。</p>
+<p>那么现在存在一条从 $S$ 到 $u$ 的路径、一条从 $v$ 到 $T$ 的路径以及一条从 $u$ 到 $v$ 的路径，那么就存在一条从 $S$ 到 $T$ 的增广路，那么新图的最大图就没有变化，与假设矛盾。</p>
+<p>于是得证。</p>
+<hr>
+<p><strong>一条有向边 $(u,v)$ 一定在最小割中的充要条件</strong>：</p>
+<ol>
+<li>该边满流。</li>
+<li>残量网络中存在一条从 $S$ 到 $u$ 的路径，且存在一条从 $v$ 到 $T$ 的路径。即 $S$ 和 $u$ 在同一个 $SCC$ 中，且 $v$ 和 $T$ 在同一个 $SCC$ 中。</li>
+</ol>
+<p><strong>关于「条件 2」</strong>：</p>
+<p>这里我们不考虑原流量 $c \le 0$ 的情况。</p>
+<p>那么若 $(u,v)$ 满流，则不然存在一条从 $u$ 到 $S$ 的反向路径和一条从 $T$ 到 $v$ 的反向路径。</p>
+<p>所以就解释了「条件 2」的中第一句话可以导出第二句话的原因。</p>
+<p><strong>简证</strong>：</p>
+<p>首先满流依然是可以感性理解的，这里不在赘述。</p>
+<p>然后「边 $(u,v)$ 一定在最小割中」等价于：把 $(u,v)$ 的原流量 $c$ 增加一个正数 $\Delta c$，则新图的最小割 / 最大流会增加。</p>
+<p>给 $(u,v)$ 的原流量增加一个正数 $\Delta c$，相当于在残量网络上增加一条边 $(u,v,\Delta c)$。</p>
+<p>那么如果存在一条从 $S$ 到 $u$ 的路径以及一条从 $v$ 到 $T$ 的路径，那么就存在一条从 $S$ 到 $T$ 的增广路，于是新图的最大流会增加，于是就说明边 $(u,v)$ 一定在最小割中。</p>
+<p>得证。</p>
+<hr>
+<p>于是我们只需要对原图跑一边最大流，然后在残量网络上跑一遍 $Tarjan$ 算法来求出 $SCC$，最后对每条边按照上述的条件判断即可。</p>
+<p>复杂度为 $O(Dinic(n, m) + n + m)$。</p>
+<h1 id="code">Code</h1>
+<p>注：代码中的注释部分记录的是作者在编写代码时出错过的地方，读者可不必在意。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;queue&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define mkp make_pair
+</span><span class="cp">#define fi first
+</span><span class="cp">#define se second
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">_</span> <span class="o">=</span> <span class="mf">4e3</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">__</span> <span class="o">=</span> <span class="mf">12e4</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">inf</span> <span class="o">=</span> <span class="mf">1e9</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dis</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">cur</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">nxt</span><span class="p">[</span><span class="n">__</span><span class="p">],</span> <span class="n">to</span><span class="p">[</span><span class="n">__</span><span class="p">],</span> <span class="n">cap</span><span class="p">[</span><span class="n">__</span><span class="p">],</span> <span class="n">tot</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dfn</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">low</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">stk</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">top</span><span class="p">,</span> <span class="n">scc</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">Dfn</span><span class="p">,</span> <span class="n">Scc</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">b</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="n">__</span><span class="p">];</span>
+<span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="n">con</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">nxt</span><span class="p">[</span><span class="o">++</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">to</span><span class="p">[</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">cap</span><span class="p">[</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">lst</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">tot</span><span class="p">;</span>
+  <span class="n">nxt</span><span class="p">[</span><span class="o">++</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="n">to</span><span class="p">[</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">cap</span><span class="p">[</span><span class="n">tot</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lst</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">tot</span><span class="p">;</span>  <span class="c1">// cap[tot] = c,
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">Bfs</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">dis</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dis</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+  <span class="n">dis</span><span class="p">[</span><span class="n">S</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="n">or</span> <span class="o">!</span><span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+      <span class="n">dis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">T</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">Extend</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flow</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">T</span><span class="p">)</span> <span class="k">return</span> <span class="n">flow</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">flow</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">i</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="n">dis</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="n">or</span> <span class="o">!</span><span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cst</span> <span class="o">=</span> <span class="n">Extend</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">min</span><span class="p">(</span><span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">res</span><span class="p">));</span>
+    <span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">cst</span><span class="p">,</span> <span class="n">cap</span><span class="p">[</span><span class="n">i</span> <span class="o">^</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">cst</span><span class="p">,</span> <span class="n">res</span> <span class="o">-=</span> <span class="n">cst</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">flow</span> <span class="o">-</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Dinic</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">maxflow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">Bfs</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">cur</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">lst</span><span class="p">);</span>
+    <span class="k">do</span> <span class="p">{</span>
+      <span class="n">flow</span> <span class="o">=</span> <span class="n">Extend</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">inf</span><span class="p">);</span>
+      <span class="n">maxflow</span> <span class="o">+=</span> <span class="n">flow</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">flow</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;maxflow: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">maxflow</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Tarjan</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fa</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">dfn</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">Dfn</span><span class="p">,</span> <span class="n">stk</span><span class="p">[</span><span class="o">++</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dfn</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">Tarjan</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">),</span> <span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">low</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">low</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">==</span> <span class="n">dfn</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">scc</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">Scc</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">stk</span><span class="p">[</span><span class="n">top</span><span class="p">]</span> <span class="o">!=</span> <span class="n">u</span><span class="p">)</span> <span class="n">scc</span><span class="p">[</span><span class="n">stk</span><span class="p">[</span><span class="n">top</span><span class="p">]]</span> <span class="o">=</span> <span class="n">Scc</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">stk</span><span class="p">[</span><span class="n">top</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">--</span><span class="n">top</span><span class="p">;</span>
+    <span class="o">--</span><span class="n">top</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="n">S</span> <span class="o">&gt;&gt;</span> <span class="n">T</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fi</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">se</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+    <span class="n">Add</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fi</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">se</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">Dinic</span><span class="p">();</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dfn</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">Tarjan</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">u</span><span class="p">];</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cap</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">con</span><span class="p">[</span><span class="n">mkp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">!</span><span class="n">con</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="n">and</span> <span class="n">scc</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fi</span><span class="p">]</span> <span class="o">!=</span> <span class="n">scc</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">se</span><span class="p">],</span> <span class="o">!</span><span class="n">con</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="n">and</span> <span class="n">scc</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">fi</span><span class="p">]</span> <span class="o">==</span> <span class="n">scc</span><span class="p">[</span><span class="n">S</span><span class="p">]</span> <span class="n">and</span> <span class="n">scc</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">se</span><span class="p">]</span> <span class="o">==</span> <span class="n">scc</span><span class="p">[</span><span class="n">T</span><span class="p">]);</span>  <span class="c1">// con[e[i]]
+</span><span class="c1"></span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="reference">Reference</h1>
+<p><a href="https://www.luogu.com.cn/blog/zadow/solution-p4126" target="_blank" rel="noopener noreffer">题解 P4126 【[AHOI2009]最小割】</a> by 斗神·君莫笑</p>
+<p>PPT 【网络流简单入⻔】 by xzz</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-02-27</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/oi-%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A-%E7%BD%91%E7%BB%9C%E6%B5%81-%E6%9C%80%E5%B0%8F%E5%89%B2-%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89-ahoi/">OI， 解题报告， 网络流， 最小割， 各省省选， AHOI</a>,&nbsp;<a href="/tags/ahoi2009/">AHOI2009</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/" class="prev" rel="prev" title="[解题报告][2020五校国集集训Day3]張士超你昨天晚上到底把我家鑰匙放在哪了？"><i class="fas fa-angle-left fa-fw"></i>[解题报告][2020五校国集集训Day3]張士超你昨天晚上到底把我家鑰匙放在哪了？</a>
+            <a href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BD%91%E7%BB%9C%E6%B5%81%E6%80%BB%E7%BB%93/" class="next" rel="next" title="[学习笔记]网络流总结">[学习笔记]网络流总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">BruceW</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

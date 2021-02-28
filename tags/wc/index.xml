@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>WC - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/wc/</link>
+        <description>WC - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 27 Feb 2021 14:49:42 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/wc/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][WC2007]剪刀石头布</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</link>
+    <pubDate>Sat, 27 Feb 2021 14:49:42 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</guid>
+    <description><![CDATA[Statement 传送门 给定一个 $n$ 个点的竞赛图，有一些边已经确定方向，要求你为剩下的边定向，并使得图中三元环数量尽量多。 输出最多的三元环数量以及一种定向方案]]></description>
+</item></channel>
+</rss>
