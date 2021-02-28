@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>做题简记 - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="做题简记" />
-<meta property="og:description" content="2/17 [bzoj3728]Zarowki (模拟费用流) 题面 时间：16:10 ~ 17:00 难度：中下 代码 2/26 [AHOI2009]最小割（网络流、Tarjan） 题面 时间：16:30 ~ 17:30 难度：中" />
+<meta property="og:description" content="2/17 [bzoj3728]Zarowki (模拟费用流) 题面 时间：16:10 ~ 17:00 标签：模拟费用流 难度：中下 代码 2/26 [AHOI2009]最小割（网络流、Tarjan） 题面 时间：16:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://brucew-07.github.io/%E5%81%9A%E9%A2%98%E7%AE%80%E8%AE%B0/" />
 <meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
 
 <meta name="twitter:title" content="做题简记"/>
-<meta name="twitter:description" content="2/17 [bzoj3728]Zarowki (模拟费用流) 题面 时间：16:10 ~ 17:00 难度：中下 代码 2/26 [AHOI2009]最小割（网络流、Tarjan） 题面 时间：16:30 ~ 17:30 难度：中"/>
+<meta name="twitter:description" content="2/17 [bzoj3728]Zarowki (模拟费用流) 题面 时间：16:10 ~ 17:00 标签：模拟费用流 难度：中下 代码 2/26 [AHOI2009]最小割（网络流、Tarjan） 题面 时间：16:"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/brucew-07.github.io\/%E5%81%9A%E9%A2%98%E7%AE%80%E8%AE%B0\/"
-        },"genre": "posts","wordcount":  75 ,
+        },"genre": "posts","wordcount":  348 ,
         "url": "https:\/\/brucew-07.github.io\/%E5%81%9A%E9%A2%98%E7%AE%80%E8%AE%B0\/","datePublished": "2021-02-27T22:35:05+08:00","dateModified": "2021-02-27T22:35:05+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">做题简记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-27">2021-02-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 75 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-27">2021-02-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 348 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="true">
                 <div class="details-summary toc-title">
@@ -121,11 +121,19 @@
   <ul>
     <li><a href="#ahoi2009最小割网络流tarjan">[AHOI2009]最小割（网络流、Tarjan）</a></li>
   </ul>
+
+  <ul>
+    <li><a href="#luogup4311-士兵占领网络流">luoguP4311 士兵占领（网络流）</a></li>
+    <li><a href="#wc2007剪刀石头布费用流">[WC2007]剪刀石头布（费用流）</a></li>
+    <li><a href="#清华集训2017无限之环费用流">[清华集训2017]无限之环（费用流）</a></li>
+    <li><a href="#cf708d-incorrect-flow上下界最大流">CF708D Incorrect Flow（上下界最大流）</a></li>
+  </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="217">2/17</h1>
 <h2 id="bzoj3728zarowki-模拟费用流">[bzoj3728]Zarowki (模拟费用流)</h2>
 <p><a href="https://darkbzoj.tk/problem/3728" target="_blank" rel="noopener noreffer">题面</a></p>
 <p><strong>时间</strong>：16:10 ~ 17:00</p>
+<p><strong>标签</strong>：模拟费用流</p>
 <p><strong>难度</strong>：中下</p>
 <p><a href="https://darkbzoj.tk/submission/111179" target="_blank" rel="noopener noreffer">代码</a></p>
 <hr>
@@ -133,7 +141,36 @@
 <h2 id="ahoi2009最小割网络流tarjan">[AHOI2009]最小割（网络流、Tarjan）</h2>
 <p><a href="https://www.luogu.com.cn/problem/P4126" target="_blank" rel="noopener noreffer">题面</a></p>
 <p><strong>时间</strong>：16:30 ~ 17:30</p>
+<p><strong>标签</strong>：网络流、Tarjan</p>
 <p><strong>难度</strong>：中下（模板）</p>
+<p><a href="" rel="">解题报告</a></p>
+<hr>
+<h1 id="227">2/27</h1>
+<h2 id="luogup4311-士兵占领网络流">luoguP4311 士兵占领（网络流）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4311" target="_blank" rel="noopener noreffer">题面</a></p>
+<p><strong>时间</strong>：9:30 ~ 10:10</p>
+<p><strong>标签</strong>：网络流，逆向思维</p>
+<p><strong>难度</strong>：中下</p>
+<p><a href="" rel="">解题报告</a></p>
+<h2 id="wc2007剪刀石头布费用流">[WC2007]剪刀石头布（费用流）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4249" target="_blank" rel="noopener noreffer">题面</a></p>
+<p><strong>时间</strong>：11:00 ~ 11:50 + 14:00 ~ 14:45</p>
+<p><strong>标签</strong>：费用流</p>
+<p><strong>难度</strong>：中</p>
+<p><a href="" rel="">解题报告</a></p>
+<h2 id="清华集训2017无限之环费用流">[清华集训2017]无限之环（费用流）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4003" target="_blank" rel="noopener noreffer">题面</a></p>
+<p><strong>时间</strong>：15:10 ~ 17;30 + 19:00 ~ 20:30</p>
+<p><strong>标签</strong>：费用流、神仙建图</p>
+<p><strong>难度</strong>：中上</p>
+<p><strong>备注</strong>：这题总的思路不复杂，但是不看题解完全写不出来。</p>
+<p><a href="" rel="">解题报告</a></p>
+<h2 id="cf708d-incorrect-flow上下界最大流">CF708D Incorrect Flow（上下界最大流）</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF708D" target="_blank" rel="noopener noreffer">题面</a></p>
+<p><strong>时间</strong>：21:30 ~ 22:30s</p>
+<p><strong>标签</strong>：上下界最大流</p>
+<p><strong>难度</strong>：中</p>
+<p><strong>备注</strong>：大概就是个上下界有源汇最大流板子，但做的时候脑子抽了没想出来怎么建图。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
