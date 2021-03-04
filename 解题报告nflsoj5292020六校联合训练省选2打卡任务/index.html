@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noodp" name="robots"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<title>[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务 - BruceW's Blog</title><meta content="xxx" name="Description"/><meta content="[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务" property="og:title"/>
+<meta content="校内考试，不予外传。" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/" property="og:url"/>
+<meta content="https://brucew-07.github.io/logo.jpg" property="og:image"/>
+<meta content="2021-03-04T21:29:18+08:00" property="article:published_time"/>
+<meta content="2021-03-04T21:29:18+08:00" property="article:modified_time"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://brucew-07.github.io/logo.jpg" name="twitter:image"/>
+<meta content="[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务" name="twitter:title"/>
+<meta content="校内考试，不予外传。" name="twitter:description"/>
+<meta content="LoveIt" name="application-name"/>
+<meta content="LoveIt" name="apple-mobile-web-app-title"/><meta content="#ffffff" name="theme-color"/><meta content="#da532c" name="msapplication-TileColor"/><link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"/><link href="/site.webmanifest" rel="manifest"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/" rel="canonical"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/" rel="prev"/><link href="/lib/normalize/normalize.min.css" rel="stylesheet"/><link href="/css/style.min.css" rel="stylesheet"/><link href="/lib/fontawesome-free/all.min.css" rel="stylesheet"/><link href="/lib/animate/animate.min.css" rel="stylesheet"/><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1\/"
+        },"genre": "posts","wordcount":  273 ,
+        "url": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1\/","datePublished": "2021-03-04T21:29:18+08:00","dateModified": "2021-03-04T21:29:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "BruceW"
+            },"description": ""
+    }
+    </script></head>
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu">
+<div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+<input id="search-input-desktop" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-desktop" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-desktop" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-desktop">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class="mobile" id="header-mobile">
+<div class="header-container">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu-toggle" id="menu-toggle-mobile">
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class="menu" id="menu-mobile"><div class="search-wrapper">
+<div class="search mobile" id="search-mobile">
+<input id="search-input-mobile" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-mobile" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-mobile" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-mobile">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a class="search-cancel" href="javascript:void(0);" id="search-cancel-mobile">
+                        取消
+                    </a>
+</div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+<div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+<div class="container"><div class="toc" id="toc-auto">
+<h2 class="toc-title">目录</h2>
+<div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务</h1><div class="post-meta">
+<div class="post-meta-line"><span class="post-author"><a class="author" href="/" rel="author" title="Author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span></div>
+<div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i> <time datetime="2021-03-04">2021-03-04</time> <i class="fas fa-pencil-alt fa-fw"></i> 约 273 字 
+                <i class="far fa-clock fa-fw"></i> 预计阅读 1 分钟 </div>
+</div><div class="details toc" id="toc-static" kept="true">
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+<ul>
+<li><a href="#statement">Statement</a></li>
+<li><a href="#solution">Solution</a></li>
+</ul>
+</nav></div>
+</div><div class="content" id="content"><p>校内考试，不予外传。</p>
+<div class="hugo-encryptor-container">
+<div class="hugo-encryptor-prompt">
+<p>文章的部分内容被密码保护：</p>
+</div>
+<div class="hugo-encryptor-form">
+<input class="hugo-encryptor-input" placeholder="请输入密码"/>
+<input class="hugo-encryptor-button" onclick="_click_handler(this)" type="button" value="点击验证"/>
+</div>
+<div class="hugo-encryptor-cipher-text" style="display: none;">m1oTurZtoNyRziD/WGYSJDH4w0JQItS5eEopQWqScSChbAbEPr+fDwfrNBM6zGL0dbQrioahAteSfx9aSQgukm00OxtKMD3duOSYOKx37AtvqPL99lTlaciZmAbRG7ftVvhoAZ+EFvlvm+v6/0XlCUq5pHP7UkbX+2QFwX1vuAjG8ALmiRFHW2M9LLyjBAFA02+6eAv3lPeVcwUwLP6aiIJ9Px3K+7prYA9zHSW1JsHhAIFM+j1qtAIAuCE1vtAyiCkGZp1JcGRBwP/udvvxDT10mIuknNX1aE3mROAH/DAV8aUgQlSeEaw/I9iQEqvKEkpLVwf0PJbc5RWsQzSS2oE376wIR5ykQkIZwicJFnTlev+2InU5+r9U9K9zp2dS</div>
+</div>
+<h2 id="statement">Statement</h2>
+<p><a href="https://acm.nflsoj.com/problem/529" rel="noopener noreffer" target="_blank">传送门</a></p>
+<p>从大小为 $n$ 的正整数集合 $\{1, 2, 3, \cdots, n\}$ 中选出一个大小为 $m$ 的子集 $T$。</p>
+<p>求满足 $T$ 中的数之和在模 $n$ 意义下等于 $k$ 的 $T$ 的个数。</p>
+<p>答案对 $998244353$ 取模。</p>
+<p>$0 \le k &lt; n &lt; 998244353, 1 \le m \le n$。</p>
+<h2 id="solution">Solution</h2>
+<p>先把答案用二元生成函数的形式表示出来，即</p>
+<p>$$
+\mathrm{ans} = [y^m][x^k] \prod_{i = 0}^{n - 1} (1 - x^iy) \pmod{(x^n - 1)}
+$$</p>
+<p>（$ \mod{(x^n - 1)} $即为循环卷积。）</p>
+<p>然后由于 $x$ 这一维是循环卷积，所以我们考虑引入单位根，用 DFT、IDFT 的形式来表示答案。</p>
+<p>回顾一下 IDFT 的过程。设 $A$ 为多项式，$B$ 为 $A$ 在 $\omega_{n}^{0 \sim n - 1}$ 处的点集，则有</p>
+<p>$$</p>
+<p>$$</p></div><div class="post-footer" id="post-footer">
+<div class="post-info">
+<div class="post-info-line">
+<div class="post-info-mod">
+<span>更新于 2021-03-04</span>
+</div>
+<div class="post-info-license"></div>
+</div>
+<div class="post-info-line">
+<div class="post-info-md"><span>
+<a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/index.md" target="_blank">阅读原始文档</a>
+</span></div>
+<div class="post-info-share">
+<span></span>
+</div>
+</div>
+</div>
+<div class="post-info-more">
+<section class="post-tags"></section>
+<section>
+<span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span> | <span><a href="/">主页</a></span>
+</section>
+</div>
+<div class="post-nav"><a class="prev" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/" rel="prev" title="[解题报告][USACO21JAN] Paint by Letters P"><i class="fas fa-angle-left fa-fw"></i>[解题报告][USACO21JAN] Paint by Letters P</a></div>
+</div>
+<div id="comments"></div></article></div>
+</main><footer class="footer">
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">BruceW</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id="fixed-buttons"><a class="fixed-button" href="#" id="back-to-top" title="回到顶部">
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a class="fixed-button" href="#" id="view-comments" title="查看评论">
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link href="/lib/katex/katex.min.css" rel="stylesheet"/><link href="/lib/katex/copy-tex.min.css" rel="stylesheet"/><link href="/lib/cookieconsent/cookieconsent.min.css" rel="stylesheet"/><script src="/lib/smooth-scroll/smooth-scroll.min.js" type="text/javascript"></script><script src="/lib/autocomplete/autocomplete.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.stemmer.support.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.zh.min.js" type="text/javascript"></script><script src="/lib/lazysizes/lazysizes.min.js" type="text/javascript"></script><script src="/lib/clipboard/clipboard.min.js" type="text/javascript"></script><script src="/lib/katex/katex.min.js" type="text/javascript"></script><script src="/lib/katex/auto-render.min.js" type="text/javascript"></script><script src="/lib/katex/copy-tex.min.js" type="text/javascript"></script><script src="/lib/katex/mhchem.min.js" type="text/javascript"></script><script src="/lib/cookieconsent/cookieconsent.min.js" type="text/javascript"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script><script>
+const _do_decrypt = function(encrypted, password) {
+  let key = CryptoJS.enc.Utf8.parse(password);
+  let iv = CryptoJS.enc.Utf8.parse(password.substr(16));
+
+  let decrypted_data = CryptoJS.AES.decrypt(encrypted, key, {
+    iv: iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  });
+  return decrypted_data.toString(CryptoJS.enc.Utf8);
+};
+
+const _click_handler = function(element) {
+  let parent = element.parentNode.parentNode;
+  let encrypted = parent.querySelector(
+    ".hugo-encryptor-cipher-text").innerText;
+  let password = parent.querySelector(
+    ".hugo-encryptor-input").value;
+  password = CryptoJS.MD5(password).toString();
+
+  let index = -1;
+  let elements = document.querySelectorAll(
+    ".hugo-encryptor-container");
+  for (index = 0; index < elements.length; ++index) {
+    if (elements[index].isSameNode(parent)) {
+      break;
+    }
+  }
+
+  let decrypted = "";
+  try {
+    decrypted = _do_decrypt(encrypted, password);
+  } catch (err) {
+    console.error(err);
+    alert("Failed to decrypt.");
+    return;
+  }
+
+  if (!decrypted.includes("--- DON'T MODIFY THIS LINE ---")) {
+    alert("Incorrect password.");
+    return;
+  }
+
+  let storage = localStorage;
+
+  let key = location.pathname + ".password." + index;
+  storage.setItem(key, password);
+  parent.innerHTML = decrypted;
+}
+
+window.onload = () => {
+  let index = -1;
+  let elements = document.querySelectorAll(
+    ".hugo-encryptor-container");
+
+  while (1) {
+    ++index;
+
+    let key = location.pathname + ".password." + index;
+    let password = localStorage.getItem(key);
+
+    if (!password) {
+      break;
+
+    } else {
+      console.log("Found password for part " + index);
+
+      let parent = elements[index];
+      let encrypted = parent.querySelector(".hugo-encryptor-cipher-text").innerText;
+      let decrypted = _do_decrypt(encrypted, password);
+      elements[index].innerHTML = decrypted;
+    }
+  }
+};</script></body>
+</html>

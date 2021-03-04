@@ -3,7 +3,14 @@
         <title>OI - 分类 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/categories/oi/</link>
         <description>OI - 分类 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 27 Feb 2021 20:28:31 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 02 Mar 2021 19:57:50 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][USACO21JAN] Paint by Letters P</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/</link>
+    <pubDate>Tue, 02 Mar 2021 19:57:50 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/</guid>
+    <description><![CDATA[Statement 传送门 一个 $N \times M$ 的网格，每个格子里有一个大写字母。 $Q$ 次询问，每次询问一个子矩阵里的同字符四连通块数量。 $N, M \le 1000, Q \le 1000$。 Solution 这题应该不]]></description>
+</item><item>
     <title>[解题报告][清华集训2017]无限之环</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</link>
     <pubDate>Sat, 27 Feb 2021 20:28:31 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</guid>
     <description><![CDATA[Statement 题面 一个长度为 \(n\) 的序列 \( \{ a \} \), 有 \(Q\) 个形如 \((l, r, )\) 的询问, 每次需要回答在区间 \([l,r]\) 内选择 恰好 \(k\) 个 不相交区间 的元素和最大值. \( n, Q \le 35000, |a_i| \le 35000\). Solution 先考]]></description>
-</item><item>
-    <title>[解题报告][bzoj3728][bzoj3728]Zarowki</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/</link>
-    <pubDate>Wed, 17 Feb 2021 17:25:20 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/</guid>
-    <description><![CDATA[Statement 题面 \(n\) 个灯泡和 \(n\) 个房间匹配, 只有灯泡权值比房间权值大才能匹配, 可以将 \(k\) 个灯泡换成权值任意的灯泡, 求存在完美匹配的灯泡总权值的最小值. Solution 首先]]></description>
 </item></channel>
 </rss>
