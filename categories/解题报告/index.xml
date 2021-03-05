@@ -3,7 +3,14 @@
         <title>解题报告 - 分类 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</link>
         <description>解题报告 - 分类 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 02 Mar 2021 19:57:50 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/</link>
+    <pubDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/</guid>
+    <description><![CDATA[<p>校内考试，恕不外传。</p>]]></description>
+</item><item>
     <title>[解题报告][USACO21JAN] Paint by Letters P</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/</link>
     <pubDate>Tue, 02 Mar 2021 19:57:50 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aloj6358%E5%89%8D%E5%A4%95/</guid>
     <description><![CDATA[Statement 传送门 给定集合 \( \{0, 1, 2, \cdots, 2^n - 1\} \), 求满足按位与后二进制中 \(1\) 的个数为 \(4\) 的倍数的子集 \(T\) 的个数. \(n \le 10^7\). 70pts subtask: \(n \le 10^5\). Solution 设 \(f_i\) 表示 \(\{0, 1, \cdots, 2^i - 1\}\) 中满足按位与]]></description>
-</item><item>
-    <title>[解题报告][300iq Contest 2 H]Honorable Mention</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</link>
-    <pubDate>Fri, 19 Feb 2021 17:07:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</guid>
-    <description><![CDATA[Statement 题面 一个长度为 \(n\) 的序列 \( \{ a \} \), 有 \(Q\) 个形如 \((l, r, )\) 的询问, 每次需要回答在区间 \([l,r]\) 内选择 恰好 \(k\) 个 不相交区间 的元素和最大值. \( n, Q \le 35000, |a_i| \le 35000\). Solution 先考]]></description>
 </item></channel>
 </rss>
