@@ -5,7 +5,7 @@ Some text is required to be placed here.
 
 <!--more-->
 
-{{% hugo-encryptor "PASSWORD" %}}
+{{% hugo-encryptor "oier2020" %}}
 
 # You cannot see me unless you've got the password!
 

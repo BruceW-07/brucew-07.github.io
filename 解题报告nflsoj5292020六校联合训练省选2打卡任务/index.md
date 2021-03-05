@@ -5,8 +5,7 @@
 
 <!--more-->
 
-{{% hugo-encryptor "xxx" %}}
-
+{{% hugo-encryptor "oier2020" %}}
 
 ## Statement
 
@@ -213,6 +212,8 @@ int main() {
   return 0;
 }
 ```
+
+
 
 {{% /hugo-encryptor %}}
 
