@@ -8,7 +8,6 @@
 {{% hugo-encryptor "xxx" %}}
 
 
-
 ## Statement
 
 [传送门](https://acm.nflsoj.com/problem/529)
