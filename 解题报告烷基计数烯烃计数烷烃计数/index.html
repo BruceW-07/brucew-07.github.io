@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数 - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数" />
-<meta property="og:description" content="Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" />
-<meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
-<meta property="article:published_time" content="2021-02-16T21:36:14+08:00" />
-<meta property="article:modified_time" content="2021-02-16T21:36:14+08:00" />
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
-
-<meta name="twitter:title" content="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数"/>
-<meta name="twitter:description" content="Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色"/>
-<meta name="application-name" content="LoveIt">
-<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" /><link rel="prev" href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" /><link rel="next" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noodp" name="robots"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<title>[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数 - BruceW's Blog</title><meta content="xxx" name="Description"/><meta content="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数" property="og:title"/>
+<meta content="Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" property="og:url"/>
+<meta content="https://brucew-07.github.io/logo.jpg" property="og:image"/>
+<meta content="2021-02-16T21:36:14+08:00" property="article:published_time"/>
+<meta content="2021-02-16T21:36:14+08:00" property="article:modified_time"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://brucew-07.github.io/logo.jpg" name="twitter:image"/>
+<meta content="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数" name="twitter:title"/>
+<meta content="Foreword 昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了. 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前有色" name="twitter:description"/>
+<meta content="LoveIt" name="application-name"/>
+<meta content="LoveIt" name="apple-mobile-web-app-title"/><meta content="#ffffff" name="theme-color"/><meta content="#da532c" name="msapplication-TileColor"/><link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"/><link href="/site.webmanifest" rel="manifest"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" rel="canonical"/><link href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" rel="prev"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/" rel="next"/><link href="/lib/normalize/normalize.min.css" rel="stylesheet"/><link href="/css/style.min.css" rel="stylesheet"/><link href="/lib/fontawesome-free/all.min.css" rel="stylesheet"/><link href="/lib/animate/animate.min.css" rel="stylesheet"/><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -38,82 +37,81 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="BruceW&#39;s Blog"></a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu">
+<div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+<input id="search-input-desktop" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-desktop" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-desktop" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-desktop">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
 </header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="BruceW&#39;s Blog"></a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+<div class="header-container">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu-toggle" id="menu-toggle-mobile">
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class="menu" id="menu-mobile"><div class="search-wrapper">
+<div class="search mobile" id="search-mobile">
+<input id="search-input-mobile" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-mobile" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-mobile" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-mobile">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a class="search-cancel" href="javascript:void(0);" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust fa-fw"></i>
-            </a></div>
-    </div>
+</div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
 </header>
 <div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
+<div id="search-dropdown-desktop"></div>
 </div>
 <div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
+<div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-16">2021-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4437 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="true">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+<div class="container"><div class="toc" id="toc-auto">
+<h2 class="toc-title">目录</h2>
+<div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数</h1><div class="post-meta">
+<div class="post-meta-line"><span class="post-author"><a class="author" href="/" rel="author" title="Author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span> <span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a> <a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
+<div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i> <time datetime="2021-02-16">2021-02-16</time> <i class="fas fa-pencil-alt fa-fw"></i> 约 4437 字 
+                <i class="far fa-clock fa-fw"></i> 预计阅读 9 分钟 </div>
+</div><div class="details toc" id="toc-static" kept="true">
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
 <ul>
 <li><a href="#headline-1">Foreword</a>
 </li>
@@ -149,12 +147,12 @@
 </li>
 </ul>
 </nav></div>
-            </div><div class="content" id="content">
-<div id="outline-container-headline-1" class="outline-2">
+</div><div class="content" id="content">
+<div class="outline-2" id="outline-container-headline-1">
 <h2 id="headline-1">
 Foreword
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
+<div class="outline-text-2" id="outline-text-headline-1">
 <p>昨天晚上讲题的时候看到 \(\mathrm{M\color{red}{\_sea}}\) 巨巨在写烷基计数, 正好我之前在搞 Burnside 引理, 于是也找来做了.</p>
 <p>
 由于不清楚难度顺序, 就先开了「烷烃计数」, 想试着往之前<a href="https://brucew-07.github.io/posts/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/">有色图</a>那个做法上套, 结果想了一个多小时一点思路都没有. (不过话说从这个数据范围应该就看得出做法明显不一样吧…)</p>
@@ -164,16 +162,16 @@ Foreword
 <del>(三倍经验警告)</del></p>
 </div>
 </div>
-<div id="outline-container-headline-2" class="outline-2">
+<div class="outline-2" id="outline-container-headline-2">
 <h2 id="headline-2">
 烷基计数
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<div id="outline-container-headline-3" class="outline-3">
+<div class="outline-text-2" id="outline-text-headline-2">
+<div class="outline-3" id="outline-container-headline-3">
 <h3 id="headline-3">
 Statement
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-3">
 <p><a href="https://loj.ac/p/6538">[loj6538]烷基计数 加强版 加强版</a></p>
 <p>
 求碳原子个数为 \(n\) 的烷基的同分异构体的数量.</p>
@@ -181,11 +179,11 @@ Statement
 \(n \le 10^5\).</p>
 </div>
 </div>
-<div id="outline-container-headline-4" class="outline-3">
+<div class="outline-3" id="outline-container-headline-4">
 <h3 id="headline-4">
 Solution
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-4">
 <p>「烷基计数」比「烷烃计数」简单的地方在于, 「烷基计数」是有根的, 那么我们就可以考虑从根开始往下递归.</p>
 <p>
 首先, 考虑怎么处理根的儿子的同构情况. 这里我们直接使用 Burnside 引理, 便把无标号的子节点变成有标号了, 然后再对每个置换算出它所对应的染色方案数量即可 (即不动点方案). 因为这里根只有 \(3\) 个子节点 (子节点为空的话就看做该子树的大小为 \(0\)), 所以总共只有 \(3! = 6\) 中置换, 手动把每种置换的不动点数量算出来即可.</p>
@@ -218,21 +216,21 @@ F(x) = 1 + \frac{1}{6}x[2F(x^3) + 3F(x^2)F(x) + F(x)^3]
 然后按照牛顿迭代的套路, 假设已经求出了 \(F_0(x)\) 满足 \(G(F_0(X)) \equiv 0 \pmod{x^{\frac{n}{2}}}\), 现在要求 \(F(x)\) 满足 \(G(F(x)) \equiv 0 \pmod{x^n}\)</p>
 <p>
 \[
-F(x) = F_0(x) - \frac{G(F_0(x))}{G&#39;(F_0(x))}
+F(x) = F_0(x) - \frac{G(F_0(x))}{G'(F_0(x))}
 \]</p>
 <p>
-手动把 \(G&#39;(F_0(x))\) 化一下即可. 实现的时候可以分子分母同乘一个常数, 就可以不用乘那么多逆元了.</p>
+手动把 \(G'(F_0(x))\) 化一下即可. 实现的时候可以分子分母同乘一个常数, 就可以不用乘那么多逆元了.</p>
 <p>
 时间复杂度为 \(O(n\log n)\).</p>
 <p>
 实现的时候注意清空会导致循环卷积的位置.</p>
 </div>
 </div>
-<div id="outline-container-headline-5" class="outline-3">
+<div class="outline-3" id="outline-container-headline-5">
 <h3 id="headline-5">
 Code
 </h3>
-<div id="outline-text-headline-5" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-5">
 <div class="src src-c++">
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -432,16 +430,16 @@ Code
 </div>
 </div>
 </div>
-<div id="outline-container-headline-6" class="outline-2">
+<div class="outline-2" id="outline-container-headline-6">
 <h2 id="headline-6">
 烯烃计数
 </h2>
-<div id="outline-text-headline-6" class="outline-text-2">
-<div id="outline-container-headline-7" class="outline-3">
+<div class="outline-text-2" id="outline-text-headline-6">
+<div class="outline-3" id="outline-container-headline-7">
 <h3 id="headline-7">
 statement
 </h3>
-<div id="outline-text-headline-7" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-7">
 <p><a href="https://www.luogu.com.cn/problem/P6597">[luoguP6597]烯烃计数</a></p>
 <p>
 求出碳原子数量为 \(2 \sim n\) 的 <strong>单烯烃</strong> 的同分异构体数量.</p>
@@ -449,11 +447,11 @@ statement
 \( n \le 10^5 \).</p>
 </div>
 </div>
-<div id="outline-container-headline-8" class="outline-3">
+<div class="outline-3" id="outline-container-headline-8">
 <h3 id="headline-8">
 Solution
 </h3>
-<div id="outline-text-headline-8" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-8">
 <p>
 容易想到把碳碳双键看做根, 而碳碳双键两边的碳原子所连出去的东西其实就是若干个烷基, 所以先按照上面的方法算出烷基个数.</p>
 <p>
@@ -466,11 +464,11 @@ Solution
 <del>(其实和烷基计数没什么区别, 不过可以用来水水题量.)</del></p>
 </div>
 </div>
-<div id="outline-container-headline-9" class="outline-3">
+<div class="outline-3" id="outline-container-headline-9">
 <h3 id="headline-9">
 Code
 </h3>
-<div id="outline-text-headline-9" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-9">
 <div class="src src-c++">
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -685,7 +683,7 @@ Code
   <span class="n">Poly</span><span class="o">::</span><span class="n">Mul</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">inv2</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
@@ -696,16 +694,16 @@ Code
 </div>
 </div>
 </div>
-<div id="outline-container-headline-10" class="outline-2">
+<div class="outline-2" id="outline-container-headline-10">
 <h2 id="headline-10">
 烷烃计数
 </h2>
-<div id="outline-text-headline-10" class="outline-text-2">
-<div id="outline-container-headline-11" class="outline-3">
+<div class="outline-text-2" id="outline-text-headline-10">
+<div class="outline-3" id="outline-container-headline-11">
 <h3 id="headline-11">
 Statement
 </h3>
-<div id="outline-text-headline-11" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-11">
 <p><a href="https://www.luogu.com.cn/problem/P6598">luoguP6598]烷烃计数</a></p>
 <p>
 求出碳原子数量为 \(n\) 的烷烃的同分异构体数量.</p>
@@ -713,11 +711,11 @@ Statement
 \(n \le 10^5\).</p>
 </div>
 </div>
-<div id="outline-container-headline-12" class="outline-3">
+<div class="outline-3" id="outline-container-headline-12">
 <h3 id="headline-12">
 Solution.
 </h3>
-<div id="outline-text-headline-12" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-12">
 <p>在经历了「烷基计数」和「烯烃计数」的洗礼后, 我突然领悟了 \(\mathrm{M\color{red}{\_sea}}\) <del>看似漫不经心实际别有深意地</del> 说出的一个词: 「重心」.</p>
 <p>
 现在, 烷烃计数难搞的地方只在于它没有根, 那么我们要是能对一个烷烃找到一个唯一的根, 那么问题就迎刃而解了.</p>
@@ -737,11 +735,11 @@ Solution.
 复杂度为 \(O(n \log n)\).</p>
 </div>
 </div>
-<div id="outline-container-headline-13" class="outline-3">
+<div class="outline-3" id="outline-container-headline-13">
 <h3 id="headline-13">
 Code
 </h3>
-<div id="outline-text-headline-13" class="outline-text-3">
+<div class="outline-text-3" id="outline-text-headline-13">
 <div class="src src-c++">
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -979,10 +977,10 @@ Code
   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">inv24</span> <span class="o">*</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
   <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
   <span class="k">else</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">H</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">H</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">%</span> <span class="n">mod</span><span class="p">)</span> <span class="o">*</span> <span class="n">Pw</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">mod</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">ans</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">%</span> <span class="n">mod</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="n">ans</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">%</span> <span class="n">mod</span><span class="p">);</span>
   <span class="p">}</span>
     
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -996,44 +994,41 @@ Code
 </div>
 </div>
 </div><div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>更新于 2021-02-16</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
-        <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/index.md" target="_blank">阅读原始文档</a>
-                        </span></div>
-            <div class="post-info-share">
-                <span></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">解题报告</a>,&nbsp;<a href="/tags/burnside%E5%BC%95%E7%90%86/">Burnside引理</a>,&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>,&nbsp;<a href="/tags/%E8%AE%A1%E6%95%B0/">计数</a></section>
-        <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
-        </section>
-    </div>
-
-    <div class="post-nav"><a href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" class="prev" rel="prev" title="[学习笔记]转置原理 (Draft)"><i class="fas fa-angle-left fa-fw"></i>[学习笔记]转置原理 (Draft)</a>
-            <a href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/" class="next" rel="next" title="[解题报告][bzoj3728][bzoj3728]Zarowki">[解题报告][bzoj3728][bzoj3728]Zarowki<i class="fas fa-angle-right fa-fw"></i></a></div>
+<div class="post-info">
+<div class="post-info-line">
+<div class="post-info-mod">
+<span>更新于 2021-02-16</span>
+</div>
+<div class="post-info-license"></div>
+</div>
+<div class="post-info-line">
+<div class="post-info-md"><span>
+<a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/index.md" target="_blank">阅读原始文档</a>
+</span></div>
+<div class="post-info-share">
+<span></span>
+</div>
+</div>
+</div>
+<div class="post-info-more">
+<section class="post-tags"><i class="fas fa-tags fa-fw"></i> <a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">解题报告</a>, <a href="/tags/burnside%E5%BC%95%E7%90%86/">Burnside引理</a>, <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>, <a href="/tags/%E8%AE%A1%E6%95%B0/">计数</a></section>
+<section>
+<span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span> | <span><a href="/">主页</a></span>
+</section>
+</div>
+<div class="post-nav"><a class="prev" href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" rel="prev" title="[学习笔记]转置原理 (Draft)"><i class="fas fa-angle-left fa-fw"></i>[学习笔记]转置原理 (Draft)</a>
+<a class="next" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/" rel="next" title="[解题报告][bzoj3728][bzoj3728]Zarowki">[解题报告][bzoj3728][bzoj3728]Zarowki<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">BruceW</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw"></i>
-            </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</main><footer class="footer">
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">BruceW</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id="fixed-buttons"><a class="fixed-button" href="#" id="back-to-top" title="回到顶部">
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a class="fixed-button" href="#" id="view-comments" title="查看评论">
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link href="/lib/katex/katex.min.css" rel="stylesheet"/><link href="/lib/katex/copy-tex.min.css" rel="stylesheet"/><link href="/lib/cookieconsent/cookieconsent.min.css" rel="stylesheet"/><script src="/lib/smooth-scroll/smooth-scroll.min.js" type="text/javascript"></script><script src="/lib/autocomplete/autocomplete.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.stemmer.support.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.zh.min.js" type="text/javascript"></script><script src="/lib/lazysizes/lazysizes.min.js" type="text/javascript"></script><script src="/lib/clipboard/clipboard.min.js" type="text/javascript"></script><script src="/lib/katex/katex.min.js" type="text/javascript"></script><script src="/lib/katex/auto-render.min.js" type="text/javascript"></script><script src="/lib/katex/copy-tex.min.js" type="text/javascript"></script><script src="/lib/katex/mhchem.min.js" type="text/javascript"></script><script src="/lib/cookieconsent/cookieconsent.min.js" type="text/javascript"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js" type="text/javascript"></script></body>
 </html>
