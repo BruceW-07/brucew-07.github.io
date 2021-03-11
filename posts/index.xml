@@ -3,7 +3,14 @@
         <title>所有文章 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/posts/</link>
         <description>所有文章 | BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][PKUWC2018]随机游走</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</link>
+    <pubDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</guid>
+    <description><![CDATA[Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点]]></description>
+</item><item>
     <title>[解题报告][CF1110H]Modest Substrings</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1110hmodest-substrings/</link>
     <pubDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%BD%91%E7%BB%9C%E6%B5%81%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[最小割 求最小割方案 最小割可行边 最小割必须边]]></description>
-</item><item>
-    <title>[解题报告][AHOI2009]最小割</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/</link>
-    <pubDate>Sat, 27 Feb 2021 08:35:46 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/</guid>
-    <description><![CDATA[Statement 传送门 给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断 该边是否可能在最小割中 该边是否一定在最小割中 $n \le 4 \times 10^3,]]></description>
 </item></channel>
 </rss>

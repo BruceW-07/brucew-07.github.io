@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noodp" name="robots"/>
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
+<title>[解题报告][PKUWC2018]随机游走 - BruceW's Blog</title><meta content="xxx" name="Description"/><meta content="[解题报告][PKUWC2018]随机游走" property="og:title"/>
+<meta content="Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" property="og:url"/>
+<meta content="https://brucew-07.github.io/logo.jpg" property="og:image"/>
+<meta content="2021-03-11T22:26:00+08:00" property="article:published_time"/>
+<meta content="2021-03-11T22:26:00+08:00" property="article:modified_time"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://brucew-07.github.io/logo.jpg" name="twitter:image"/>
+<meta content="[解题报告][PKUWC2018]随机游走" name="twitter:title"/>
+<meta content="Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点" name="twitter:description"/>
+<meta content="LoveIt" name="application-name"/>
+<meta content="LoveIt" name="apple-mobile-web-app-title"/><meta content="#ffffff" name="theme-color"/><meta content="#da532c" name="msapplication-TileColor"/><link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"/><link href="/site.webmanifest" rel="manifest"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/" rel="canonical"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1110hmodest-substrings/" rel="prev"/><link href="/lib/normalize/normalize.min.css" rel="stylesheet"/><link href="/css/style.min.css" rel="stylesheet"/><link href="/lib/fontawesome-free/all.min.css" rel="stylesheet"/><link href="/lib/animate/animate.min.css" rel="stylesheet"/><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[解题报告][PKUWC2018]随机游走",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0\/"
+        },"genre": "posts","keywords": "OI, 解题报告, 消元, 树上高斯消元, 概率与期望, 计数, PKUWC, PKUWC2018","wordcount":  1120 ,
+        "url": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0\/","datePublished": "2021-03-11T22:26:00+08:00","dateModified": "2021-03-11T22:26:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "BruceW"
+            },"description": ""
+    }
+    </script></head>
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu">
+<div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+<input id="search-input-desktop" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-desktop" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-desktop" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-desktop">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</span><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a>
+</div>
+</div>
+</div>
+</header><header class="mobile" id="header-mobile">
+<div class="header-container">
+<div class="header-wrapper">
+<div class="header-title">
+<a href="/" title="BruceW's Blog"></a>
+</div>
+<div class="menu-toggle" id="menu-toggle-mobile">
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class="menu" id="menu-mobile"><div class="search-wrapper">
+<div class="search mobile" id="search-mobile">
+<input id="search-input-mobile" placeholder="搜索文章标题或内容..." type="text"/>
+<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-mobile" title="搜索">
+<i class="fas fa-search fa-fw"></i>
+</a>
+<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-mobile" title="清空">
+<i class="fas fa-times-circle fa-fw"></i>
+</a>
+<span class="search-button search-loading" id="search-loading-mobile">
+<i class="fas fa-spinner fa-fw fa-spin"></i>
+</span>
+</div>
+<a class="search-cancel" href="javascript:void(0);" id="search-cancel-mobile">
+                        取消
+                    </a>
+</div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
+<i class="fas fa-adjust fa-fw"></i>
+</a></div>
+</div>
+</header>
+<div class="search-dropdown desktop">
+<div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+<div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+<div class="container"><div class="toc" id="toc-auto">
+<h2 class="toc-title">目录</h2>
+<div class="toc-content" id="toc-content-auto"></div>
+</div><article class="page single"><h1 class="single-title animated flipInX">[解题报告][PKUWC2018]随机游走</h1><div class="post-meta">
+<div class="post-meta-line"><span class="post-author"><a class="author" href="/" rel="author" title="Author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span> <span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a> <a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
+<div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i> <time datetime="2021-03-11">2021-03-11</time> <i class="fas fa-pencil-alt fa-fw"></i> 约 1120 字 
+                <i class="far fa-clock fa-fw"></i> 预计阅读 3 分钟 </div>
+</div><div class="details toc" id="toc-static" kept="true">
+<div class="details-summary toc-title">
+<span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span>
+</div>
+<div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+<ul>
+<li><a href="#statement">Statement</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+</nav></div>
+</div><div class="content" id="content"><h2 id="statement">Statement</h2>
+<p><a href="https://loj.ac/p/2542" rel="noopener noreffer" target="_blank">传送门</a></p>
+<p>给定一棵节点数为 $n$ 的树, 以及根节点 $X$.</p>
+<p>有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点至少一次的期望步数.</p>
+<p>$n \le 18, Q \le 5000$.</p>
+<h2 id="solution">Solution</h2>
+<p>这题可以看做一种套路的模板, 即:「在树 (特殊图) 上随机游走, 第一次到达某个点集的期望步数」. 主要思路是消元.</p>
+<p>这种套路求的是 「<strong>第一次</strong>到达点集的期望步数」, 而这题求的是「到点集内<strong>每个节点</strong>至少一次」, 相当于一个是到达该点集的时间最小值, 一个是到达该点集的时间最大值, 所以我们可以先套个 $\min-\max$ 容斥. 即</p>
+<p>$$
+\max(S) = \sum_{T \subseteq S} (-1)^{|T| - 1} \min(T)
+$$</p>
+<p>所以现在我们只需要求第一次到达某个点集的期望步数, 再做个高维前缀和就行了.</p>
+<p>然后就可以按照套路来做了.</p>
+<p>设当前点集为 $S$, $f_{u, S}$ 为: 从 $u$ 开始随机游走, 第一次到达 $S$ 的期望步数. 简写为 $f_u$.</p>
+<p>然后就有式子 (设 $E$ 为边集)</p>
+<p>$$
+f_{u} = \frac{1}{deg_u} \sum_{(u, v) \in E} (f_{v} + 1)
+$$</p>
+<p>把 $f_{1 \sim n}$ 看做 $n$ 个变量, 对每个 $u$ 可以列出一个式子, 就可以直接高斯消元了, 总复杂度为 $O(2^n n^3)$.</p>
+<p>但考虑到树的特殊结构, 我们可以将消元的复杂度做到更优.</p>
+<p>考虑节点 $u$, 在对 $u$ 列出的式子中, 除了 $f_{fa_u}$ 以外, 其余的变量都在 $u$ 的子树内.</p>
+<p>所以我们可以考虑先把 $u$ 的子树内 (不包括 $u$) 的变量都化为 $af_{u} + b$ 的形式, 然后再带入 $u$ 的式子内, 就可以把 $f_u$ 化为 $af_{fa_u} + b$ 的形式. 然后对 $fa_u$ 再进行同样的过程, 一直往上消元, 最终就可以得到 $f_X$ 的值了.</p>
+<p>然后再 $O(n 2^n)$ 求一次高维前缀和, 每次 $O(1)$ 回答即可.</p>
+<p>实际上这题的改成 $X$ 不固定 (即对于每个询问给一个不同的 $X$) 也可以做.</p>
+<p>只需要在算出上面的 $f_X$ 后, 把它往子树中代入, 然后就可以对每个 $u$ 都求出 $f_u$ 了.</p>
+<p>总复杂度为 $O(2^nn + Q)$.</p>
+<h2 id="code">Code</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define pb push_back
+</span><span class="cp">#define sz(x) (int)(x).size()
+</span><span class="cp">#define mkp make_pair
+</span><span class="cp">#define fi first
+</span><span class="cp">#define se second
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">__</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">18</span><span class="p">)</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">mod</span> <span class="o">=</span> <span class="mi">998244353</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">g</span><span class="p">[</span><span class="n">__</span><span class="p">];</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">to</span><span class="p">[</span><span class="n">_</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">Pw</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">res</span> <span class="o">*</span> <span class="n">a</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">popcount</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">cnt</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">cnt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fa</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">v</span><span class="p">:</span> <span class="n">to</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">fa</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+    <span class="n">Dfs</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">fi</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">se</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">!=</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">Inv</span> <span class="o">=</span> <span class="n">Pw</span><span class="p">(</span><span class="n">sz</span><span class="p">(</span><span class="n">to</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">-</span> <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">+</span> <span class="n">mod</span><span class="p">,</span> <span class="n">mod</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">=</span> <span class="n">Inv</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">+</span> <span class="n">sz</span><span class="p">(</span><span class="n">to</span><span class="p">[</span><span class="n">u</span><span class="p">]))</span> <span class="o">*</span> <span class="n">Inv</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">Inv</span> <span class="o">=</span> <span class="n">Pw</span><span class="p">(</span><span class="n">sz</span><span class="p">(</span><span class="n">to</span><span class="p">[</span><span class="n">u</span><span class="p">]),</span> <span class="n">mod</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">fi</span> <span class="o">*</span> <span class="n">Inv</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+    <span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">se</span> <span class="o">+</span> <span class="n">sz</span><span class="p">(</span><span class="n">to</span><span class="p">[</span><span class="n">u</span><span class="p">]))</span> <span class="o">*</span> <span class="n">Inv</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">Q</span> <span class="o">&gt;&gt;</span> <span class="n">X</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">to</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">pb</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">to</span><span class="p">[</span><span class="n">y</span><span class="p">].</span><span class="n">pb</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Dfs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="mi">1ll</span> <span class="o">*</span> <span class="n">f</span><span class="p">[</span><span class="n">X</span><span class="p">].</span><span class="n">se</span> <span class="o">*</span> <span class="n">Pw</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">[</span><span class="n">X</span><span class="p">].</span><span class="n">fi</span> <span class="o">+</span> <span class="n">mod</span><span class="p">,</span> <span class="n">mod</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+    <span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">popcount</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="nl">tmp</span> <span class="p">:</span> <span class="p">(</span><span class="n">mod</span> <span class="o">-</span> <span class="n">tmp</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">s</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;&gt;</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">s</span> <span class="o">^</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)])</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">s</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">Q</span><span class="p">;</span> <span class="o">++</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">K</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">K</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">s</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">g</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+<div class="post-info">
+<div class="post-info-line">
+<div class="post-info-mod">
+<span>更新于 2021-03-11</span>
+</div>
+<div class="post-info-license"></div>
+</div>
+<div class="post-info-line">
+<div class="post-info-md"><span>
+<a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/index.md" target="_blank">阅读原始文档</a>
+</span></div>
+<div class="post-info-share">
+<span></span>
+</div>
+</div>
+</div>
+<div class="post-info-more">
+<section class="post-tags"><i class="fas fa-tags fa-fw"></i> <a href="/tags/oi/">OI</a>, <a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">解题报告</a>, <a href="/tags/%E6%B6%88%E5%85%83/">消元</a>, <a href="/tags/%E6%A0%91%E4%B8%8A%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/">树上高斯消元</a>, <a href="/tags/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%9C%9F%E6%9C%9B/">概率与期望</a>, <a href="/tags/%E8%AE%A1%E6%95%B0/">计数</a>, <a href="/tags/pkuwc/">PKUWC</a>, <a href="/tags/pkuwc2018/">PKUWC2018</a></section>
+<section>
+<span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span> | <span><a href="/">主页</a></span>
+</section>
+</div>
+<div class="post-nav"><a class="prev" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1110hmodest-substrings/" rel="prev" title="[解题报告][CF1110H]Modest Substrings"><i class="fas fa-angle-left fa-fw"></i>[解题报告][CF1110H]Modest Substrings</a></div>
+</div>
+<div id="comments"></div></article></div>
+</main><footer class="footer">
+<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">BruceW</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-NC 4.0</a></span></div>
+</div>
+</footer></div>
+<div id="fixed-buttons"><a class="fixed-button" href="#" id="back-to-top" title="回到顶部">
+<i class="fas fa-arrow-up fa-fw"></i>
+</a><a class="fixed-button" href="#" id="view-comments" title="查看评论">
+<i class="fas fa-comment fa-fw"></i>
+</a>
+</div><link href="/lib/katex/katex.min.css" rel="stylesheet"/><link href="/lib/katex/copy-tex.min.css" rel="stylesheet"/><link href="/lib/cookieconsent/cookieconsent.min.css" rel="stylesheet"/><script src="/lib/smooth-scroll/smooth-scroll.min.js" type="text/javascript"></script><script src="/lib/autocomplete/autocomplete.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.stemmer.support.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.zh.min.js" type="text/javascript"></script><script src="/lib/lazysizes/lazysizes.min.js" type="text/javascript"></script><script src="/lib/clipboard/clipboard.min.js" type="text/javascript"></script><script src="/lib/katex/katex.min.js" type="text/javascript"></script><script src="/lib/katex/auto-render.min.js" type="text/javascript"></script><script src="/lib/katex/copy-tex.min.js" type="text/javascript"></script><script src="/lib/katex/mhchem.min.js" type="text/javascript"></script><script src="/lib/cookieconsent/cookieconsent.min.js" type="text/javascript"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js" type="text/javascript"></script></body>
+</html>

@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>树上高斯消元 - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/%E6%A0%91%E4%B8%8A%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/</link>
+        <description>树上高斯消元 - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E6%A0%91%E4%B8%8A%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][PKUWC2018]随机游走</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</link>
+    <pubDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</guid>
+    <description><![CDATA[Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点]]></description>
+</item></channel>
+</rss>

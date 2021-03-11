@@ -3,7 +3,14 @@
         <title>计数 - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/%E8%AE%A1%E6%95%B0/</link>
         <description>计数 - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E8%AE%A1%E6%95%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E8%AE%A1%E6%95%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][PKUWC2018]随机游走</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</link>
+    <pubDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</guid>
+    <description><![CDATA[Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点]]></description>
+</item><item>
     <title>[解题报告][NFLSOJ529][2020六校联合训练省选2]打卡任务</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/</link>
     <pubDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</pubDate>

@@ -3,7 +3,14 @@
         <title>OI - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/oi/</link>
         <description>OI - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][PKUWC2018]随机游走</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</link>
+    <pubDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</guid>
+    <description><![CDATA[Statement 传送门 给定一棵节点数为 $n$ 的树, 以及根节点 $X$. 有 $Q$ 次询问, 每次给定一个点集 $S$, 求从 $X$ 开始随机游走 (每次随机走向与 $u$ 相连的一个点), 经过 $S$ 内所有点]]></description>
+</item><item>
     <title>[解题报告][CF1110H]Modest Substrings</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1110hmodest-substrings/</link>
     <pubDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aat5742cookie-distribution/</guid>
     <description><![CDATA[Statement 传送门 有一个长度为 \(n\) 初始元素全为 \(0\) 的序列 \(P\). 进行 \(K\) 操作, 每次选择 \(a_i\) 个不同的元素将其 \(+1\), 两次不同操作所选择的元素可以相同. 求 \(K\) 次操作后 \(P\) 中元素乘]]></description>
-</item><item>
-    <title>[解题报告][300iq Contest 2 H]Honorable Mention</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</link>
-    <pubDate>Fri, 19 Feb 2021 17:07:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</guid>
-    <description><![CDATA[Statement 题面 一个长度为 \(n\) 的序列 \( \{ a \} \), 有 \(Q\) 个形如 \((l, r, )\) 的询问, 每次需要回答在区间 \([l,r]\) 内选择 恰好 \(k\) 个 不相交区间 的元素和最大值. \( n, Q \le 35000, |a_i| \le 35000\). Solution 先考]]></description>
 </item></channel>
 </rss>
