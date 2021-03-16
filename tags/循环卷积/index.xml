@@ -9,6 +9,6 @@
     <pubDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/</guid>
-    <description><![CDATA[<p>校内考试，恕不外传。</p>]]></description>
+    <description><![CDATA[Statement 传送门 $0 \le k &lt; n &lt; 998244353, 1 \le m \le n$。 Solution 先把答案用二元生成函数的形式表示出来，即 $$ \mathrm{ans} = [y^m][x^k] \prod_{i = 0}^{n - 1} (1 - x^iy) \pmod{(x^n - 1)} $$ （$ \mod{(x^n - 1)} $即为循环卷积。） 然]]></description>
 </item></channel>
 </rss>

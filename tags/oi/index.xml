@@ -3,7 +3,14 @@
         <title>OI - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/oi/</link>
         <description>OI - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][THUPC2019]找树</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</link>
+    <pubDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</guid>
+    <description><![CDATA[Statement 传送门 定义一个二元运算 $\oplus$ 表示对每一个二进制位分别进行不同的位运算 (或 / 与 / 异或). 给定一个 $n$ 个点 $m$ 条边的无向图, 每条边有一个 $[0, 2^w)$ 范围内的边]]></description>
+</item><item>
     <title>[解题报告][PKUWC2018]随机游走</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Apkuwc2018%E9%9A%8F%E6%9C%BA%E6%B8%B8%E8%B5%B0/</link>
     <pubDate>Thu, 11 Mar 2021 22:26:00 &#43;0800</pubDate>
@@ -23,7 +30,7 @@
     <pubDate>Thu, 04 Mar 2021 21:29:18 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Anflsoj5292020%E5%85%AD%E6%A0%A1%E8%81%94%E5%90%88%E8%AE%AD%E7%BB%83%E7%9C%81%E9%80%892%E6%89%93%E5%8D%A1%E4%BB%BB%E5%8A%A1/</guid>
-    <description><![CDATA[<p>校内考试，恕不外传。</p>]]></description>
+    <description><![CDATA[Statement 传送门 $0 \le k &lt; n &lt; 998244353, 1 \le m \le n$。 Solution 先把答案用二元生成函数的形式表示出来，即 $$ \mathrm{ans} = [y^m][x^k] \prod_{i = 0}^{n - 1} (1 - x^iy) \pmod{(x^n - 1)} $$ （$ \mod{(x^n - 1)} $即为循环卷积。） 然]]></description>
 </item><item>
     <title>[解题报告][USACO21JAN] Paint by Letters P</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/</link>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday2%E9%AB%98%E7%BB%B4%E6%B8%B8%E8%B5%B0/</guid>
     <description><![CDATA[Statement 传送门 Solution 问题转化 由于是求 $\bmod 2$ 意义下的方案数, 所以我们考虑先用卢卡斯定理来简化问题. 假设我们先枚举出每一维走的步数, 设向量 $w$, 它的第 $i$ 维元素 $w_i$]]></description>
-</item><item>
-    <title>[解题报告][AT5742]Cookie Distribution</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aat5742cookie-distribution/</link>
-    <pubDate>Wed, 24 Feb 2021 16:39:16 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aat5742cookie-distribution/</guid>
-    <description><![CDATA[Statement 传送门 有一个长度为 \(n\) 初始元素全为 \(0\) 的序列 \(P\). 进行 \(K\) 操作, 每次选择 \(a_i\) 个不同的元素将其 \(+1\), 两次不同操作所选择的元素可以相同. 求 \(K\) 次操作后 \(P\) 中元素乘]]></description>
 </item></channel>
 </rss>

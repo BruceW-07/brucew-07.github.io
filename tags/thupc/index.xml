@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>THUPC - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/thupc/</link>
+        <description>THUPC - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/thupc/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][THUPC2019]找树</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</link>
+    <pubDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</guid>
+    <description><![CDATA[Statement 传送门 定义一个二元运算 $\oplus$ 表示对每一个二进制位分别进行不同的位运算 (或 / 与 / 异或). 给定一个 $n$ 个点 $m$ 条边的无向图, 每条边有一个 $[0, 2^w)$ 范围内的边]]></description>
+</item></channel>
+</rss>

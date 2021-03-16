@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="noodp" name="robots"/>
-<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"/>
-<title>[学习笔记]转置原理 (Draft) - BruceW's Blog</title><meta content="xxx" name="Description"/><meta content="[学习笔记]转置原理 (Draft)" property="og:title"/>
-<meta content="一些不太清楚的问题 一 在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实" property="og:description"/>
-<meta content="article" property="og:type"/>
-<meta content="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" property="og:url"/>
-<meta content="https://brucew-07.github.io/logo.jpg" property="og:image"/>
-<meta content="2021-02-08T20:33:21+08:00" property="article:published_time"/>
-<meta content="2021-02-08T20:33:21+08:00" property="article:modified_time"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="https://brucew-07.github.io/logo.jpg" name="twitter:image"/>
-<meta content="[学习笔记]转置原理 (Draft)" name="twitter:title"/>
-<meta content="一些不太清楚的问题 一 在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实" name="twitter:description"/>
-<meta content="LoveIt" name="application-name"/>
-<meta content="LoveIt" name="apple-mobile-web-app-title"/><meta content="#ffffff" name="theme-color"/><meta content="#da532c" name="msapplication-TileColor"/><link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
-<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/><link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"/><link href="/site.webmanifest" rel="manifest"/><link href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" rel="canonical"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" rel="prev"/><link href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" rel="next"/><link href="/lib/normalize/normalize.min.css" rel="stylesheet"/><link href="/css/style.min.css" rel="stylesheet"/><link href="/lib/fontawesome-free/all.min.css" rel="stylesheet"/><link href="/lib/animate/animate.min.css" rel="stylesheet"/><script type="application/ld+json">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[学习笔记]转置原理 (Draft) - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="[学习笔记]转置原理 (Draft)" />
+<meta property="og:description" content="一些不太清楚的问题 一 在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" />
+<meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
+<meta property="article:published_time" content="2021-02-08T20:33:21+08:00" />
+<meta property="article:modified_time" content="2021-02-08T20:33:21+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
+
+<meta name="twitter:title" content="[学习笔记]转置原理 (Draft)"/>
+<meta name="twitter:description" content="一些不太清楚的问题 一 在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/" /><link rel="prev" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" /><link rel="next" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -37,81 +38,82 @@
             },"description": ""
     }
     </script></head>
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-<div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-<div class="header-wrapper">
-<div class="header-title">
-<a href="/" title="BruceW's Blog"></a>
-</div>
-<div class="menu">
-<div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-<input id="search-input-desktop" placeholder="搜索文章标题或内容..." type="text"/>
-<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-desktop" title="搜索">
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-desktop" title="清空">
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id="search-loading-desktop">
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</span><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
-<i class="fas fa-adjust fa-fw"></i>
-</a>
-</div>
-</div>
-</div>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="BruceW&#39;s Blog"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </header><header class="mobile" id="header-mobile">
-<div class="header-container">
-<div class="header-wrapper">
-<div class="header-title">
-<a href="/" title="BruceW's Blog"></a>
-</div>
-<div class="menu-toggle" id="menu-toggle-mobile">
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class="menu" id="menu-mobile"><div class="search-wrapper">
-<div class="search mobile" id="search-mobile">
-<input id="search-input-mobile" placeholder="搜索文章标题或内容..." type="text"/>
-<a class="search-button search-toggle" href="javascript:void(0);" id="search-toggle-mobile" title="搜索">
-<i class="fas fa-search fa-fw"></i>
-</a>
-<a class="search-button search-clear" href="javascript:void(0);" id="search-clear-mobile" title="清空">
-<i class="fas fa-times-circle fa-fw"></i>
-</a>
-<span class="search-button search-loading" id="search-loading-mobile">
-<i class="fas fa-spinner fa-fw fa-spin"></i>
-</span>
-</div>
-<a class="search-cancel" href="javascript:void(0);" id="search-cancel-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="BruceW&#39;s Blog"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-</div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item theme-switch" href="javascript:void(0);" title="切换主题">
-<i class="fas fa-adjust fa-fw"></i>
-</a></div>
-</div>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
 </header>
 <div class="search-dropdown desktop">
-<div id="search-dropdown-desktop"></div>
+    <div id="search-dropdown-desktop"></div>
 </div>
 <div class="search-dropdown mobile">
-<div id="search-dropdown-mobile"></div>
+    <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-<div class="container"><div class="toc" id="toc-auto">
-<h2 class="toc-title">目录</h2>
-<div class="toc-content" id="toc-content-auto"></div>
-</div><article class="page single"><h1 class="single-title animated flipInX">[学习笔记]转置原理 (Draft)</h1><div class="post-meta">
-<div class="post-meta-line"><span class="post-author"><a class="author" href="/" rel="author" title="Author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span> <span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a> <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
-<div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i> <time datetime="2021-02-08">2021-02-08</time> <i class="fas fa-pencil-alt fa-fw"></i> 约 1726 字 
-                <i class="far fa-clock fa-fw"></i> 预计阅读 4 分钟 </div>
-</div><div class="details toc" id="toc-static" kept="true">
-<div class="details-summary toc-title">
-<span>目录</span>
-<span><i class="details-icon fas fa-angle-right"></i></span>
-</div>
-<div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[学习笔记]转置原理 (Draft)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-08">2021-02-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1726 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
 <ul>
 <li><a href="#headline-1">一些不太清楚的问题</a>
 <ul>
@@ -147,27 +149,27 @@
 </li>
 </ul>
 </nav></div>
-</div><div class="content" id="content">
-<div class="outline-2" id="outline-container-headline-1">
+            </div><div class="content" id="content">
+<div id="outline-container-headline-1" class="outline-2">
 <h2 id="headline-1">
 一些不太清楚的问题
 </h2>
-<div class="outline-text-2" id="outline-text-headline-1">
-<div class="outline-3" id="outline-container-headline-2">
+<div id="outline-text-headline-1" class="outline-text-2">
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 一
 </h3>
-<div class="outline-text-3" id="outline-text-headline-2">
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>在分治FFT求 \( \Pi_{j} (1 - a_jy) \) 的时候，由于递归到底的时候要为 \( 1 - a_jy \) 留两个位置，所以最终会导致求出来的数组是 tot 级别的，而实际上 \( \Pi_{j} (1 - a_jy) \) 是 \( \frac{tot}{2} \) 级别的，造成了浪费，而且感觉不太优美</p>
 <p>
 答：看了一份题解的代码，貌似也没有对这方面的处理，那也就只能这样写了。</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-headline-3">
+<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 二 
 </h3>
-<div class="outline-text-3" id="outline-text-headline-3">
+<div id="outline-text-headline-3" class="outline-text-3">
 <p>鸡贼课件里说所谓 “转置原理” 就是  \( 
 f(x) \times g(x) \cdot h(x) \Leftrightarrow g(x) \cdot h(x) \times f(\frac{1}{x}) 
 \) ，但这个下标问题有点迷，还得推一下</p>
@@ -175,16 +177,16 @@ f(x) \times g(x) \cdot h(x) \Leftrightarrow g(x) \cdot h(x) \times f(\frac{1}{x}
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-headline-4">
+<div id="outline-container-headline-4" class="outline-2">
 <h2 id="headline-4">
 gzy课件
 </h2>
-<div class="outline-text-2" id="outline-text-headline-4">
-<div class="outline-3" id="outline-container-headline-5">
+<div id="outline-text-headline-4" class="outline-text-2">
+<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 一 
 </h3>
-<div class="outline-text-3" id="outline-text-headline-5">
+<div id="outline-text-headline-5" class="outline-text-3">
 <p>关于鸡贼写的那个\( 
 f(x) \times g(x) \cdot h(x) \Leftrightarrow g(x) \cdot h(x) \times f(\frac{1}{x}) 
 \)，如果直接按这种形式写的话貌似会扯到循环卷积，就比较烦。
@@ -198,11 +200,11 @@ A(x)B(x) \cdot C(x) = Ar(x) \cdot B(x)Cr(x) = Br(x) \cdot A(x)Cr(x) = A(x) \cdot
 <span style="text-decoration: underline;">注意</span> ： 不是 \(Ar(x) \cdot Br(x)C(x)\)，究其原因在于进行减法卷积时，若将两个多项式互换，最终得到的结果会不一样。</p>
 <p>
 但对于 \(A(x)B(x) \cdot C(x)D(x)\) 这种形式除了先把 \(C,D\) 卷起来之外暂时没想到什么更好的方法，因为要扯到减法卷积。</p>
-<div class="outline-4" id="outline-container-headline-6">
+<div id="outline-container-headline-6" class="outline-4">
 <h4 id="headline-6">
 挖个坑
 </h4>
-<div class="outline-text-4" id="outline-text-headline-6">
+<div id="outline-text-headline-6" class="outline-text-4">
 <p>点积本质上就是减法卷积的0次项系数，所以推一下式子可以得到加法卷积和减法卷积的转换律，不过好像想不到什么应用，感觉有点鸡肋？</p>
 <p>
 减法卷积：设 \(A(x) \circ B(x) = \sum_{i = 0}^{n-1}x^i\sum_{j = i}^{n-1} a_jb_{j-i}\)，则 \(A(x) \circ B(x) = (Ar(x)B(x))r\) （猜的，待验证）</p>
@@ -210,11 +212,11 @@ A(x)B(x) \cdot C(x) = Ar(x) \cdot B(x)Cr(x) = Br(x) \cdot A(x)Cr(x) = A(x) \cdot
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-headline-7">
+<div id="outline-container-headline-7" class="outline-3">
 <h3 id="headline-7">
 二
 </h3>
-<div class="outline-text-3" id="outline-text-headline-7">
+<div id="outline-text-headline-7" class="outline-text-3">
 <p>突然感觉鸡贼写的有点nb，居然能把转置抽象成一个纯多项式的东西？
 如果能把多项式操作和矩阵变换联系起来，估计就比较好理解了。
 点积好像还行，但卷积怎么转化为矩阵？</p>
@@ -222,25 +224,25 @@ A(x)B(x) \cdot C(x) = Ar(x) \cdot B(x)Cr(x) = Br(x) \cdot A(x)Cr(x) = A(x) \cdot
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-headline-8">
+<div id="outline-container-headline-8" class="outline-2">
 <h2 id="headline-8">
 转置原理的简单介绍 笔记
 </h2>
-<div class="outline-text-2" id="outline-text-headline-8">
-<div class="outline-3" id="outline-container-headline-9">
+<div id="outline-text-headline-8" class="outline-text-2">
+<div id="outline-container-headline-9" class="outline-3">
 <h3 id="headline-9">
 线性算法
 </h3>
-<div class="outline-text-3" id="outline-text-headline-9">
+<div id="outline-text-headline-9" class="outline-text-3">
 <p>一个 \( n \times n \) 常数矩阵 \(A\) 左乘一个 \( n \times 1 \) 的变量向量 \( a\)，得到 \( b \) 的算法</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-headline-10">
+<div id="outline-container-headline-10" class="outline-3">
 <h3 id="headline-10">
 转置
 </h3>
-<div class="outline-text-3" id="outline-text-headline-10">
-<p>对于线性算法 \( b = Aa \)，称 \( b' = A^Ta \) 为它的转置算法。（ \(A^T\) 表示矩阵 \(A\) 的转置，就是沿主对角线翻转）</p>
+<div id="outline-text-headline-10" class="outline-text-3">
+<p>对于线性算法 \( b = Aa \)，称 \( b&#39; = A^Ta \) 为它的转置算法。（ \(A^T\) 表示矩阵 \(A\) 的转置，就是沿主对角线翻转）</p>
 <p>
 其实我感觉把向量换成矩阵也成立</p>
 <p>
@@ -263,38 +265,38 @@ A^T = E_k^T E_{k-1}^T E_{k-2}^T \cdots E_1^T
 一元函数的复合可以用复合的结合律简化运算
 但二元函数怎么办？</p>
 <p>
-二元函数 \( F(x,y) \) 左乘一个向量 \( b(y) \)，\( y^i \) 没有什么实际意义，只是相当于建立了一个对应关系，从而得到每一个 \( x^i \) 的系数。而复合函数 \( q'(sp(y)) \) 也是建立了一个对应关系，如果我们把复合函数的对应关系一层层扒下来，那么就可以简化运算。                                                                                    </p>
+二元函数 \( F(x,y) \) 左乘一个向量 \( b(y) \)，\( y^i \) 没有什么实际意义，只是相当于建立了一个对应关系，从而得到每一个 \( x^i \) 的系数。而复合函数 \( q&#39;(sp(y)) \) 也是建立了一个对应关系，如果我们把复合函数的对应关系一层层扒下来，那么就可以简化运算。                                                                                    </p>
 <p>
-设我们现在要求 \( f(p(x)q(y)) \cdot b(y) \)，然后 \( q(y) \) 能写成 \(q'(sp(y))\) 的形式，其中 \( sp(y) \) 是一个简单函数。
-我们考虑把 \(b(y)\) 换个基，变成 \(b'(sp(y))\)，然后就相当于把 \(sp(y)\) 扒出来了。
-考虑如何求 \(b'\)。
+设我们现在要求 \( f(p(x)q(y)) \cdot b(y) \)，然后 \( q(y) \) 能写成 \(q&#39;(sp(y))\) 的形式，其中 \( sp(y) \) 是一个简单函数。
+我们考虑把 \(b(y)\) 换个基，变成 \(b&#39;(sp(y))\)，然后就相当于把 \(sp(y)\) 扒出来了。
+考虑如何求 \(b&#39;\)。
 设 \(sp^{-1}(y)\) 为 \(sp(y)\) 的复合逆，设 \(t = sp(y)\)，
 则 \(y = sp^{-1}(sp(y)) = sp^{-1}(t) \)，
-那么把 \(y = sp^{-1}(t)\) 带入 \(b(y)\) 就可以得到 \(b(y) = b(sp^{-1}(t))\)，所以 \(b'(sp(y)) = b'(t) = b(sp^{-1}(t)) \)，也即 \(b' = b \circ sp^{-1}\)。</p>
+那么把 \(y = sp^{-1}(t)\) 带入 \(b(y)\) 就可以得到 \(b(y) = b(sp^{-1}(t))\)，所以 \(b&#39;(sp(y)) = b&#39;(t) = b(sp^{-1}(t)) \)，也即 \(b&#39; = b \circ sp^{-1}\)。</p>
 <p>
-所以原式就可以变为 \(f(p(x)q'(t)) \cdot b'(t) \)，然后再把 \(q'(t)\) 一层一层按照上面的过程拆下去，直到得到一个 \(q'_{final}(z) = z\)，
-那么原式为 \(f(p(x)q'_{final}(z)) \cdot b''(z) \)，
+所以原式就可以变为 \(f(p(x)q&#39;(t)) \cdot b&#39;(t) \)，然后再把 \(q&#39;(t)\) 一层一层按照上面的过程拆下去，直到得到一个 \(q&#39;_{final}(z) = z\)，
+那么原式为 \(f(p(x)q&#39;_{final}(z)) \cdot b&#39;&#39;(z) \)，
 展开后就是 </p>
 <p>
 \(
 \begin{aligned}
-f(p(x)q'_{final}(z)) \cdot b''(z) 
-&amp;= (\sum_{i} f_i p(x)^i z^i) \cdot (\sum_{i}b''_{i} z^i) \\
-&amp;= \sum_{i} f_i b''_{i}p(x)^i z^i \\
+f(p(x)q&#39;_{final}(z)) \cdot b&#39;&#39;(z) 
+&amp;= (\sum_{i} f_i p(x)^i z^i) \cdot (\sum_{i}b&#39;&#39;_{i} z^i) \\
+&amp;= \sum_{i} f_i b&#39;&#39;_{i}p(x)^i z^i \\
 \end{aligned}
 \)
-所以可以先把 \(f\) 和 \(b''\) 点积起来，设 \(f'(t) = f(t) \cdot b(t) \)，之后的操作就是 \( f' \circ p \)，然后由于 \(p\) 又是由若干个简单函数复合而成，所以可以根据复合的结合律来一层层复合。</p>
+所以可以先把 \(f\) 和 \(b&#39;&#39;\) 点积起来，设 \(f&#39;(t) = f(t) \cdot b(t) \)，之后的操作就是 \( f&#39; \circ p \)，然后由于 \(p\) 又是由若干个简单函数复合而成，所以可以根据复合的结合律来一层层复合。</p>
 <p>
 回到更普通的形式，即 \(u(x)v(y)f(p(x)q(y)) \cdot b(y) \)，
-对于 \(v(y)\)，我们使用 \(A(x)B(x) \cdot C(x) = A(x) \cdot (B(x)Cr(x))r\) 的技巧，先把 \(v(y)\) 挪到右边，然后就变为了 \(u(x)v(y)f(p(x)q(y)) \cdot b'(y) \)，
-接着再按照上面的步骤，最后得到 \(u(x)(\sum_{i} f_i b''_{i}p(x)^i z^i)\)，那么就先把后面那项求出来，然后再卷一次就OK了</p>
+对于 \(v(y)\)，我们使用 \(A(x)B(x) \cdot C(x) = A(x) \cdot (B(x)Cr(x))r\) 的技巧，先把 \(v(y)\) 挪到右边，然后就变为了 \(u(x)v(y)f(p(x)q(y)) \cdot b&#39;(y) \)，
+接着再按照上面的步骤，最后得到 \(u(x)(\sum_{i} f_i b&#39;&#39;_{i}p(x)^i z^i)\)，那么就先把后面那项求出来，然后再卷一次就OK了</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-headline-11">
+<div id="outline-container-headline-11" class="outline-3">
 <h3 id="headline-11">
 DFT的转置
 </h3>
-<div class="outline-text-3" id="outline-text-headline-11">
+<div id="outline-text-headline-11" class="outline-text-3">
 <p>尝试用转置方法写了发DFT，为啥转置后跑得飞快啊？？？
 UOJ上普通写法总时间2000ms左右，转置写法只要不到700ms。。。
 感觉运算量没差吧？？？？？</p>
@@ -308,11 +310,11 @@ UOJ上普通写法总时间2000ms左右，转置写法只要不到700ms。。。
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-headline-12">
+<div id="outline-container-headline-12" class="outline-2">
 <h2 id="headline-12">
 xgzc的课件
 </h2>
-<div class="outline-text-2" id="outline-text-headline-12">
+<div id="outline-text-headline-12" class="outline-text-2">
 <p>那个 “复合矩阵” 看得我一脸懵逼，没太懂 \(COM(F)_{i,j} = [x^j]F(x^i)\) 是啥意思
 然后从 \( A(x,y) = \sum_{i=0}^{n-1}g(x)^i f_i h(y)^i \) 到 \( A = COM^T(g)I(f)COM(h) \) 也没看懂</p>
 <p>
@@ -320,41 +322,44 @@ xgzc的课件
 </div>
 </div>
 </div><div class="post-footer" id="post-footer">
-<div class="post-info">
-<div class="post-info-line">
-<div class="post-info-mod">
-<span>更新于 2021-02-08</span>
-</div>
-<div class="post-info-license"></div>
-</div>
-<div class="post-info-line">
-<div class="post-info-md"><span>
-<a class="link-to-markdown" href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/index.md" target="_blank">阅读原始文档</a>
-</span></div>
-<div class="post-info-share">
-<span></span>
-</div>
-</div>
-</div>
-<div class="post-info-more">
-<section class="post-tags"><i class="fas fa-tags fa-fw"></i> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>, <a href="/tags/oi/">OI</a>, <a href="/tags/%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/">转置原理</a>, <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>, <a href="/tags/%E8%8D%89%E7%A8%BF/">草稿</a></section>
-<section>
-<span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span> | <span><a href="/">主页</a></span>
-</section>
-</div>
-<div class="post-nav"><a class="prev" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" rel="prev" title="[解题报告][luogu4916]魔力环"><i class="fas fa-angle-left fa-fw"></i>[解题报告][luogu4916]魔力环</a>
-<a class="next" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" rel="next" title="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数">[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-02-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>,&nbsp;<a href="/tags/oi/">OI</a>,&nbsp;<a href="/tags/%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/">转置原理</a>,&nbsp;<a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">线性代数</a>,&nbsp;<a href="/tags/%E8%8D%89%E7%A8%BF/">草稿</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogu4916%E9%AD%94%E5%8A%9B%E7%8E%AF/" class="prev" rel="prev" title="[解题报告][luogu4916]魔力环"><i class="fas fa-angle-left fa-fw"></i>[解题报告][luogu4916]魔力环</a>
+            <a href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E7%83%B7%E5%9F%BA%E8%AE%A1%E6%95%B0%E7%83%AF%E7%83%83%E8%AE%A1%E6%95%B0%E7%83%B7%E7%83%83%E8%AE%A1%E6%95%B0/" class="next" rel="next" title="[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数">[解题报告]烷基计数&amp;烯烃计数&amp;烷烃计数<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
-</main><footer class="footer">
-<div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" rel="noopener noreffer" target="_blank" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" rel="noopener noreffer" target="_blank" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder"> <a href="/" target="_blank">BruceW</a></span> | <span class="license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license external nofollow noopener noreffer" target="_blank">CC BY-NC 4.0</a></span></div>
-</div>
-</footer></div>
-<div id="fixed-buttons"><a class="fixed-button" href="#" id="back-to-top" title="回到顶部">
-<i class="fas fa-arrow-up fa-fw"></i>
-</a><a class="fixed-button" href="#" id="view-comments" title="查看评论">
-<i class="fas fa-comment fa-fw"></i>
-</a>
-</div><link href="/lib/katex/katex.min.css" rel="stylesheet"/><link href="/lib/katex/copy-tex.min.css" rel="stylesheet"/><link href="/lib/cookieconsent/cookieconsent.min.css" rel="stylesheet"/><script src="/lib/smooth-scroll/smooth-scroll.min.js" type="text/javascript"></script><script src="/lib/autocomplete/autocomplete.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.stemmer.support.min.js" type="text/javascript"></script><script src="/lib/lunr/lunr.zh.min.js" type="text/javascript"></script><script src="/lib/lazysizes/lazysizes.min.js" type="text/javascript"></script><script src="/lib/clipboard/clipboard.min.js" type="text/javascript"></script><script src="/lib/katex/katex.min.js" type="text/javascript"></script><script src="/lib/katex/auto-render.min.js" type="text/javascript"></script><script src="/lib/katex/copy-tex.min.js" type="text/javascript"></script><script src="/lib/katex/mhchem.min.js" type="text/javascript"></script><script src="/lib/cookieconsent/cookieconsent.min.js" type="text/javascript"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script src="/js/theme.min.js" type="text/javascript"></script></body>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">BruceW</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
