@@ -3,7 +3,14 @@
         <title>CodeForces - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/codeforces/</link>
         <description>CodeForces - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/codeforces/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/codeforces/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][CF1007E]Mini Metro</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</link>
+    <pubDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</guid>
+    <description><![CDATA[Statement 传送门 有 $n$ 个车站，从 $1$ 到 $n$ 编号，车站 $i$ 初始有 $a_i$ 个人。 在每个小时结束的前几分钟，车站 $i$ 会新增 $b_i$ 个人。 玩家有无限辆容量为 $k$ 的火车。 玩家在每个小]]></description>
+</item><item>
     <title>[解题报告][CF1110H]Modest Substrings</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1110hmodest-substrings/</link>
     <pubDate>Sat, 06 Mar 2021 19:34:00 &#43;0800</pubDate>

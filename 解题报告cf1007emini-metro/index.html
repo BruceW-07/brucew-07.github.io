@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[解题报告][CF1007E]Mini Metro - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="[解题报告][CF1007E]Mini Metro" />
+<meta property="og:description" content="Statement 传送门 有 $n$ 个车站，从 $1$ 到 $n$ 编号，车站 $i$ 初始有 $a_i$ 个人。 在每个小时结束的前几分钟，车站 $i$ 会新增 $b_i$ 个人。 玩家有无限辆容量为 $k$ 的火车。 玩家在每个小" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/" />
+<meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
+<meta property="article:published_time" content="2021-03-16T21:56:11+08:00" />
+<meta property="article:modified_time" content="2021-03-16T21:56:11+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
+
+<meta name="twitter:title" content="[解题报告][CF1007E]Mini Metro"/>
+<meta name="twitter:description" content="Statement 传送门 有 $n$ 个车站，从 $1$ 到 $n$ 编号，车站 $i$ 初始有 $a_i$ 个人。 在每个小时结束的前几分钟，车站 $i$ 会新增 $b_i$ 个人。 玩家有无限辆容量为 $k$ 的火车。 玩家在每个小"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/" /><link rel="prev" href="https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[解题报告][CF1007E]Mini Metro",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro\/"
+        },"genre": "posts","keywords": "OI, 解题报告, DP, CodeForces","wordcount":  1650 ,
+        "url": "https:\/\/brucew-07.github.io\/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro\/","datePublished": "2021-03-16T21:56:11+08:00","dateModified": "2021-03-16T21:56:11+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "BruceW"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="BruceW&#39;s Blog"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="BruceW&#39;s Blog"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[解题报告][CF1007E]Mini Metro</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"><i class="far fa-folder fa-fw"></i>解题报告</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-16">2021-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1650 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#statement">Statement</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="statement">Statement</h2>
+<p><a href="https://codeforces.com/problemset/problem/1007/E" target="_blank" rel="noopener noreffer">传送门</a></p>
+<p>有 $n$ 个车站，从 $1$ 到 $n$ 编号，车站 $i$ 初始有 $a_i$ 个人。</p>
+<p>在每个小时结束的前几分钟，车站 $i$ 会新增 $b_i$ 个人。</p>
+<p>玩家有无限辆容量为 $k$ 的火车。</p>
+<p>玩家在每个小时的中间 (也就是 $\mathrm{30min, 1h30min, 2h30min&hellip;}$) 可以让任意辆火车从始发站 $1$ 按照 $1, 2, 3, \cdots n$ 的顺序驶向终点站 $n$。 ($x$ 辆同时发动的火车可看做一辆容量 $x \times k$ 的火车。)</p>
+<p>每辆火车会尽可能的载上它经过站点的所有人。也就是说，如果一辆火车搭载了站点 $i$ 的人，则在它经过后，站点 $1 \sim i - 1$ 的人数都为 $0$。</p>
+<p>若某个时刻站点 $i$ 的人数超过 $c_i$，则该站台会发生暴乱。</p>
+<p>求在保证 $t$ 个小时内所有站台都不发生暴乱情况下，玩家派出的火车的最小数量。</p>
+<h2 id="solution">Solution</h2>
+<p>考虑从前往后把站台一个个加进来，在此基础上进行 DP。</p>
+<p>为了方便描述，我们在第 $n + 1$ 位加上一个人数无限多的站台，并设 $sa$ 为 $a$ 的前缀和，$sb$ 为 $b$ 的前缀和。</p>
+<p>设 DP 状态</p>
+<ol>
+<li>
+<p>$f_{i, s, z}$ 表示考虑到前 $i$ 个站台，初始人数为 $z \cdot a_i (z \in { 0, 1 })$，能撑 $s$ 轮，且每辆火车都<font color=red>载满 $k$ 个人</font>的最小代价。若无解则为 $\infty$。</p>
+</li>
+<li>
+<p>$g_{i, s, z}$ 表示在上述条件下满足第 $s$ 轮后站台 $1 \sim i - 1$ 的人数都为 $0$ 的最小代价。若无解则为 $\infty$。</p>
+</li>
+</ol>
+<p>「<font color=red>载满 $k$ 个人</font>」就是保证进行的所有操作不会影响到第 $i + 1$ 个站台；而 $g_{i, s, z}$ 就相当于在满足 $f_{i, s, z}$ 的情况下多派几辆火车，使得接下来能够直接访问站台 $i$。</p>
+<p>易得初始值 $f_{0, 0, 1} = 0$，答案为 $f_{n, z, 1}$。</p>
+<p>转移的话我们分类讨论在第 $s$ 小时之前是否到过站台 $i$。</p>
+<ul>
+<li>
+<p>在 $s$ 小时之前未到过站台 $i$。</p>
+<p>那么此时我们需要保证在 $s$ 小时内站台 $i$ 不会发生暴乱，并且 $f_{i - 1, s, z} \not = \infty$。</p>
+<p>有转移</p>
+<p>$$
+\begin{aligned}
+f_{i, s, z} &amp;\leftarrow f_{i - 1, s, z}  \\
+g_{i, s, z} &amp;\leftarrow num = \left\lceil \frac{z \cdot sa_{i - 1} + s \cdot sb_{i - 1}}{k} \right\rceil
+\end{aligned}
+$$</p>
+<p>而对于 $g$ 的转移还有条件 $k \cdot num \le z \cdot sa_i + s \cdot b_i$，即保证不会影响到站台 $i + 1$。</p>
+</li>
+<li>
+<p>上一次在 $r$ 小时到达了站台 $i$。</p>
+<p>那么我们的转移可以分为三个阶段。</p>
+<ol>
+<li>在 $r$ 小时到达了站台 $i$。</li>
+<li>在 $r$ 小时再额外派 $x$ 辆火车，使得站台 $i$ 在接下来 $s - r$ 个小时不会发生暴乱。</li>
+<li>维护前 $i - 1$ 个站台在 $s - r$ 个小时内不会发生暴乱，且前 $i - 1$ 个站台的初始人数都为 $0$。</li>
+</ol>
+<p>对于第 1 阶段, 因为到达了站台 $i$，所以前 $i - 1$ 的站台的人数一定都为 $0$，因此代价即为 $g_{i, r, z}$。</p>
+<p>对于第 2 阶段，我们可以得到此时站台 $i$ 的人数 $m = z \cdot sa_i + r \cdot sb_i - k \cdot g_{i, r, z}$，因此可以得到 $x = \max(0, \left\lceil \frac{m + (s - r) \cdot b_i - c_i}{k} \right\rceil)$。此时还要判断一下若 $k \cdot x &gt; m$，则不能进行转移。</p>
+<p>对于第 3 阶段，我们需要对 $f, g$ 分别讨论</p>
+<ul>
+<li>对于 $f$，只需要保证这前 $i - 1$ 个站台在初始值为 $0$ 的情况下在 $s - r$ 个小时内不发生暴乱，即为 $f_{i - 1, s - r, 0}$。</li>
+<li>对于 $g$，我们在保证不发生暴乱的前提下需要把前 $i - 1$ 个站台清空，则代价为 $num = \left\lceil \frac{(s - r) \cdot sb_{i - 1}}{k} \right\rceil$。转移的条件与第一种情况中 $g$ 的转移类似， 即 $f_{i - 1, s - r, 0} \not = \infty$ 且 $k \cdot num \le m - k \cdot x + (s - r) \cdot b_i$。</li>
+</ul>
+<p>所以总的转移即为</p>
+<p>$$
+\begin{aligned}
+f_{i, s, z} &amp;\leftarrow g_{i, r, z} + x + f_{i - 1, s - r, 0}  \\
+g_{i, s, z} &amp;\leftarrow g_{i, r, z} + x + \left\lceil \frac{(s - r) \cdot sb_{i - 1}}{k} \right\rceil
+\end{aligned}
+$$</p>
+</li>
+</ul>
+<p>总时间复杂度为 $O(nt^2)$。</p>
+<p>注意要开 $long\ long$。</p>
+<h2 id="code">Code</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">_</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">ll</span> <span class="n">inf</span> <span class="o">=</span> <span class="mf">1e15</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">K</span><span class="p">;</span>
+<span class="n">ll</span> <span class="n">a</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">sa</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">sb</span><span class="p">[</span><span class="n">_</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">_</span><span class="p">][</span><span class="n">_</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="n">_</span><span class="p">][</span><span class="n">_</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="n">ll</span> <span class="nf">Ceil</span><span class="p">(</span><span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">ll</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span> <span class="o">?</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">upd</span><span class="p">(</span><span class="n">ll</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">ll</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">T</span> <span class="o">&gt;&gt;</span> <span class="n">K</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">sa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sa</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">sb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sb</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="n">a</span><span class="p">[</span><span class="o">++</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf</span><span class="p">;</span>
+  <span class="n">sa</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">sa</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">;</span> <span class="o">++</span><span class="n">s</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">z</span><span class="p">)</span> 
+        <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">inf</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">;</span> <span class="o">++</span><span class="n">s</span><span class="p">)</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="n">and</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">!=</span> <span class="n">inf</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">upd</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">]);</span>
+          <span class="n">ll</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Ceil</span><span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="n">sa</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="n">sb</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">K</span><span class="p">);</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">K</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">*</span> <span class="n">sa</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="n">sb</span><span class="p">[</span><span class="n">p</span><span class="p">])</span> <span class="n">upd</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">],</span> <span class="n">num</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">r</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">!=</span> <span class="n">inf</span> <span class="n">and</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">inf</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ll</span> <span class="n">m</span> <span class="o">=</span> <span class="n">z</span> <span class="o">*</span> <span class="n">sa</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="n">sb</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">K</span> <span class="o">*</span> <span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">][</span><span class="n">z</span><span class="p">];</span>
+            <span class="n">ll</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Ceil</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mi">0ll</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span><span class="p">[</span><span class="n">p</span><span class="p">]),</span> <span class="n">K</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">K</span> <span class="o">*</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+              <span class="n">upd</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="n">ll</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Ceil</span><span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">sb</span><span class="p">[</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">K</span><span class="p">);</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">K</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">K</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">sb</span><span class="p">[</span><span class="n">p</span><span class="p">])</span> <span class="n">upd</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">s</span><span class="p">][</span><span class="n">z</span><span class="p">],</span> <span class="n">g</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">r</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="n">num</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">T</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-03-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/oi/">OI</a>,&nbsp;<a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">解题报告</a>,&nbsp;<a href="/tags/dp/">DP</a>,&nbsp;<a href="/tags/codeforces/">CodeForces</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/" class="prev" rel="prev" title="[解题报告][THUPC2019]找树"><i class="fas fa-angle-left fa-fw"></i>[解题报告][THUPC2019]找树</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">BruceW</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

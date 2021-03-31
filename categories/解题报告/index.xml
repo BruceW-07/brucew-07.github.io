@@ -3,7 +3,14 @@
         <title>解题报告 - 分类 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</link>
         <description>解题报告 - 分类 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][CF1007E]Mini Metro</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</link>
+    <pubDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</guid>
+    <description><![CDATA[Statement 传送门 有 $n$ 个车站，从 $1$ 到 $n$ 编号，车站 $i$ 初始有 $a_i$ 个人。 在每个小时结束的前几分钟，车站 $i$ 会新增 $b_i$ 个人。 玩家有无限辆容量为 $k$ 的火车。 玩家在每个小]]></description>
+</item><item>
     <title>[解题报告][THUPC2019]找树</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</link>
     <pubDate>Tue, 16 Mar 2021 14:53:33 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/</guid>
     <description><![CDATA[Statement 传送门 给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断 该边是否可能在最小割中 该边是否一定在最小割中 $n \le 4 \times 10^3,]]></description>
-</item><item>
-    <title>[解题报告][2020五校国集集训Day3]張士超你昨天晚上到底把我家鑰匙放在哪了？</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/</link>
-    <pubDate>Fri, 26 Feb 2021 14:57:50 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/</guid>
-    <description><![CDATA[Statement 传送门 Solution 考虑从朴素算法开始一步步推导。 我们考虑枚举做对的题目集合 $T$，并计算满足集合 $T$ 中题目总分大于等于 $n$ 的分数分配方案数。即 $$ \begin{aligned} \mathrm{Ans} &amp;= \sum_{T}]]></description>
 </item></channel>
 </rss>
