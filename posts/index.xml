@@ -3,7 +3,14 @@
         <title>所有文章 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/posts/</link>
         <description>所有文章 | BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]Splay</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
+    <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</guid>
+    <description><![CDATA[简介 Splay 维护平衡的方式就是每访问到一个节点, 都把它旋转到根. 这个把节点 x 旋转到根的过程就叫做 Splay. 维护变量 1 int rt, fa[_], ch[_][2], val[_], num[_], sum[_]; rt: 根节点. fa[u]: 节点 u 的父节]]></description>
+</item><item>
     <title>[解题报告][CF1007E]Mini Metro</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</link>
     <pubDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</guid>
     <description><![CDATA[Statement 传送门 给定一个 $n$ 个点的竞赛图，有一些边已经确定方向，要求你为剩下的边定向，并使得图中三元环数量尽量多。 输出最多的三元环数量以及一种定向方案]]></description>
-</item><item>
-    <title>[解题报告][luoguP4311]士兵占领</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogup4311%E5%A3%AB%E5%85%B5%E5%8D%A0%E9%A2%86/</link>
-    <pubDate>Sat, 27 Feb 2021 10:10:30 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogup4311%E5%A3%AB%E5%85%B5%E5%8D%A0%E9%A2%86/</guid>
-    <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，有 $K$ 个障碍格子，其余格子均可以放一个士兵。 求使得第 $i$ 行士兵数量大于等于 $L_i$，第 $j$ 列士兵数量大于等于 $C_i$ 时的最小]]></description>
 </item></channel>
 </rss>

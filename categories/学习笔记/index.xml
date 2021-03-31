@@ -3,7 +3,14 @@
         <title>学习笔记 - 分类 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <description>学习笔记 - 分类 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 08 Feb 2021 20:33:21 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]Splay</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
+    <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</guid>
+    <description><![CDATA[简介 Splay 维护平衡的方式就是每访问到一个节点, 都把它旋转到根. 这个把节点 x 旋转到根的过程就叫做 Splay. 维护变量 1 int rt, fa[_], ch[_][2], val[_], num[_], sum[_]; rt: 根节点. fa[u]: 节点 u 的父节]]></description>
+</item><item>
     <title>[学习笔记]转置原理 (Draft)</title>
     <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</link>
     <pubDate>Mon, 08 Feb 2021 20:33:21 &#43;0800</pubDate>

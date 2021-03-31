@@ -2,15 +2,21 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/categories/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/oi/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/categories/oi/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/posts/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/splay/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://brucew-07.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc><lastmod>2021-03-31T22:30:00&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/categories/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://brucew-07.github.io/tags/codeforces/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://brucew-07.github.io/tags/dp/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/tags/oi/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/categories/oi/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/posts/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>https://brucew-07.github.io/tags/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://brucew-07.github.io/categories/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc><lastmod>2021-03-16T21:56:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Athupc2019%E6%89%BE%E6%A0%91/</loc><lastmod>2021-03-16T14:53:33&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
@@ -75,7 +81,6 @@
             <loc>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A300iq-contest-2-hhonorable-mention/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E5%87%B8%E4%BC%98%E5%8C%96/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E5%87%B8%E5%8C%85/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://brucew-07.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E9%97%B5%E5%8F%AF%E5%A4%AB%E6%96%AF%E5%9F%BA%E5%92%8C/</loc><lastmod>2021-02-19T17:07:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Abzoj3728bzoj3728zarowki/</loc><lastmod>2021-02-17T17:25:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/bzoj/</loc><lastmod>2021-02-17T17:25:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -84,8 +89,6 @@
             <loc>https://brucew-07.github.io/tags/burnside%E5%BC%95%E7%90%86/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E6%95%B0%E5%AD%A6/</loc><lastmod>2021-02-16T21:36:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://brucew-07.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E8%8D%89%E7%A8%BF/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://brucew-07.github.io/tags/%E8%BD%AC%E7%BD%AE%E5%8E%9F%E7%90%86/</loc><lastmod>2021-02-08T20:33:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -3,7 +3,14 @@
         <title>OI - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/oi/</link>
         <description>OI - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]Splay</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
+    <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</guid>
+    <description><![CDATA[简介 Splay 维护平衡的方式就是每访问到一个节点, 都把它旋转到根. 这个把节点 x 旋转到根的过程就叫做 Splay. 维护变量 1 int rt, fa[_], ch[_][2], val[_], num[_], sum[_]; rt: 根节点. fa[u]: 节点 u 的父节]]></description>
+</item><item>
     <title>[解题报告][CF1007E]Mini Metro</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Acf1007emini-metro/</link>
     <pubDate>Tue, 16 Mar 2021 21:56:11 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogup4311%E5%A3%AB%E5%85%B5%E5%8D%A0%E9%A2%86/</guid>
     <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，有 $K$ 个障碍格子，其余格子均可以放一个士兵。 求使得第 $i$ 行士兵数量大于等于 $L_i$，第 $j$ 列士兵数量大于等于 $C_i$ 时的最小]]></description>
-</item><item>
-    <title>[解题报告][2020五校国集集训Day3]張士超你昨天晚上到底把我家鑰匙放在哪了？</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/</link>
-    <pubDate>Fri, 26 Feb 2021 14:57:50 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A2020%E4%BA%94%E6%A0%A1%E5%9B%BD%E9%9B%86%E9%9B%86%E8%AE%ADday3%E5%BC%B5%E5%A3%AB%E8%B6%85%E4%BD%A0%E6%98%A8%E5%A4%A9%E6%99%9A%E4%B8%8A%E5%88%B0%E5%BA%95%E6%8A%8A%E6%88%91%E5%AE%B6%E9%91%B0%E5%8C%99%E6%94%BE%E5%9C%A8%E5%93%AA%E4%BA%86/</guid>
-    <description><![CDATA[Statement 传送门 Solution 考虑从朴素算法开始一步步推导。 我们考虑枚举做对的题目集合 $T$，并计算满足集合 $T$ 中题目总分大于等于 $n$ 的分数分配方案数。即 $$ \begin{aligned} \mathrm{Ans} &amp;= \sum_{T}]]></description>
 </item></channel>
 </rss>
