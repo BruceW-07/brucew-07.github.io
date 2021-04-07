@@ -3,7 +3,14 @@
         <title>学习笔记 - 分类 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <description>学习笔记 - 分类 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]LCT</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</link>
+    <pubDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</guid>
+    <description><![CDATA[简介 用于解决「动态树」问题。即对一棵树进行加边、删边操作，保证操作后仍是一棵树 （或一棵森林），并维护树链、子树信息。 具体的方式是将原树 / 森林]]></description>
+</item><item>
     <title>[学习笔记]Splay</title>
     <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
     <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>

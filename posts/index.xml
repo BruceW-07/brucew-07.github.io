@@ -3,7 +3,14 @@
         <title>所有文章 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/posts/</link>
         <description>所有文章 | BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]LCT</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</link>
+    <pubDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</guid>
+    <description><![CDATA[简介 用于解决「动态树」问题。即对一棵树进行加边、删边操作，保证操作后仍是一棵树 （或一棵森林），并维护树链、子树信息。 具体的方式是将原树 / 森林]]></description>
+</item><item>
     <title>[学习笔记]Splay</title>
     <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
     <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</guid>
     <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，每个网格中可能有一个以下15类水管中的一个。 可以花费代价 1 ，逆时针或顺时针90°旋转一个格子里的水管。 求最小代价使]]></description>
-</item><item>
-    <title>[解题报告][WC2007]剪刀石头布</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</link>
-    <pubDate>Sat, 27 Feb 2021 14:49:42 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</guid>
-    <description><![CDATA[Statement 传送门 给定一个 $n$ 个点的竞赛图，有一些边已经确定方向，要求你为剩下的边定向，并使得图中三元环数量尽量多。 输出最多的三元环数量以及一种定向方案]]></description>
 </item></channel>
 </rss>

@@ -3,7 +3,14 @@
         <title>OI - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/oi/</link>
         <description>OI - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]LCT</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</link>
+    <pubDate>Wed, 07 Apr 2021 07:34:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/</guid>
+    <description><![CDATA[简介 用于解决「动态树」问题。即对一棵树进行加边、删边操作，保证操作后仍是一棵树 （或一棵森林），并维护树链、子树信息。 具体的方式是将原树 / 森林]]></description>
+</item><item>
     <title>[学习笔记]Splay</title>
     <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0splay/</link>
     <pubDate>Wed, 31 Mar 2021 22:30:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Awc2007%E5%89%AA%E5%88%80%E7%9F%B3%E5%A4%B4%E5%B8%83/</guid>
     <description><![CDATA[Statement 传送门 给定一个 $n$ 个点的竞赛图，有一些边已经确定方向，要求你为剩下的边定向，并使得图中三元环数量尽量多。 输出最多的三元环数量以及一种定向方案]]></description>
-</item><item>
-    <title>[解题报告][luoguP4311]士兵占领</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogup4311%E5%A3%AB%E5%85%B5%E5%8D%A0%E9%A2%86/</link>
-    <pubDate>Sat, 27 Feb 2021 10:10:30 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aluogup4311%E5%A3%AB%E5%85%B5%E5%8D%A0%E9%A2%86/</guid>
-    <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，有 $K$ 个障碍格子，其余格子均可以放一个士兵。 求使得第 $i$ 行士兵数量大于等于 $L_i$，第 $j$ 列士兵数量大于等于 $C_i$ 时的最小]]></description>
 </item></channel>
 </rss>
