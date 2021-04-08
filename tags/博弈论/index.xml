@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>博弈论 - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
+        <description>博弈论 - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 08 Apr 2021 19:49:02 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="self" type="application/rss+xml" /><item>
+    <title>[学习笔记]博弈论</title>
+    <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
+    <pubDate>Thu, 08 Apr 2021 19:49:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/</guid>
+    <description><![CDATA[Nim 游戏 定义 有 $n$ 堆石子, 每堆有 $a_i$ 个石子, 每次从一堆中取任意个石子, 无法操作者败 结论 先手必胜的条件: $\bigoplus_{i = 1}^n a_i \not = 0$, SG 函数 定义 设一个局面为 $A$, 它的后]]></description>
+</item></channel>
+</rss>

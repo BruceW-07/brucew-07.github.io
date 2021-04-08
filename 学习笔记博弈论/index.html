@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[学习笔记]博弈论 - BruceW&#39;s Blog</title><meta name="Description" content="xxx"><meta property="og:title" content="[学习笔记]博弈论" />
+<meta property="og:description" content="Nim 游戏 定义 有 $n$ 堆石子, 每堆有 $a_i$ 个石子, 每次从一堆中取任意个石子, 无法操作者败 结论 先手必胜的条件: $\bigoplus_{i = 1}^n a_i \not = 0$, SG 函数 定义 设一个局面为 $A$, 它的后" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/" />
+<meta property="og:image" content="https://brucew-07.github.io/logo.jpg"/>
+<meta property="article:published_time" content="2021-04-08T19:49:02+08:00" />
+<meta property="article:modified_time" content="2021-04-08T19:49:02+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://brucew-07.github.io/logo.jpg"/>
+
+<meta name="twitter:title" content="[学习笔记]博弈论"/>
+<meta name="twitter:description" content="Nim 游戏 定义 有 $n$ 堆石子, 每堆有 $a_i$ 个石子, 每次从一堆中取任意个石子, 无法操作者败 结论 先手必胜的条件: $\bigoplus_{i = 1}^n a_i \not = 0$, SG 函数 定义 设一个局面为 $A$, 它的后"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/" /><link rel="prev" href="https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[学习笔记]博弈论",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/brucew-07.github.io\/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA\/"
+        },"genre": "posts","keywords": "OI, 学习笔记, 博弈论","wordcount":  1830 ,
+        "url": "https:\/\/brucew-07.github.io\/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA\/","datePublished": "2021-04-08T19:49:02+08:00","dateModified": "2021-04-08T19:49:02+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "BruceW"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="BruceW&#39;s Blog"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="BruceW&#39;s Blog"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[学习笔记]博弈论</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-08">2021-04-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1830 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#nim-游戏">Nim 游戏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+            <li><a href="#结论">结论</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#sg-函数">SG 函数</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-1">定义</a></li>
+            <li><a href="#性质">性质</a>
+              <ul>
+                <li><a href="#扩展">扩展</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#anti-游戏">Anti 游戏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-2">定义</a></li>
+          </ul>
+        </li>
+        <li><a href="#anti-nim">Anti-Nim</a>
+          <ul>
+            <li><a href="#结论-1">结论</a></li>
+          </ul>
+        </li>
+        <li><a href="#anti-游戏-1">Anti 游戏</a>
+          <ul>
+            <li><a href="#结论-2">结论</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#bash-博弈">Bash 博弈</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-3">定义</a></li>
+            <li><a href="#结论-3">结论</a></li>
+            <li><a href="#证明">证明</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#阶梯nim游戏">阶梯Nim游戏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-4">定义</a></li>
+            <li><a href="#结论-4">结论</a></li>
+            <li><a href="#证明-1">证明</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#威佐夫博弈-wythoff-game">威佐夫博弈 Wythoff Game</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-5">定义</a></li>
+            <li><a href="#结论-5">结论</a>
+              <ul>
+                <li><a href="#结论一">结论一</a></li>
+                <li><a href="#结论二">结论二</a></li>
+              </ul>
+            </li>
+            <li><a href="#证明-2">证明</a>
+              <ul>
+                <li><a href="#结论一-1">结论一</a></li>
+                <li><a href="#结论二-1">结论二</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#翻硬币游戏">翻硬币游戏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-6">定义</a></li>
+            <li><a href="#结论-6">结论</a></li>
+            <li><a href="#证明-3">证明</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#删边游戏">删边游戏</a>
+      <ul>
+        <li><a href="#树上删边游戏-一">树上删边游戏 一</a>
+          <ul>
+            <li><a href="#定义-7">定义</a></li>
+            <li><a href="#结论-7">结论</a></li>
+            <li><a href="#证明-4">证明</a></li>
+          </ul>
+        </li>
+        <li><a href="#树上删边游戏-二">树上删边游戏 二</a>
+          <ul>
+            <li><a href="#定义-8">定义</a></li>
+            <li><a href="#结论-8">结论</a></li>
+            <li><a href="#证明-5">证明</a></li>
+          </ul>
+        </li>
+        <li><a href="#无向图删边游戏">无向图删边游戏</a>
+          <ul>
+            <li><a href="#定义-9">定义</a></li>
+            <li><a href="#结论-fusion-principle">结论 (Fusion Principle)</a></li>
+            <li><a href="#推广">推广</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#动态减法游戏">动态减法游戏</a>
+      <ul>
+        <li><a href="#1-动态减法游戏">1-动态减法游戏</a>
+          <ul>
+            <li><a href="#定义-10">定义</a></li>
+            <li><a href="#结论-9">结论</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-动态减法游戏">2-动态减法游戏</a>
+          <ul>
+            <li><a href="#定义-11">定义</a></li>
+            <li><a href="#结论-10">结论</a></li>
+          </ul>
+        </li>
+        <li><a href="#k-动态减法游戏">k-动态减法游戏</a>
+          <ul>
+            <li><a href="#定义-12">定义</a></li>
+            <li><a href="#结论-11">结论</a></li>
+            <li><a href="#证明-6">证明</a></li>
+            <li><a href="#扩展-1">扩展</a>
+              <ul>
+                <li><a href="#证明-7">证明</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#匹配在博弈中的应用">匹配在博弈中的应用</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-13">定义</a></li>
+            <li><a href="#结论-12">结论</a></li>
+            <li><a href="#证明-8">证明</a>
+              <ul>
+                <li><a href="#充分性">充分性</a></li>
+                <li><a href="#必要性">必要性</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#every-sg-游戏">Every-SG 游戏</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#定义-14">定义</a></li>
+            <li><a href="#解法">解法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#题目">题目</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="nim-游戏">Nim 游戏</h2>
+<h4 id="定义">定义</h4>
+<p>有 $n$ 堆石子, 每堆有 $a_i$ 个石子, 每次从一堆中取任意个石子, 无法操作者败</p>
+<h4 id="结论">结论</h4>
+<p>先手必胜的条件:  $\bigoplus_{i = 1}^n a_i \not = 0$,</p>
+<hr>
+</br>
+<h2 id="sg-函数">SG 函数</h2>
+<h4 id="定义-1">定义</h4>
+<p>设一个局面为 $A$, 它的后继状态集合为 $E_A$, 则
+$$
+SG(A) =
+\begin{cases}
+0 &amp;E_A = \emptyset	\<br>
+mex(E_A) &amp;E_A \not = \emptyset
+\end{cases}
+$$
+其中 $mex(E_A)$ 表示集合 $E_A$ 中没有出现的最小非负整数.</p>
+<h4 id="性质">性质</h4>
+<p>设两个相互独立的游戏为 $A,B$, 游戏 $A+B$ 为每次在 $A$ <strong>或</strong> $B$ 中进行一次操作的游戏, 则
+$$
+SG(A+B) = SG(A) \oplus SG(B)
+$$
+其中 $\oplus$ 表示二进制异或.</p>
+<h5 id="扩展">扩展</h5>
+<p>$$
+SG(A_1 + A_2 + \cdots + A_k) = SG(A_1) \oplus SG(A_2) \oplus \cdots \oplus SG(A_k)
+$$</p>
+<hr>
+</br>
+<h2 id="anti-游戏">Anti 游戏</h2>
+<h4 id="定义-2">定义</h4>
+<p>无法操作的一方获胜</p>
+<hr>
+<h3 id="anti-nim">Anti-Nim</h3>
+<h4 id="结论-1">结论</h4>
+<p>先手必胜的条件:</p>
+<ol>
+<li>石子的异或和 $\not = 0$, 且存在一堆石子个数 $&gt; 1$.</li>
+<li>石子的异或和 $=0$, 且所有石子个数 $\le 1$.</li>
+</ol>
+<hr>
+<h3 id="anti-游戏-1">Anti 游戏</h3>
+<h4 id="结论-2">结论</h4>
+<p>设 $A = A_1 + A_2 + \cdots + A_k$, 则先手必胜情况为</p>
+<ol>
+<li>
+<p>$SG(A) \not = 0$, 且 $\exists\ i, SG(A_i) &gt; 1$.</p>
+</li>
+<li>
+<p>$SG(A) = 0$, 且 $\forall\ i, SG(A_i) \le 1$.</p>
+</li>
+</ol>
+<p><strong>成立条件</strong>: 在 $\forall\ i, SG(A_i) = 0$ 时, 满足其下的任意一条</p>
+<ol>
+<li>$\forall\ i$, $A_i$ 没有出边 (直接结束游戏).</li>
+<li>$\exists\ i$, $A_i$ 能转移到 $SG = 1$ 的情况 (转移到一个必败态).</li>
+</ol>
+<hr>
+</br>
+<h2 id="bash-博弈">Bash 博弈</h2>
+<h4 id="定义-3">定义</h4>
+<p>同 Nim游戏, 但每次取的石子不能超过一个常数 $m$.</p>
+<h4 id="结论-3">结论</h4>
+<p>$SG(x) = x \bmod{(m + 1)}$. ($x$ 为一堆中的石子个数).</p>
+<h4 id="证明">证明</h4>
+<p>手玩打表即可</p>
+<hr>
+</br>
+<h2 id="阶梯nim游戏">阶梯Nim游戏</h2>
+<h4 id="定义-4">定义</h4>
+<p>$n$ 层阶梯上分别有 $1$ 堆石子, 每次可以选择一堆中的任意个石子扔到下一层 (特殊的, 第一层的石子直接被扔出游戏), 无法操作者败.</p>
+<h4 id="结论-4">结论</h4>
+<p>总游戏的 $SG$ 函数为奇数层 $SG$ 函数的异或和.</p>
+<h4 id="证明-1">证明</h4>
+<p>感性理解. 若两人都只操作奇数层的石子, 则是一个 Nim 游戏. 若有一个人把偶数层的石子移到奇数层来了,      那么另一个人可以把这些石子移回偶数层, 游戏结果不发生改变.</p>
+<hr>
+</br>
+<h2 id="威佐夫博弈-wythoff-game">威佐夫博弈 Wythoff Game</h2>
+<h4 id="定义-5">定义</h4>
+<p>有两堆石子, 每次可以从一堆中取任意个石子 或 从两堆中取出相同个数的石子, 不能操作者败</p>
+<h4 id="结论-5">结论</h4>
+<h5 id="结论一">结论一</h5>
+<p>把状态设为 $(x, y)$, 把所有 $x &lt; y$ 的 $P$ 态按照 $x$ 从小到大排序设为 $(a_i, b_i)$.</p>
+<p>打表可以发现</p>
+<ul>
+<li>$a_i$ 为 $a_{1 \sim i-1}, b_{1\sim i-1}$ 中未出现过的非负整数</li>
+<li>$b_i = a_i + i$</li>
+</ul>
+<h5 id="结论二">结论二</h5>
+<p>如果令 $\alpha = \frac{1 + \sqrt5}{2}, \beta = \frac{3 + \sqrt5}{2}$, 则 $(a_i, b_i) = (\lfloor\alpha i\rfloor, \lfloor\beta i\rfloor)$.</p>
+<h4 id="证明-2">证明</h4>
+<h5 id="结论一-1">结论一</h5>
+<p>反证法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png, https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/kj896bp4.png" /></p>
+<h5 id="结论二-1">结论二</h5>
+<p>可用 Betty 定理推导</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png, https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/ah3cyu68.png" /></p>
+<hr>
+</br>
+<h2 id="翻硬币游戏">翻硬币游戏</h2>
+<h4 id="定义-6">定义</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png, https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/y293785h.png" /></p>
+<h4 id="结论-6">结论</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png, https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/yqx6yijh.png" /></p>
+<h4 id="证明-3">证明</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png, https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/06qjh76o.png" /></p>
+<hr>
+</br>
+<h2 id="删边游戏">删边游戏</h2>
+<h3 id="树上删边游戏-一">树上删边游戏 一</h3>
+<h4 id="定义-7">定义</h4>
+<p>一棵有根树, 每次删除一条边及其子树部分, 不能操作者败.</p>
+<h4 id="结论-7">结论</h4>
+<p>节点 $u$ 的 $SG$ 等于它所有子节点的 $SG +1$ 的异或和. (叶节点的 $SG = 0$)</p>
+<h4 id="证明-4">证明</h4>
+<p>感性理解. 考虑一条链的情况, 就相当于一个 Nim游戏, 转移到父亲节点时 $SG + 1$.</p>
+<hr>
+<h3 id="树上删边游戏-二">树上删边游戏 二</h3>
+<h4 id="定义-8">定义</h4>
+<p>同 树上删边游戏 一, 但树上挂了若干个环 (即有若干个从树上一个节点出发并回到该节点的环).</p>
+<h4 id="结论-8">结论</h4>
+<p>长度为奇数的环 $SG = 1$; 长度为偶数的环 $SG = 0$.</p>
+<h4 id="证明-5">证明</h4>
+<p>长度为奇数的环, 删了一条边后, 剩下两条链奇偶相同, 所以其异或和不可能为奇数, 所以 $SG = 1$.</p>
+<p>长度为偶数的环, 删了一条边后, 剩下两条链奇偶不同, 所以其异或和不可能为偶数, 所以 $SG = 0$.</p>
+<hr>
+<h3 id="无向图删边游戏">无向图删边游戏</h3>
+<h4 id="定义-9">定义</h4>
+<p>一个无向图, 每次删除一条边以及与根节点不连通的部分.</p>
+<h4 id="结论-fusion-principle">结论 (Fusion Principle)</h4>
+<p>将偶环替换成一个新点, 奇环替换成一个新点连出一条边, 原图中连向环的边全部连向新点, 图的 $SG$ 值不会改变</p>
+<h4 id="推广">推广</h4>
+<p>对于一个边双连通分量, 其 $SG$ 只与其边数的奇偶性有关, 偶数则为 $0$, 奇数则为 $1$.</p>
+<hr>
+</br>
+<h2 id="动态减法游戏">动态减法游戏</h2>
+<h3 id="1-动态减法游戏">1-动态减法游戏</h3>
+<h4 id="定义-10">定义</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png, https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/vbqfzpns.png" /></p>
+<h4 id="结论-9">结论</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png, https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/tsq3sh6c.png" /></p>
+<hr>
+<h3 id="2-动态减法游戏">2-动态减法游戏</h3>
+<h4 id="定义-11">定义</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png, https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/c4ra7t3c.png" /></p>
+<h4 id="结论-10">结论</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png, https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png" /></p>
+<h3 id="k-动态减法游戏">k-动态减法游戏</h3>
+<h4 id="定义-12">定义</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png, https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/7asiaihc.png" /></p>
+<h4 id="结论-11">结论</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png, https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/vy38ifpy.png" /></p>
+<h4 id="证明-6">证明</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png, https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/ez0dok88.png" /></p>
+<h4 id="扩展-1">扩展</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png, https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/sw1g1ql2.png" /></p>
+<h5 id="证明-7">证明</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png"
+        data-srcset="https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png, https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png 1.5x, https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png"
+        title="https://cdn.luogu.com.cn/upload/image_hosting/ptgfo168.png" /></p>
+<hr>
+</br>
+<h2 id="匹配在博弈中的应用">匹配在博弈中的应用</h2>
+<h4 id="定义-13">定义</h4>
+<p>一张无向图, 初始时有一个棋子在 $s$ 点, 轮流将棋子移向一个之前没有到达过的点, 无法操作者败.</p>
+<h4 id="结论-12">结论</h4>
+<p>先手必胜, 当且仅当 $s$ 在该图的所有最大匹配中 (即删去 $s$ 会使该图的最大匹配减小).</p>
+<h4 id="证明-8">证明</h4>
+<h5 id="充分性">充分性</h5>
+<p>假设一对匹配为 $(s, t)$, 先手将棋子移向 $t$, 若后手能够将棋子移向一个非匹配点 $x$, 则让 $x$ 与 $t$ 匹配不会减小该图匹配数, 即删去 $s$ 后不会使该图的最大匹配减小, 与条件矛盾.</p>
+<p>所以后手要么无法操作, 要么只能将棋子移向另一个匹配点 $s'$, 而这种情况下先手一定能将棋子移到 $t'$, 所以先手必胜.</p>
+<h5 id="必要性">必要性</h5>
+<p>反证法.</p>
+<p>假设 $s$ 不在该图的所有最大匹配中, 那么考虑一个 $s$ 不为匹配点的最大匹配, 先手一定只能将棋子移向一个匹配点 $s'$, 而这种情况下后手一定能将棋子移向 $t'$, 所以后手必胜.</p>
+<p>所以 $s$ 一定在该图的所有最大匹配中.</p>
+<hr>
+</br>
+<h2 id="every-sg-游戏">Every-SG 游戏</h2>
+<h4 id="定义-14">定义</h4>
+<p>有若干个独立的游戏, 每次要移动所有可以移动的棋子, 不能操作者败.</p>
+<h4 id="解法">解法</h4>
+<p>每个单独的游戏的结果已经确定了, 对最终结果有影响的就只有每个游戏结束的时间.</p>
+<p>对于先手必胜的游戏, 我们希望它进行的时间可以尽量的长, 而对于先手必败的游戏, 我们希望它尽早结束, 这样我们才能确保最终的胜利.</p>
+<p>所以计算出先手必胜的最长时间 和 先手必败的最短时间, 将两者进行比较即可.</p>
+<hr>
+</br>
+<h2 id="题目">题目</h2>
+<p><a href="http://codeforces.com/problemset/problem/794/E" target="_blank" rel="noopener noreffer">CF794E Choosing Carrot</a> 手玩找规律</p>
+<p><a href="https://www.luogu.com.cn/problem/P4101" target="_blank" rel="noopener noreffer">[HEOI2014]人人尽说江南好</a> 结论: 最终堆数为 $\lceil \frac{n}{m} \rceil$ 堆. (扩展: Alice 最多能堆 A 个石子, Bob 最多能堆 B 个石子)</p>
+<p><a href="https://www.luogu.com.cn/problem/P6665" target="_blank" rel="noopener noreffer">[清华集训2016] Alice 和 Bob 又在玩游戏</a> 加速运算 SG 函数.</p>
+<p>还没做的题目</p>
+<p><a href="https://www.luogu.com.cn/problem/P2594" target="_blank" rel="noopener noreffer">[ZJOI2009]染色游戏</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P3179" target="_blank" rel="noopener noreffer">[HAOI2015]数组游戏</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P3235" target="_blank" rel="noopener noreffer">[HNOI2014]江南乐</a></p>
+<p><a href="http://codeforces.com/problemset/problem/494/E" target="_blank" rel="noopener noreffer">CF494E Sharti</a></p>
+<p><a href="http://codeforces.com/problemset/problem/138/D" target="_blank" rel="noopener noreffer">CF138D World of Darkraft</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/oi/">OI</a>,&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>,&nbsp;<a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/">博弈论</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0lct/" class="prev" rel="prev" title="[学习笔记]LCT"><i class="fas fa-angle-left fa-fw"></i>[学习笔记]LCT</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">BruceW</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"$$","right":"$$"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

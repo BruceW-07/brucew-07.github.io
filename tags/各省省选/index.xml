@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>各省省选 - 标签 - BruceW&#39;s Blog</title>
+        <link>https://brucew-07.github.io/tags/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/</link>
+        <description>各省省选 - 标签 - BruceW&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 27 Feb 2021 08:35:46 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E5%90%84%E7%9C%81%E7%9C%81%E9%80%89/" rel="self" type="application/rss+xml" /><item>
+    <title>[解题报告][AHOI2009]最小割</title>
+    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/</link>
+    <pubDate>Sat, 27 Feb 2021 08:35:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Aahoi2009%E6%9C%80%E5%B0%8F%E5%89%B2/</guid>
+    <description><![CDATA[Statement 传送门 给定一张 $n$ 个点，$m$ 条边的有向图，并给定源点 $S$ 和汇点 $T$，对每条边进行判断 该边是否可能在最小割中 该边是否一定在最小割中 $n \le 4 \times 10^3,]]></description>
+</item></channel>
+</rss>
