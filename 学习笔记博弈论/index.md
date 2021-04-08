@@ -19,13 +19,15 @@
 #### 定义
 
 设一个局面为 $A$, 它的后继状态集合为 $E_A$, 则
+
 $$
 SG(A) = 
 \begin{cases}
-0 &E_A = \emptyset	\\
+0, &E_A = \emptyset  \\\\ 
 mex(E_A) &E_A \not = \emptyset
 \end{cases}
 $$
+
 其中 $mex(E_A)$ 表示集合 $E_A$ 中没有出现的最小非负整数.
 
 #### 性质
@@ -248,6 +250,8 @@ $n$ 层阶梯上分别有 $1$ 堆石子, 每次可以选择一堆中的任意个
 
 ![](https://cdn.luogu.com.cn/upload/image_hosting/ejh2cweo.png)
 
+---
+
 ### k-动态减法游戏
 
 #### 定义
@@ -327,6 +331,8 @@ $n$ 层阶梯上分别有 $1$ 堆石子, 每次可以选择一堆中的任意个
 
 [[清华集训2016] Alice 和 Bob 又在玩游戏](https://www.luogu.com.cn/problem/P6665) 加速运算 SG 函数.
 
+---
+
 还没做的题目
 
 [[ZJOI2009]染色游戏](https://www.luogu.com.cn/problem/P2594)
@@ -339,5 +345,5 @@ $n$ 层阶梯上分别有 $1$ 堆石子, 每次可以选择一堆中的任意个
 
 [CF138D World of Darkraft](http://codeforces.com/problemset/problem/138/D)
 
-
+[[HDU3595]GG and MM](http://acm.hdu.edu.cn/showproblem.php?pid=3595) (Every-SG)
 
