@@ -3,7 +3,14 @@
         <title>OI - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/oi/</link>
         <description>OI - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 08 Apr 2021 19:49:02 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 18 Apr 2021 18:44:29 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/oi/" rel="self" type="application/rss+xml" /><item>
+    <title>2021JX省选游记</title>
+    <link>https://brucew-07.github.io/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0/</link>
+    <pubDate>Sun, 18 Apr 2021 18:44:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0/</guid>
+    <description><![CDATA[Day1 T1 支配 T2 卡牌游戏 T3 图函数 T1 简单题，就先没写代码，去看 T2 了。 T2 一开始手玩了一下，没玩出什么来。后面考虑固定最大值，然后求最小值最大，大概就是]]></description>
+</item><item>
     <title>[学习笔记]博弈论</title>
     <link>https://brucew-07.github.io/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%9A%E5%BC%88%E8%AE%BA/</link>
     <pubDate>Thu, 08 Apr 2021 19:49:02 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ausaco21jan-paint-by-letters-p/</guid>
     <description><![CDATA[Statement 传送门 一个 $N \times M$ 的网格，每个格子里有一个大写字母。 $Q$ 次询问，每次询问一个子矩阵里的同字符四连通块数量。 $N, M \le 1000, Q \le 1000$。 Solution 这题应该不]]></description>
-</item><item>
-    <title>[解题报告][清华集训2017]无限之环</title>
-    <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</link>
-    <pubDate>Sat, 27 Feb 2021 20:28:31 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2017%E6%97%A0%E9%99%90%E4%B9%8B%E7%8E%AF/</guid>
-    <description><![CDATA[Statement 传送门 一个 $n \times m$ 的网格，每个网格中可能有一个以下15类水管中的一个。 可以花费代价 1 ，逆时针或顺时针90°旋转一个格子里的水管。 求最小代价使]]></description>
 </item></channel>
 </rss>

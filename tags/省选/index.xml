@@ -3,7 +3,14 @@
         <title>省选 - 标签 - BruceW&#39;s Blog</title>
         <link>https://brucew-07.github.io/tags/%E7%9C%81%E9%80%89/</link>
         <description>省选 - 标签 - BruceW&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 07 Feb 2021 14:57:53 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E7%9C%81%E9%80%89/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 18 Apr 2021 18:44:29 &#43;0800</lastBuildDate><atom:link href="https://brucew-07.github.io/tags/%E7%9C%81%E9%80%89/" rel="self" type="application/rss+xml" /><item>
+    <title>2021JX省选游记</title>
+    <link>https://brucew-07.github.io/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0/</link>
+    <pubDate>Sun, 18 Apr 2021 18:44:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://brucew-07.github.io/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0/</guid>
+    <description><![CDATA[Day1 T1 支配 T2 卡牌游戏 T3 图函数 T1 简单题，就先没写代码，去看 T2 了。 T2 一开始手玩了一下，没玩出什么来。后面考虑固定最大值，然后求最小值最大，大概就是]]></description>
+</item><item>
     <title>[解题报告][SHOI2006]有色图</title>
     <link>https://brucew-07.github.io/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8Ashoi2006%E6%9C%89%E8%89%B2%E5%9B%BE/</link>
     <pubDate>Sun, 07 Feb 2021 14:57:53 &#43;0800</pubDate>
