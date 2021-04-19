@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/brucew-07.github.io\/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0\/"
-        },"genre": "posts","keywords": "OI, 省选, 2021联合省选, JXOI, 游记","wordcount":  632 ,
+        },"genre": "posts","keywords": "OI, 省选, 2021联合省选, JXOI, 游记","wordcount":  1411 ,
         "url": "https:\/\/brucew-07.github.io\/2021jx%E7%9C%81%E9%80%89%E6%B8%B8%E8%AE%B0\/","datePublished": "2021-04-18T18:44:29+08:00","dateModified": "2021-04-18T18:44:29+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">2021JX省选游记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>BruceW</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/oi/"><i class="far fa-folder fa-fw"></i>OI</a>&nbsp;<a href="/categories/%E6%B8%B8%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>游记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 632 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1411 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="true">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -120,6 +120,16 @@
 <li><a href="#headline-2">Day2</a>
 </li>
 <li><a href="#headline-3">Day6</a>
+</li>
+<li><a href="#headline-4">总结</a>
+<ul>
+<li><a href="#headline-5">算法标签</a>
+</li>
+<li><a href="#headline-6">数量统计</a>
+</li>
+<li><a href="#headline-7">个人小结</a>
+</li>
+</ul>
 </li>
 </ul>
 </nav></div>
@@ -205,6 +215,94 @@ Day6
 听到这个分数的我一度以为可以原地退役了，结果没有……</p>
 <p>
 <del>感谢 NOIP2020 T3 CCF 提供的水数据</del></p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+总结
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+算法标签
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<ul>
+<li>
+<p>数对：数论</p>
+</li>
+<li>
+<p>卡牌游戏：双指针</p>
+</li>
+<li>
+<p>支配：图论、$n^2$ 支配树、分析性质</p>
+</li>
+<li>
+<p>图函数：图论、题意转化、统计点对、正难则反（删边改为加边）</p>
+</li>
+<li>
+<p>取模：分析性质、直觉乱搞</p>
+</li>
+<li>
+<p>宝石：数据结构</p>
+</li>
+<li>
+<p>滚榜：状压DP</p>
+</li>
+<li>
+<p>矩阵游戏：图论、差分约束</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+数量统计
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ul>
+<li>
+<p>数论 x1</p>
+</li>
+<li>
+<p>图论 x3</p>
+</li>
+<li>
+<p>DP x1</p>
+</li>
+<li>
+<p>数据结构 x1</p>
+</li>
+<li>
+<p>其他 x2 (双指针、乱搞）</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+个人小结
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>真正有难度的题目应该只有 矩阵游戏，即使想到了差分约束也不一定能想到一行一列依次加一减一的操作。</p>
+<p>
+图函数 这题没做好主要是因为考场上的总思路一直是统计 SCC 数量，没有去想统计点对。</p>
+<p>
+然后像 滚榜 这种题意不是一下能明了的题目一定要理解透彻题意后再去想，并且注意一些小限制。（看题解的时候还因为没注意到 $b_i$ 递减的条件愣了好久。）</p>
+<p>
+取模 挂分的原因是没有仔细去思考细节。纠其根本我觉得可能是因为发现自己不会做正解后就想着赶紧把 $n^2$ 写完然后去做剩下的题，因此没有注意细节，也没有去写乱搞。以后再遇到这种情况也还是要先想清楚，不要太快丢题。</p>
+<p>
+关于题目风格，首先很明显的一点是传统计数的缺失（毕竟 FFT 都被标记为了 10 级考点……），这也是和平时联考最不同的地方。并且根据 NOI 考纲来看，NOI 应该也不会有多少传统的计数题。</p>
+<p>
+而图论题这次出现了不少，并且很久没考过的差分约束也回来了。</p>
+<p>
+但字符串却没有出现，个人觉得应该是因为考纲上的字符串算法只有 KMP 一个是在 7 以下的，到了国赛级别应该就会有更多的字符串题。</p>
+<p>
+然后性质分析在这次省选中还是占了比较大的部分，并且基本上都是可以依靠直觉来进行猜测的性质，考场上可以根据这一点调整思考策略。 <del>少一些套路，多一些乱搞</del></p>
+<p>
+所以总的来说这次省选的主要考察方向还是思维，套路题都没怎么出现。所以在平常的训练中也需要注意这点。平时联考由于现役选手的能力倾向以及出题的难度，可能还是会出现比较多的套路计数（数据结构现在倒少了），那么可能就需要在 CF 以及 AtCoder 上进行一些思维题的训练以提高自己的思维水平以及保持思维的活跃度。</p>
+</div>
+</div>
 </div>
 </div>
 </div><div class="post-footer" id="post-footer">
